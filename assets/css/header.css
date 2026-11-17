@@ -1,0 +1,8 @@
+header {
+  padding: var(--gap-base) var(--gap-inline);
+  background: var(--color-surface);
+}
+
+header p {
+  margin: 0;
+}

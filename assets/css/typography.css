@@ -1,0 +1,32 @@
+:root {
+  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-size-base: 14px;
+  --font-size-title: calc(var(--font-size-base) * 12 / 7);
+}
+
+body {
+  font-family: "Inter", var(--font-sans);
+  font-size: var(--font-size-base);
+  line-height: 1.6;
+}
+
+h1 {
+  font-size: var(--font-size-title);
+}
+
+h2 {
+  font-size: calc(var(--font-size-base) * 10 / 7);
+}
+
+h3 {
+  font-size: calc(var(--font-size-base) * 8 / 7);
+}
+
+h4 {
+  font-size: var(--font-size-base);
+}
+
+header p {
+  font-size: var(--font-size-title);
+  font-weight: bold;
+}

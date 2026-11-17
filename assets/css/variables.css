@@ -1,0 +1,13 @@
+:root {
+  --color-background: #fff;
+  --color-surface: #f5f2ea;
+  --color-border: #e8e8e5;
+  --color-text: #242b2a;
+  --color-text-muted: #666d6b;
+  --color-accent: #d86b42;
+  --color-link: #b04f2a;
+
+  --gap-base: 16px;
+  --gap-inline: calc(var(--gap-base) * 1.5);
+  --gap-section: calc(var(--gap-base) * 2);
+}

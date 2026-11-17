@@ -3,6 +3,9 @@
 help:
 	@awk 'BEGIN { FS = ": ## "; if (system("test -t 1") == 0) { c = "\033[36m"; r = "\033[0m" } } /^[a-z\\:-]+: ## / { name = $$1; gsub(/\\/, "", name); printf "%s%-15s%s %s\n", c, name, r, $$2 }' $(MAKEFILE_LIST)
 
+run: ## Run the site
+	hugo server
+
 fix: ## Fix trailing whitespace, line endings and markdown
 	@status=0; \
 	pre-commit run trailing-whitespace --all-files || status=1; \
