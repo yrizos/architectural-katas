@@ -1,21 +1,24 @@
 {{ define "main" }}
-  <h1>Practice System Design</h1>
-  <p>An architectural kata gives you a brief for a fictional system and asks you to work out a design. The brief leaves questions unanswered, so part of the work is deciding what you need to know and which assumptions you can proceed with.</p>
-  {{ with resources.Get "images/whiteboard-workshop.png" }}
-    {{ $img := . }}
-    {{ $srcset := slice }}
-    {{ range slice 480 720 1440 }}
-      {{ $srcset = $srcset | append (printf "%s %dw" ($img.Resize (printf "%dx" .)).RelPermalink .) }}
-    {{ end }}
-    {{ $default := .Resize "720x" }}
-    <img src="{{ $default.RelPermalink }}" srcset="{{ delimit $srcset ", " }}" sizes="(min-width: 768px) 720px, calc(100vw - 48px)" width="{{ $default.Width }}" height="{{ $default.Height }}" alt="Four people gather around a whiteboard covered in system diagrams.">
-  {{ end }}
-  <p>You choose what matters most, compare alternatives, and sketch a proposal. Each important choice comes with a cost you need to explain. Someone else may reach a different design from the same brief, and comparing your reasoning can expose priorities or assumptions worth reconsidering.</p>
-  <p>You can work alone or in a team of three to five. Set aside an hour or two with paper or a whiteboard. You won't write code. Start with the conference brief below, then use the practice steps to question and revise your proposal.</p>
+  <h1>Practice System Design as a Team</h1>
+  <p>An architectural kata is a design exercise for a small team. You work from a fictional brief, ask questions, and sketch a system together, explaining why you chose one approach over another.</p>
   <section>
-    <h2>Design a Conference Platform</h2>
-    <p>For this kata, you'll design a platform for a fictional technology conference. The organizers need to manage the event and keep attendees informed when the venue's network is unreliable.</p>
-    <p>Read their request and note what you need to clarify before choosing an approach.</p>
+    <h2>Understand the Exercise</h2>
+    <p>You'll need three to five people, paper or a whiteboard, and an hour or two. The work is drawing and discussion, so there's no code to write.</p>
+    {{ with resources.Get "images/whiteboard-workshop.png" }}
+      {{ $img := . }}
+      {{ $srcset := slice }}
+      {{ range slice 480 720 1440 }}
+        {{ $srcset = $srcset | append (printf "%s %dw" ($img.Resize (printf "%dx" .)).RelPermalink .) }}
+      {{ end }}
+      {{ $default := .Resize "720x" }}
+      <img src="{{ $default.RelPermalink }}" srcset="{{ delimit $srcset ", " }}" sizes="(min-width: 768px) 720px, calc(100vw - 48px)" width="{{ $default.Width }}" height="{{ $default.Height }}" alt="Four people gather around a whiteboard covered in system diagrams.">
+    {{ end }}
+    <p>Talk through decisions as you make them. If someone suggests an approach, ask what makes it suitable and what becomes harder if you choose it.</p>
+    <p>You can also practice alone by following the same steps. When you review your design, consider why someone else might choose differently.</p>
+  </section>
+  <section>
+    <h2>Encounter the Problem</h2>
+    <p>Your starting point is a request from the organizers of a fictional technology conference. Read it together and note anything you would need to ask them.</p>
     <div class="brief">
       <p class="brief__title">The Show Must Go On!</p>
       <div class="brief__columns">
@@ -73,5 +76,60 @@
         </li>
       </ol>
     </div>
+  </section>
+  <section>
+    <h2>Investigate the Problem</h2>
+    <p>Some of the request needs a conversation with the organizers. Before drawing anything, agree on what the system must do first and what you still need to ask.</p>
+    <h3>Decide What Comes First</h3>
+    <p>Ticket sales open on December 1. Ask what needs to be ready by then and who will use it.</p>
+    <ul>
+      <li>Will your platform sell tickets, or will another system handle that?</li>
+      <li>What must organizers and attendees be able to do by December 1?</li>
+      <li>What can wait until later while still making the first release useful?</li>
+    </ul>
+    <h3>Ask About the Gaps</h3>
+    <p>Think about an attendee looking for a room just as an organizer moves the talk elsewhere. Ask what each person needs to know and what happens if the venue's network drops.</p>
+    <ul>
+      <li>What must attendees still be able to do when the venue's connection drops?</li>
+      <li>How soon must they learn that a talk has moved to another room?</li>
+      <li>When will the most people use the platform at once, and what happens if it fails?</li>
+      <li>Does interacting with a talk mean asking questions, answering polls, leaving feedback, or something else?</li>
+    </ul>
+    <h3>Write Down Your Assumptions</h3>
+    <p>You'll also need to ask about the budget, the people building the system, and anything it must work with. If an answer is unavailable, write down what you're assuming and which choice depends on it.</p>
+    <p>Keep those notes separate from what the organizers have told you. You'll use both when deciding how to build the system.</p>
+  </section>
+  <section>
+    <h2>Develop a Proposal</h2>
+    <p>You can now start choosing how the system will work. Keep your priorities and assumptions nearby, because you'll need them to explain your choices.</p>
+    <h3>Compare Alternatives</h3>
+    <p>Old conference editions could stay in the live platform, or you could publish a separate snapshot of each one. Think about who would update them and what each option would take to maintain.</p>
+    <ul>
+      <li>Which of the organizers' needs would each option meet?</li>
+      <li>What would each take to build, run, and change?</li>
+      <li>What are you assuming that could make you choose differently?</li>
+    </ul>
+    <h3>Sketch the Design</h3>
+    <p>Draw the main parts of the system and show what each does. Label the connections so another person can follow an attendee opening the program or an organizer changing a room.</p>
+    <p>Try following those actions through your drawing. Check that people can do what you agreed mattered most, and add detail where a choice needs explaining. Mark anything you haven't worked out yet.</p>
+    <h3>Explain Your Choices</h3>
+    <p>Write down why you chose an approach, what else you considered, and what you give up with your choice. Point to the need or assumption behind it so someone else can question your reasoning.</p>
+  </section>
+  <section>
+    <h2>Challenge the Reasoning</h2>
+    <p>Once you have a design, ask what would make you change it. Try a different requirement or invite someone to question a choice you made.</p>
+    <h3>Change a Requirement</h3>
+    <p>Imagine that the venue loses its network for the whole day, or that the organizers need the first release earlier than you planned. Pick a change and work through what happens to your design.</p>
+    <ul>
+      <li>What can organizers and attendees still do?</li>
+      <li>Which choice would you need to revisit, and why?</li>
+      <li>Are you still willing to accept what that choice costs?</li>
+    </ul>
+    <h3>Question the Choices</h3>
+    <p>Ask a teammate or another group to explain what worries them about a decision. If you're working alone, look again at an option you rejected. Would it fit better now?</p>
+    <p>Ask which need or assumption is behind the concern. If you disagree about how the system would behave, decide what evidence would help. For a performance claim, for example, discussion alone won't give you a measurement.</p>
+    <h3>Reconsider the Proposal</h3>
+    <p>You may keep the original choice or decide to change it. Explain why, using what you learned from the question or the changed requirement. If you still can't decide, write down what you need to find out.</p>
+    <p>Keep that explanation with the original decision so you can see what changed in your thinking and which questions are still open.</p>
   </section>
 {{ end }}
