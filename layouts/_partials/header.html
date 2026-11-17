@@ -8,7 +8,7 @@
     <div>
       <ul>
         {{ range site.Menus.main }}
-          <li><a href="{{ .URL }}"{{ if $.IsMenuCurrent "main" . }} aria-current="page"{{ end }}>{{ with .Params.icon }}{{ partial (printf "icons/%s.html" .) }}{{ end }}{{ .Name }}</a></li>
+          <li><a href="{{ .URL }}"{{ if $.IsMenuCurrent "main" . }} aria-current="page"{{ end }}>{{ with .Params.icon }}{{ partial (printf "icons/%s.html" .) }}{{ else }}{{ errorf "Menu item %q has no icon. Set icon under params in hugo.toml." .Name }}{{ end }}{{ .Name }}</a></li>
         {{ end }}
       </ul>
     </div>

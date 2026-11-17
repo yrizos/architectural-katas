@@ -14,10 +14,11 @@ CSS lives in `assets/css/` and is loaded through Hugo's `resources.Get` in `layo
 - `footer.css` holds the footer partial's styles.
 - `brief.css` holds the `.brief` block's styles, including its icons.
 - `callout.css` holds the `.callout` block's styles.
+- `people.css` holds the `.people` and `.person` blocks' styles.
 
 ### Load order
 
-The files load in this order: `variables.css`, `main.css`, `typography.css`, `callout.css`, `header.css`, `footer.css`, `brief.css`. A later file overrides an earlier one when selectors have equal specificity.
+The files load in this order: `variables.css`, `main.css`, `typography.css`, `callout.css`, `people.css`, `header.css`, `footer.css`, `brief.css`. A later file overrides an earlier one when selectors have equal specificity.
 
 ### Component files
 

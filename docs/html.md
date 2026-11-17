@@ -25,6 +25,7 @@ Each line icon is its own partial in `layouts/_partials/icons/`.
 - A partial holds one inline `<svg>` with `viewBox="0 0 24 24"`. Decorative icons also carry `aria-hidden="true"`.
 - A partial sets no size or colour. CSS does that (see `css.md`).
 - Include an icon with `{{ partial "icons/calendar.html" }}`.
+- Every menu item must have a line icon. This is a hard rule. Set it with `icon` under `[menu.main.params]` in `hugo.toml`. The header fails the build when an item has none.
 
 ## Anchors
 
