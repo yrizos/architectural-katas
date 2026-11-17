@@ -1,3 +1,35 @@
 <header>
-  <p>{{ site.Title }}</p>
+  <p><a href="{{ site.Home.RelPermalink }}">{{ site.Title }}</a></p>
+  <button type="button" class="menu-toggle" aria-label="Menu" aria-expanded="false" aria-controls="site-menu" hidden>
+    {{ partial "icons/menu.html" }}
+    {{ partial "icons/x.html" }}
+  </button>
+  <nav id="site-menu" aria-label="Main">
+    <div>
+      <ul>
+        {{ range site.Menus.main }}
+          <li><a href="{{ .URL }}"{{ if $.IsMenuCurrent "main" . }} aria-current="page"{{ end }}>{{ with .Params.icon }}{{ partial (printf "icons/%s.html" .) }}{{ end }}{{ .Name }}</a></li>
+        {{ end }}
+      </ul>
+    </div>
+  </nav>
+  <script>
+    (() => {
+      const button = document.querySelector(".menu-toggle");
+      const menu = document.getElementById("site-menu");
+      const set = (open) => {
+        button.setAttribute("aria-expanded", open);
+        menu.dataset.open = open;
+      };
+      button.hidden = false;
+      set(false);
+      button.addEventListener("click", () => set(button.getAttribute("aria-expanded") !== "true"));
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && button.getAttribute("aria-expanded") === "true") {
+          set(false);
+          button.focus();
+        }
+      });
+    })();
+  </script>
 </header>

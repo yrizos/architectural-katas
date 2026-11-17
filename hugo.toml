@@ -2,3 +2,11 @@ baseURL = "https://example.com/"
 title = "Architectural Katas"
 languageCode = "en"
 enableRobotsTXT = true
+
+[[menu.main]]
+name = "Toolkit"
+pageRef = "/toolkit"
+weight = 1
+
+[menu.main.params]
+icon = "wrench"
