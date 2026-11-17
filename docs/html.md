@@ -6,6 +6,7 @@ Every page sets a title and a description in its front matter.
 
 - `baseof.html` renders them as `<title>` and `<meta name="description">`.
 - Never hardcode either in a template.
+- `baseof.html` renders `<link rel="canonical">` from `.Permalink` on every page. Never set a canonical by hand or in front matter, and never override `baseof.html` in a way that drops it.
 
 ## Links
 
