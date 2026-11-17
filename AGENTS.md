@@ -12,6 +12,7 @@ Mandatory rules for AI coding agents.
 - Read `docs/css.md` before touching any CSS.
 - Read `docs/html.md` before touching any HTML or template.
 - Read `docs/homepage-narrative.md` before changing the homepage.
+- Read `docs/writing.md` before changing site copy in `content/` or `layouts/`.
 
 ### Confirm First
 
