@@ -1,6 +1,7 @@
 header {
   padding: var(--gap-base) var(--gap-page);
-  background: var(--color-surface);
+  background: var(--color-graphite);
+  color: #fff;
 }
 
 header p {

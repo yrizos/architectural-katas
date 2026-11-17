@@ -23,23 +23,34 @@ body {
 
 main {
   flex: 1;
-  padding: var(--gap-base) var(--gap-page);
+  padding: 0 var(--gap-page) calc(var(--gap-base) * 2);
 }
 
 img {
   display: block;
-  max-width: 100%;
+  max-width: min(100%, calc(var(--content-width) * 0.9));
   height: auto;
+  margin-inline: auto;
 }
 
 h1 {
-  margin-top: 0;
+  margin: 0 calc(var(--gap-page) * -1) var(--gap-section);
+  padding: var(--gap-section) var(--gap-page);
+  background: var(--color-surface);
+  color: var(--color-graphite);
 }
 
 section {
-  margin-top: var(--gap-base);
-  padding-top: var(--gap-base);
-  border-top: 0.1em solid var(--color-border);
+  margin-top: calc(var(--gap-base) * 2);
+}
+
+section::before {
+  content: "";
+  display: block;
+  width: 3em;
+  height: 0.2em;
+  margin-bottom: var(--gap-base);
+  background: var(--color-accent);
 }
 
 section > h2 {
