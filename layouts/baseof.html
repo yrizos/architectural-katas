@@ -3,7 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{ site.Title }}</title>
+  <title>{{ .Title }}</title>
+  {{ with .Description }}<meta name="description" content="{{ . }}">{{ end }}
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap">
   {{ with resources.Get "css/variables.css" }}<link rel="stylesheet" href="{{ .RelPermalink }}">{{ end }}
   {{ with resources.Get "css/main.css" }}<link rel="stylesheet" href="{{ .RelPermalink }}">{{ end }}

@@ -1,5 +1,12 @@
 # HTML
 
+## Page metadata
+
+Every page sets a title and a description in its front matter.
+
+- `baseof.html` renders them as `<title>` and `<meta name="description">`.
+- Never hardcode either in a template.
+
 ## Links
 
 Every external link opens in a new tab with `target="_blank" rel="noopener"`.
