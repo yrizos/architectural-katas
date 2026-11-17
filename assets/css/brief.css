@@ -32,6 +32,20 @@
   margin: 0;
 }
 
+.brief__title {
+  font-size: calc(var(--font-size-base) * 10 / 7);
+  font-weight: bold;
+}
+
+.brief__label {
+  font-size: calc(var(--font-size-base) * 8 / 7);
+  font-weight: bold;
+}
+
+.brief__requirement {
+  font-weight: bold;
+}
+
 @media (min-width: 768px) {
   .brief {
     margin-inline: 0;

@@ -8,7 +8,8 @@ CSS lives in `assets/css/` and is loaded through Hugo's `resources.Get` in `layo
 
 - `variables.css` holds colour and spacing custom properties.
 - `main.css` holds the reset, `html`, `body` and `main` rules.
-- `typography.css` holds all font families, sizes, weights and line heights, including their custom properties.
+- `typography.css` holds the typography rules that apply to the whole site, including their custom properties.
+- Typography that belongs to one component goes in that component's file.
 - `header.css` holds the header partial's styles.
 - `footer.css` holds the footer partial's styles.
 - `brief.css` holds the `.brief` block's styles, including its icons.

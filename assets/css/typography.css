@@ -25,22 +25,3 @@ h3 {
 h4 {
   font-size: var(--font-size-base);
 }
-
-header p {
-  font-size: var(--font-size-title);
-  font-weight: bold;
-}
-
-.brief__title {
-  font-size: calc(var(--font-size-base) * 10 / 7);
-  font-weight: bold;
-}
-
-.brief__label {
-  font-size: calc(var(--font-size-base) * 8 / 7);
-  font-weight: bold;
-}
-
-.brief__requirement {
-  font-weight: bold;
-}
