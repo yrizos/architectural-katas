@@ -7,33 +7,33 @@ description: Three tools for an architectural kata, with guidance on when each h
 
 An architectural decision record, or ADR, is a short document that [captures and explains a decision](https://martinfowler.com/bliki/ArchitectureDecisionRecord.html). It holds the context, the alternatives, and the consequences, so a later reader can see why a system looks the way it does.
 
-Accepted records aren't edited. A changed decision gets a new record that supersedes the old one, so the history stays intact.
-
 In a kata, the records are the only memory your design has. Write one for each choice, such as where the data lives or how two parts communicate, and note the alternative you rejected and the cost you accept.
 
 When a requirement changes, reread them and supersede any whose context no longer holds.
 
-Pick a template from [the common formats](https://adr.github.io/), such as MADR, Michael Nygard's original, or the one-sentence Y-Statement. The minimal MADR form is enough, since a record that gets written beats a thorough template that gets skipped.
+If you'd like to start capturing decisions, there are [several formats](https://adr.github.io/) to choose from, including MADR, Michael Nygard's original, and the one-sentence Y-Statement.
 
 ## Release Timeline
 
-A release timeline lays out what ships when. A date limits what can be built before it, so the timeline forces the team to say which needs come first and what can wait.
+A release timeline shows what ships when, with a date attached to each step. Because a date limits what can be built before it, the timeline forces the team to decide which needs come first and which can wait.
 
-Start with the date the team has to hit. Place it on the timeline and decide which requirements must exist by then. That decision shapes others:
+In a kata, a common practice is to split the delivery into phases such as MVP and Phase 1. Each phase gets a due date, such as Week 1, Month 1, or Q1.
 
-- Whether the system does something itself or relies on another system.
-- Which features and data the first release includes and which wait.
-- How much of each quality requirement, such as reliability, the first release covers.
-- Whether a capability starts as a simple version or the full design.
+Start with the earliest date and ask what the system must do by then. Everything else moves to a later phase, and each of those moves changes other decisions:
+
+- Whether the system builds a capability itself or relies on another system.
+- Which features and data ship first and which come later.
+- How much of a quality requirement, such as reliability, the first phase covers.
+- Whether a capability starts as a simple version or as its final design.
 - What the team builds and what it buys or reuses.
 
-Record each of these in an ADR that names the timeline as a reason.
+A later phase can still shape the first one, so sketch what comes after the MVP before you settle how to build it.
 
 ## C4 Diagrams
 
-The [C4 model](https://c4model.com/) is Simon Brown's approach to diagramming software architecture in four levels, which are context, containers, components, and code. Each level answers a different question, so readers can stop at the depth they need.
+The [C4 model](https://c4model.com/) is Simon Brown's approach to diagramming software architecture. It describes a system at four levels of detail, from context down to code, and each level answers a different question for a different reader.
 
-Most teams only need the first two levels, and a kata is no different:
+Most teams only need the first two levels, and a kata is no different.
 
 {{< callout >}}
 {{< callout-item icon="globe" >}}
@@ -50,4 +50,4 @@ A [code diagram](https://c4model.com/diagrams/code) shows the classes inside one
 {{< /callout-item >}}
 {{< /callout >}}
 
-Label every connection, and keep the diagrams beside your ADRs. The diagram shows what you decided, and the record explains why.
+Label every connection on each diagram, and keep the diagrams beside your ADRs. A diagram shows what you decided, and the record explains why.
