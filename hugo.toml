@@ -1,3 +1,4 @@
 baseURL = "https://example.com/"
 title = "Architectural Katas"
 languageCode = "en"
+enableRobotsTXT = true
