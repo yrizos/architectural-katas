@@ -1,25 +1,35 @@
 {{ define "main" }}
   <h1>Practice System Design as a Team</h1>
-  <p>Real design work usually starts with a request from people who need a system and a date they care about.</p>
-  <p>An architectural kata is a design exercise that lets you practice that moment with a fictional request, so you can try ideas, have them questioned, and change your mind without any production consequences.</p>
+  <p>Picture a design project before anything is decided. A few people stand at a whiteboard with a page of requirements. Each would start drawing something different, because each has reasons the others haven't heard.</p>
   {{ with resources.Get "images/whiteboard-workshop.png" }}
     {{ $img := . }}
     {{ $srcset := slice }}
-    {{ range slice 480 720 1440 }}
+    {{ range slice 480 893 1440 }}
       {{ $srcset = $srcset | append (printf "%s %dw" ($img.Resize (printf "%dx" .)).RelPermalink .) }}
     {{ end }}
-    {{ $default := .Resize "720x" }}
-    <img src="{{ $default.RelPermalink }}" srcset="{{ delimit $srcset ", " }}" sizes="(min-width: 768px) 720px, calc(100vw - 48px)" width="{{ $default.Width }}" height="{{ $default.Height }}" alt="Four people gather around a whiteboard covered in system diagrams.">
+    {{ $default := .Resize "893x" }}
+    <img src="{{ $default.RelPermalink }}" srcset="{{ delimit $srcset ", " }}" sizes="(min-width: 941px) 893px, calc(100vw - 48px)" width="{{ $default.Width }}" height="{{ $default.Height }}" alt="Four people gather around a whiteboard covered in system diagrams.">
   {{ end }}
-  <p>With a small team, you'll read a request from the organizers of a conference, work out what it leaves unsaid, and propose a design. Then you'll test that design against a change nobody planned for. Since there's no correct answer to find, you'll finish with a design, the reasons behind it, and a list of what you're still unsure about.</p>
+  <p>An architectural kata gives you that situation to practice on. You design a system together, and because nothing ships or breaks, you can try ideas and change your mind freely.</p>
+  <p>Working with others is the point, because a design nobody questions teaches you little. You start by reading the problem and end by testing your design against a surprise. You finish with a design, the reasons behind it, and a list of what you still don't know. There is no correct answer to find.</p>
   <section>
     <h2 id="getting-started">Getting Started{{ partial "anchor.html" "getting-started" }}</h2>
-    <p>You'll need three to five people, paper or a whiteboard, and an hour or two, though the same steps work if you're alone. The work is drawing and discussion, so there's no code to write.</p>
-    <p>The one rule is that every choice comes with a reason. When someone suggests an approach, the group asks what makes it suitable and what becomes harder if you choose it. Those questions are the exercise, so offer your reasons before anyone has to ask for them. Write each one on a page of notes, because every later part of the exercise builds on what you've written down.</p>
+    <p>You'll need a team, which usually means three to five people, plus paper or a whiteboard and an hour or two. The same steps work alone, and there's no code to write.</p>
+    <div class="callout">
+      <ul>
+        <li>
+          {{ partial "icons/message.html" }}
+          <div>
+            <p>The one rule is that every choice comes with a reason. When someone suggests an approach, the group asks what makes it suitable and what it makes harder.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <p>Keep a page of notes, because each later part builds on it.</p>
   </section>
   <section>
     <h2 id="reading-the-brief">Reading the Brief{{ partial "anchor.html" "reading-the-brief" }}</h2>
-    <p>To have something to design, you need a brief, which is the request written by the people who need the system. This one comes from the organizers of a fictional technology conference, who need a platform to run it each year. Read it once as written. Then read it again looking for what it leaves out, because those gaps will shape your design as much as the stated needs.</p>
+    <p>The organizers of a fictional technology conference need a platform to run it each year. Read their brief below once, then again for what it leaves out, because those gaps shape your design as much as the stated needs.</p>
     <div class="brief">
       <p class="brief__title">The Show Must Go On!</p>
       <div class="brief__columns">
@@ -80,43 +90,59 @@
   </section>
   <section>
     <h2 id="finding-the-gaps">Finding the Gaps{{ partial "anchor.html" "finding-the-gaps" }}</h2>
-    <p>Read a second time, the brief says what the organizers want but not which needs come first. Early-bird ticket sales open soon, yet nothing says whether your platform sells the tickets. Questions like that decide what goes into a first release, so work through them and note which needs come first as your priorities:</p>
+    <p>The brief says what the organizers want but not which needs come first. Early-bird ticket sales open soon, yet nothing says whether your platform sells the tickets.</p>
+    <p>Picture an attendee heading to a room just as that talk moves, then work through these questions to find your priorities:</p>
     <ul>
       <li>Does the platform sell tickets, or does another system handle that?</li>
-      <li>What must organizers and attendees be able to do by December 1, and what can wait?</li>
-    </ul>
-    <p>Next, test the brief against the day itself, since the show must go on whatever the venue's network does. Picture an attendee heading to a room just as an organizer moves that talk elsewhere, with thousands of phones competing for the same connection:</p>
-    <ul>
-      <li>How soon must attendees learn that a talk has moved?</li>
+      <li>What must organizers and attendees be able to do by the time ticket sales open?</li>
       <li>What must keep working when demand peaks or the connection drops?</li>
-      <li>Does interacting with a talk mean asking questions, answering polls, leaving feedback, or something else?</li>
+      <li>Does interacting with a talk mean questions, polls, feedback, or something else?</li>
     </ul>
-    <p>Some answers may not be available, such as the budget, the people who will build the platform, and the systems it must work with. For each one, write down what you're assuming and which choice depends on it. Keep these notes apart from what the brief states, so facts and guesses never blur together.</p>
-    <p>Finally, mark in your notes the one open question that could change your design the most. You'll return to it when you test your proposal.</p>
+    <p>Some answers won't be available, such as the budget and the builders. Write down what you're assuming and which choice depends on it, and keep it apart from the brief's facts.</p>
+    <div class="callout">
+      <ul>
+        <li>
+          {{ partial "icons/flag.html" }}
+          <div>
+            <p>Mark the one open question that could change your design most. Return to it when you test your proposal.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
   </section>
   <section>
     <h2 id="sketching-a-design">Sketching a Design{{ partial "anchor.html" "sketching-a-design" }}</h2>
-    <p>You now have priorities, a set of assumptions, and one marked question, which is enough to start comparing designs. The brief already raises a choice you can use. Earlier editions of the conference could stay in the live platform, or each one could be published as a separate snapshot.</p>
-    <p>Neither option wins by default, because each costs something different. Your priorities and assumptions decide which cost you'd rather carry:</p>
+    <p>You have priorities, assumptions, and one marked question. The brief raises a choice to compare. Earlier editions could stay in the live platform, or each could be published as a snapshot.</p>
+    <p>Neither wins by default, because each costs something different:</p>
     <ul>
       <li>Which of your priorities does each option serve?</li>
-      <li>What would each take to build, run, and change, and who would do the work?</li>
-      <li>Which assumption would change your mind if it turned out to be wrong?</li>
+      <li>What would each take to build, run, and change?</li>
+      <li>Which assumption would change your mind if wrong?</li>
     </ul>
-    <p>Once you lean one way, sketch the system. Draw its main parts, say what each is responsible for, and label how they connect. Then follow a room change and an attendee opening the program through the drawing to see whether the pieces hold together. Mark anything you haven't worked out so others can see the gaps.</p>
-    <p>Finally, write down each decision with the alternatives you considered and the cost you accept. Those notes turn a drawing into a proposal, because someone else can now see why it looks the way it does and question it.</p>
+    <p>Once you lean one way, draw the main parts and label how they connect. Say what each part is responsible for. Then follow a room change and an attendee opening the program through the drawing, and mark what's unresolved.</p>
+    <p>Write down each decision, the alternatives you considered, and the cost you accept. Those notes turn a drawing into a proposal others can question.</p>
   </section>
   <section>
     <h2 id="challenging-the-design">Challenging the Design{{ partial "anchor.html" "challenging-the-design" }}</h2>
-    <p>You've chosen an approach and written down the assumptions behind it. Now check whether those choices still make sense when the organizers ask for something different.</p>
-    <p>Start with the change, which isn't in the brief, so treat it as a what-if. Suppose the organizers add a second venue in another city, running its own schedule at the same time. Follow a room change through your drawing again and see what the second venue does to it:</p>
+    <p>Check whether your choices hold when the organizers ask for something new.</p>
+    <div class="callout">
+      <ul>
+        <li>
+          {{ partial "icons/zap.html" }}
+          <div>
+            <p>Suppose they add a second venue with its own schedule. That isn't in the brief.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <p>Follow a room change through your drawing again:</p>
     <ul>
       <li>Which decisions and assumptions does the change affect?</li>
       <li>Does it make your marked question matter more or less?</li>
       <li>Do you still accept what your earlier choices cost?</li>
     </ul>
-    <p>Then ask someone else to question the proposal. Ask a teammate or another group what worries them about a choice, and answer by pointing to the need or assumption behind it. Working alone, take an option you rejected and ask whether it fits better now.</p>
-    <p>If you disagree about how the system would behave, decide what evidence would settle it. Discussion can show a weakness but it can't give you a measurement, so a claim about performance stays a question until someone measures it.</p>
-    <p>For each choice you examined, decide whether to keep it, revise it, or investigate it further, and write down why. Keeping a choice is a fine result when it still holds up. Store that reasoning beside the original decision so you can see what changed in your thinking and which questions are still open.</p>
+    <p>Then ask a teammate or another group what worries them about a choice. Answer by pointing to the need or assumption behind it.</p>
+    <p>Working alone, revisit an option you rejected. Discussion can show a weakness but can't measure performance, so that claim stays open until someone measures it.</p>
+    <p>For each choice, decide whether to keep, revise, or investigate it, and write down why. Record what changed in your thinking and what remains open.</p>
   </section>
 {{ end }}
