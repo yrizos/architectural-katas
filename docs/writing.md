@@ -11,6 +11,7 @@ Scope: site copy in `content/` and `layouts/`. On overlap, the stricter rule win
 - Be encouraging and light. Warmth comes from concrete scenes and honest reassurance, not from exclamation marks, praise, or jokes that need explaining.
 - Avoid marketing, slogans, jargon, filler, artificial contrasts, and language that makes ordinary points sound profound.
 - Distinguish facts, assumptions, interpretations, and recommendations. Source claims about people or external sites from material read during writing.
+- The description of the page must always describe what the page is about.
 
 ## Flow and Readability
 
