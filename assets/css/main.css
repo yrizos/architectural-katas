@@ -12,7 +12,8 @@ html {
 }
 
 body {
-  height: 100%;
+  display: flex;
+  flex-direction: column;
   min-height: 100%;
   margin: 0;
   background: var(--color-background);
@@ -20,5 +21,21 @@ body {
 }
 
 main {
+  flex: 1;
   padding: var(--gap-section) var(--gap-inline);
+}
+
+a {
+  color: var(--color-link);
+  text-decoration: underline;
+  transition: color 0.4s ease;
+}
+
+a:hover {
+  color: var(--color-text);
+}
+
+a:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
 }

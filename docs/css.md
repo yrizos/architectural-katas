@@ -10,10 +10,11 @@ CSS lives in `assets/css/` and is loaded through Hugo's `resources.Get` in `layo
 - `main.css` holds the reset, `html`, `body` and `main` rules.
 - `typography.css` holds all font families, sizes, weights and line heights, including their custom properties.
 - `header.css` holds the header partial's styles.
+- `footer.css` holds the footer partial's styles.
 
 ### Load order
 
-The files load in this order: `variables.css`, `main.css`, `typography.css`, `header.css`. A later file overrides an earlier one when selectors have equal specificity.
+The files load in this order: `variables.css`, `main.css`, `typography.css`, `header.css`, `footer.css`. A later file overrides an earlier one when selectors have equal specificity.
 
 ### Component files
 

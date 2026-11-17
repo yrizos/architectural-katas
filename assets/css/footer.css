@@ -1,0 +1,12 @@
+footer {
+  padding: var(--gap-base) var(--gap-inline);
+  background: var(--color-surface);
+}
+
+footer p {
+  margin: 0;
+}
+
+footer p + p {
+  margin-top: var(--gap-base);
+}

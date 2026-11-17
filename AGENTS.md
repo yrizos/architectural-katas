@@ -9,7 +9,6 @@ Mandatory rules for AI coding agents.
 - Read a file before editing it.
 - Verify branch and directory before acting on assumptions.
 - Do only what was explicitly asked, with the smallest diff. Never rewrite surrounding content or add unrequested content.
-- Ask when confidence is below 95%.
 - Read `docs/css.md` before touching any CSS.
 
 ### Confirm First
