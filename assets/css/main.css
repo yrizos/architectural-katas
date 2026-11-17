@@ -22,7 +22,7 @@ body {
 
 main {
   flex: 1;
-  padding: var(--gap-base) var(--gap-inline);
+  padding: var(--gap-base) var(--gap-page);
 }
 
 img {

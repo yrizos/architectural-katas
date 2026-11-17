@@ -1,5 +1,5 @@
 header {
-  padding: var(--gap-base) var(--gap-inline);
+  padding: var(--gap-base) var(--gap-page);
   background: var(--color-surface);
 }
 

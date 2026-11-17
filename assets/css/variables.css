@@ -10,4 +10,7 @@
   --gap-base: 16px;
   --gap-inline: calc(var(--gap-base) * 1.5);
   --gap-section: calc(var(--gap-base) * 2);
+
+  --content-width: 720px;
+  --gap-page: max(var(--gap-inline), calc((100% - var(--content-width)) / 2));
 }
