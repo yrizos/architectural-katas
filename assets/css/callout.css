@@ -1,0 +1,49 @@
+.callout {
+  margin-inline: calc(-1 * var(--gap-inline));
+  padding: var(--gap-base) var(--gap-inline);
+  background: var(--color-surface);
+}
+
+.callout > :first-child {
+  margin-top: 0;
+}
+
+.callout :last-child {
+  margin-bottom: 0;
+}
+
+.callout ul {
+  padding: 0;
+  list-style: none;
+}
+
+.callout li {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: var(--gap-base);
+}
+
+.callout li + li {
+  margin-top: var(--gap-base);
+}
+
+.callout li p:first-child {
+  margin-top: 0;
+}
+
+.callout svg {
+  width: 1.25em;
+  height: 1.25em;
+  margin-top: calc((1lh - 1.25em) / 2);
+  fill: none;
+  stroke: var(--color-accent);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+@media (min-width: 768px) {
+  .callout {
+    margin-inline: 0;
+  }
+}

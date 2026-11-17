@@ -19,6 +19,7 @@ Scope: site copy in `content/` and `layouts/`. On overlap, the stricter rule win
 - Do not impose sentence, paragraph, or word-count targets.
 - Remove repetition unless it serves a clear purpose.
 - Use descriptive headings in APA title case. Use prose for explanations, bullets for independent parallel items, and numbered lists for steps.
+- End a sentence that introduces a list with a colon.
 - Keep list items and questions complete. Do not use a label or question followed by a colon and an explanation.
 
 ## Mechanics and Boundaries

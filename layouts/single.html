@@ -1,0 +1,10 @@
+{{ define "main" }}
+  <h1>{{ .Title }}</h1>
+  {{ $parts := split .Content "<h2" }}
+  {{ index $parts 0 | safeHTML }}
+  {{ range after 1 $parts }}
+    <section>
+      {{ printf "<h2%s" . | safeHTML }}
+    </section>
+  {{ end }}
+{{ end }}

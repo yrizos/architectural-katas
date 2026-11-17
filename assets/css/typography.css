@@ -41,3 +41,11 @@ h3 {
 h4 {
   font-size: var(--font-size-base);
 }
+
+ul {
+  list-style: circle;
+}
+
+ul > li::marker {
+  color: var(--color-accent);
+}

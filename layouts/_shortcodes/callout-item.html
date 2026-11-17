@@ -1,0 +1,1 @@
+<li>{{ partial (printf "icons/%s.html" (.Get "icon")) }}<div>{{ .Inner | .Page.RenderString (dict "display" "block") }}</div></li>
