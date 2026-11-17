@@ -13,12 +13,13 @@
   {{ with resources.Get "css/header.css" }}<link rel="stylesheet" href="{{ .RelPermalink }}">{{ end }}
   {{ with resources.Get "css/footer.css" }}<link rel="stylesheet" href="{{ .RelPermalink }}">{{ end }}
   {{ with resources.Get "css/brief.css" }}<link rel="stylesheet" href="{{ .RelPermalink }}">{{ end }}
+  {{ with resources.Get "css/not-found.css" }}<link rel="stylesheet" href="{{ .RelPermalink }}">{{ end }}
 </head>
 <body>
-  {{ partial "header.html" . }}
+  {{ if ne .Kind "404" }}{{ partial "header.html" . }}{{ end }}
   <main>
     {{ block "main" . }}{{ end }}
   </main>
-  {{ partial "footer.html" . }}
+  {{ if ne .Kind "404" }}{{ partial "footer.html" . }}{{ end }}
 </body>
 </html>

@@ -1,0 +1,18 @@
+body:has(.not-found) {
+  background: var(--color-surface);
+}
+
+main:has(> .not-found) {
+  display: flex;
+}
+
+.not-found {
+  margin: auto;
+  text-align: center;
+}
+
+.not-found__code {
+  display: block;
+  font-size: calc(var(--font-size-base) * 8);
+  line-height: 1;
+}
