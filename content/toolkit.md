@@ -1,6 +1,6 @@
 ---
 title: Toolkit
-description: Three tools for an architectural kata, with guidance on when each helps and how to use it, namely architectural decision records, a release timeline, and C4 diagrams.
+description: A guide to architectural decision records, release timelines, and C4 diagrams, and how to use each one in an architectural kata.
 ---
 
 ## Architectural Decision Records
