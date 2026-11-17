@@ -1,0 +1,36 @@
+exclude: ^static/fonts/
+repos:
+  - repo: https://github.com/jorisroovers/gitlint
+    rev: acc9d9de6369b76d22cb4167029d2035e8730b98
+    hooks:
+      - id: gitlint
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: 3e8a8703264a2f4a69428a0aa4dcb512790b2c8c
+    hooks:
+      - id: trailing-whitespace
+      - id: mixed-line-ending
+      - id: check-merge-conflict
+      - id: check-yaml
+      - id: check-toml
+  - repo: https://github.com/mrtazz/checkmake
+    rev: 59931d556f8f5cf4fbacf2c8390a8122ef7a881d
+    hooks:
+      - id: checkmake
+  - repo: https://github.com/DavidAnson/markdownlint-cli2
+    rev: c01a1853c19b175aee6a09f24e2ad9b748c485ad
+    hooks:
+      - id: markdownlint-cli2
+        args: [--fix]
+        language_version: system
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: 83d9cd684c87d95d656c1458ef04895a7f1cbd8e
+    hooks:
+      - id: gitleaks
+  - repo: https://github.com/thibaudcolas/pre-commit-stylelint
+    rev: e48ba09830adcf6ad3351bde49abdf5b46b13c16
+    hooks:
+      - id: stylelint
+        args: [--fix]
+        language_version: system
+        additional_dependencies:
+          - stylelint@18.0.0
