@@ -14,6 +14,7 @@ html {
 body {
   display: flex;
   flex-direction: column;
+  container-type: inline-size;
   min-height: 100%;
   margin: 0;
   background: var(--color-background);

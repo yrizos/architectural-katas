@@ -3,4 +3,66 @@
   <p>An architectural kata gives you a brief for a fictional system and asks you to work out a design. The brief leaves questions unanswered, so part of the work is deciding what you need to know and which assumptions you can proceed with.</p>
   <p>You choose what matters most, compare alternatives, and sketch a proposal. Each important choice comes with a cost you need to explain. Someone else may reach a different design from the same brief, and comparing your reasoning can expose priorities or assumptions worth reconsidering.</p>
   <p>You can work alone or in a team of three to five. Set aside an hour or two with paper or a whiteboard. You won't write code. Start with the conference brief below, then use the practice steps to question and revise your proposal.</p>
+  <section>
+    <h2>Design a Conference Platform</h2>
+    <p>For this kata, you'll design a platform for a fictional technology conference. The organizers need to manage the event and keep attendees informed when the venue's network is unreliable.</p>
+    <p>Read their request and note what you need to clarify before choosing an approach.</p>
+    <div class="brief">
+      <p class="brief__title">The Show Must Go On!</p>
+      <div class="brief__columns">
+        <div>
+          <p class="brief__label">Description</p>
+          <p>A team of organizers runs a large annual technology conference, bringing together thousands of developers, technology professionals, and industry experts.</p>
+          <p>Each year features a new lineup of speakers, talks, and activities. The organizers need a platform to manage the conference, keep attendees informed, and support interactions between speakers and participants.</p>
+          <p>Early-bird ticket sales open on December 1, 2026.</p>
+          <p>The platform must also maintain an archive of previous editions, allowing visitors to explore past schedules, speakers, and presentations.</p>
+        </div>
+        <div>
+          <p class="brief__label">Users</p>
+          <ul>
+            <li>
+              {{ partial "icons/users.html" }}
+              Thousands of attendees
+            </li>
+            <li>
+              {{ partial "icons/microphone.html" }}
+              Hundreds of speakers
+            </li>
+            <li>
+              {{ partial "icons/badge.html" }}
+              Dozens of staff
+            </li>
+          </ul>
+        </div>
+      </div>
+      <p class="brief__label">Requirements</p>
+      <ol>
+        <li>
+          {{ partial "icons/calendar.html" }}
+          <p class="brief__requirement">Conference Management</p>
+          <p>Organizers and speakers can manage talks, schedules, room assignments, and conference information.</p>
+        </li>
+        <li>
+          {{ partial "icons/message.html" }}
+          <p class="brief__requirement">Attendee Engagement</p>
+          <p>Attendees can explore the program, interact with talks, provide feedback, and receive important updates.</p>
+        </li>
+        <li>
+          {{ partial "icons/archive.html" }}
+          <p class="brief__requirement">Conference Archive</p>
+          <p>Visitors can explore previous editions, including their programs, speakers, and presentations.</p>
+        </li>
+        <li>
+          {{ partial "icons/smartphone.html" }}
+          <p class="brief__requirement">Mobile Accessibility</p>
+          <p>All capabilities must be usable on mobile devices, including during the conference.</p>
+        </li>
+        <li>
+          {{ partial "icons/shield-check.html" }}
+          <p class="brief__requirement">Reliability</p>
+          <p>The platform must remain useful during periods of high demand and unreliable venue connectivity.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
 {{ end }}

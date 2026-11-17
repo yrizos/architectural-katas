@@ -1,0 +1,62 @@
+.brief {
+  margin-inline: calc(-1 * var(--gap-inline));
+  padding: var(--gap-base) var(--gap-inline);
+  background: var(--color-surface);
+}
+
+.brief > :first-child {
+  margin-top: 0;
+}
+
+.brief :last-child {
+  margin-bottom: 0;
+}
+
+.brief ul,
+.brief ol {
+  padding: 0;
+  list-style: none;
+}
+
+.brief li {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: var(--gap-base);
+}
+
+.brief li + li {
+  margin-top: var(--gap-base);
+}
+
+.brief li p {
+  margin: 0;
+}
+
+@media (min-width: 768px) {
+  .brief {
+    margin-inline: 0;
+  }
+
+  .brief__columns {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    column-gap: var(--gap-section);
+  }
+
+  .brief__columns > div > :first-child {
+    margin-top: 0;
+  }
+}
+
+.brief svg {
+  grid-row: 1 / span 2;
+  align-self: start;
+  width: 1.25em;
+  height: 1.25em;
+  margin-top: calc((1lh - 1.25em) / 2);
+  fill: none;
+  stroke: var(--color-accent);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}

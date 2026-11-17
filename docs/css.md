@@ -11,10 +11,11 @@ CSS lives in `assets/css/` and is loaded through Hugo's `resources.Get` in `layo
 - `typography.css` holds all font families, sizes, weights and line heights, including their custom properties.
 - `header.css` holds the header partial's styles.
 - `footer.css` holds the footer partial's styles.
+- `brief.css` holds the `.brief` block's styles, including its icons.
 
 ### Load order
 
-The files load in this order: `variables.css`, `main.css`, `typography.css`, `header.css`, `footer.css`. A later file overrides an earlier one when selectors have equal specificity.
+The files load in this order: `variables.css`, `main.css`, `typography.css`, `header.css`, `footer.css`, `brief.css`. A later file overrides an earlier one when selectors have equal specificity.
 
 ### Component files
 
@@ -35,6 +36,22 @@ Heading sizes are written as `calc(var(--font-size-base) * n / d)`.
 
 The font is Inter, loaded from Google Fonts in `baseof.html`. `--font-sans` is the fallback stack.
 
+### Page layout
+
+- `--content-width` is the width of the content column.
+- `--gap-page` is the side padding that centres the content at `--content-width`. It never drops below `--gap-inline`.
+- `header`, `footer` and `main` use `padding: var(--gap-base) var(--gap-page)`. Their backgrounds stay full width.
+- `body` is a size container (`container-type: inline-size`) and `--gap-page` uses `100cqw`. That makes `--gap-page` resolve to the page width inside any element.
+- The page `h1` has `margin-top: 0`, so the gap above it is `main`'s top padding.
+
+### Icons
+
+Icons are inline SVG partials (see `html.md`). CSS gives them their size, colour and stroke.
+
+- The size is `1.25em`, so it follows the font size.
+- The stroke is `--color-accent`, 1.5 wide, with round caps and joins and no fill.
+- `margin-top: calc((1lh - 1.25em) / 2)` centres the icon on the first line of the text beside it.
+
 ### Custom properties
 
 - Colours and spacing are defined in `variables.css`.
@@ -44,7 +61,9 @@ The font is Inter, loaded from Google Fonts in `baseof.html`. `--font-sans` is t
 ## Best practices
 
 - Prefer custom properties over repeated literal values.
-- Prefer relative units for type and spacing.
+- Font sizes and icon sizes are relative to `--font-size-base`, so they change as the font gets bigger. Never hardcode them.
+- Gaps are relative to `--gap-base`. Never hardcode them.
+- The `cqw` and `lh` units need a recent browser.
 - Keep selectors short. Use element and class selectors and avoid `!important`.
 - Keep one concern per file.
 - Keep text contrast at WCAG AA or better.
