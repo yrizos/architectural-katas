@@ -49,3 +49,18 @@ ul {
 ul > li::marker {
   color: var(--color-accent);
 }
+
+.anchor {
+  margin-left: 0.4em;
+  color: var(--color-link);
+  text-decoration: none;
+  opacity: 0;
+}
+
+.anchor:focus-visible {
+  opacity: 1;
+}
+
+h2:hover .anchor {
+  opacity: 1;
+}

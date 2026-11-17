@@ -26,6 +26,14 @@ Each line icon is its own partial in `layouts/_partials/icons/`.
 - A partial sets no size or colour. CSS does that (see `css.md`).
 - Include an icon with `{{ partial "icons/calendar.html" }}`.
 
+## Anchors
+
+Every `h2` on every page has an `id` and an anchor link. This is a hard rule.
+
+- Markdown headings get both from the render hook in `layouts/_markup/render-heading.html`.
+- An `h2` written by hand in a template sets its own `id` and includes the link with `{{ partial "anchor.html" "the-id" }}`.
+- Anchor ids are the lowercase heading text with hyphens between words.
+
 ## Sections
 
 - Use `<section>` for a heading and the content under it.

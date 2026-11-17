@@ -21,7 +21,7 @@ The files load in this order: `variables.css`, `main.css`, `typography.css`, `ca
 
 ### Component files
 
-Each component or partial gets its own CSS file in `assets/css/`, named after it. For example, `header.css` styles `layouts/_partials/header.html`. New component files are linked in `baseof.html` after `typography.css`.
+Each component gets its own CSS file in `assets/css/`, named after it. For example, `header.css` styles `layouts/_partials/header.html`. New component files are linked in `baseof.html` after `typography.css`.
 
 ### Typography
 

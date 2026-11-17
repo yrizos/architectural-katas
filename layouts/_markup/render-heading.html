@@ -1,0 +1,1 @@
+<h{{ .Level }} id="{{ .Anchor }}">{{ .Text | safeHTML }}{{ if eq .Level 2 }}{{ partial "anchor.html" .Anchor }}{{ end }}</h{{ .Level }}>
