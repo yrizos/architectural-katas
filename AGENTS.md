@@ -11,6 +11,7 @@ Mandatory rules for AI coding agents.
 - Do only what was explicitly asked, with the smallest diff. Never rewrite surrounding content or add unrequested content.
 - Read `docs/css.md` before touching any CSS.
 - Read `docs/html.md` before touching any HTML or template.
+- Read `docs/homepage-narrative.md` before changing the homepage.
 
 ### Confirm First
 
