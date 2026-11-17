@@ -1,10 +1,19 @@
-.PHONY: help run build pdf fix lint hooks-install hooks-uninstall
+.PHONY: help run build pdf icon fix lint hooks-install hooks-uninstall
 
 help:
 	@awk 'BEGIN { FS = ": ## "; if (system("test -t 1") == 0) { c = "\033[36m"; r = "\033[0m" } } /^[a-z\\:-]+: ## / { name = $$1; gsub(/\\/, "", name); printf "%s%-15s%s %s\n", c, name, r, $$2 }' $(MAKEFILE_LIST)
 
 run: ## Run the site
 	hugo server
+
+ICON := static/icon.png
+
+icon: ## Generate favicon, iOS and Android icons in static/
+	magick "$(ICON)" -resize 32x32 static/favicon-32x32.png
+	magick "$(ICON)" -define icon:auto-resize=16,32,48 static/favicon.ico
+	magick "$(ICON)" -resize 180x180 static/apple-touch-icon.png
+	magick "$(ICON)" -resize 192x192 static/android-chrome-192x192.png
+	magick "$(ICON)" -resize 512x512 static/android-chrome-512x512.png
 
 fix: ## Fix trailing whitespace, line endings and markdown
 	@status=0; \
