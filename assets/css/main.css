@@ -36,6 +36,16 @@ h1 {
   margin-top: 0;
 }
 
+section {
+  margin-top: var(--gap-base);
+  padding-top: var(--gap-base);
+  border-top: 0.1em solid var(--color-border);
+}
+
+section > h2 {
+  margin-top: -0.3em;
+}
+
 a {
   color: var(--color-link);
   text-decoration: underline;

@@ -28,5 +28,5 @@ Each line icon is its own partial in `layouts/_partials/icons/`.
 
 ## Sections
 
-- Use `<section>` for a heading and the content under it. Never use it as a styling hook.
+- Use `<section>` for a heading and the content under it.
 - Content that only needs a box or a layout goes in a `<div>` with a class.

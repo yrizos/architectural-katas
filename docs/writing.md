@@ -8,6 +8,7 @@ Scope: site copy in `content/` and `layouts/`. On overlap, the stricter rule win
 - Sound like an experienced colleague explaining something at work. Use familiar words and concrete reasoning.
 - Speak directly to the reader. Do not narrate what the site or its pages contain.
 - Lead with the important point and keep the context needed to understand it. Brevity is not clarity.
+- Be encouraging and light. Warmth comes from concrete scenes and honest reassurance, not from exclamation marks, praise, or jokes that need explaining.
 - Avoid marketing, slogans, jargon, filler, artificial contrasts, and language that makes ordinary points sound profound.
 - Distinguish facts, assumptions, interpretations, and recommendations. Source claims about people or external sites from material read during writing.
 
