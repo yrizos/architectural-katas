@@ -1,0 +1,25 @@
+.questions {
+  display: grid;
+  gap: var(--gap-inline);
+  margin: var(--gap-base) calc(-1 * var(--gap-inline));
+  padding: var(--gap-base) var(--gap-inline);
+  background: var(--color-surface);
+}
+
+.questions__label {
+  margin: 0;
+  font-weight: bold;
+}
+
+.questions ul {
+  margin: calc(var(--gap-base) * 0.5) 0 0;
+  padding-left: 1.25em;
+}
+
+@media (min-width: 768px) {
+  .questions {
+    grid-template-columns: 1fr 1fr;
+    column-gap: var(--gap-section);
+    margin-inline: 0;
+  }
+}

@@ -10,11 +10,11 @@
     {{ $default := .Resize "893x" }}
     <img src="{{ $default.RelPermalink }}" srcset="{{ delimit $srcset ", " }}" sizes="(min-width: 941px) 893px, calc(100vw - 48px)" width="{{ $default.Width }}" height="{{ $default.Height }}" alt="Four people gather around a whiteboard covered in system diagrams.">
   {{ end }}
-  <p>An architectural kata gives you that situation to practice on. You design a system together, and because nothing ships or breaks, you can try ideas and change your mind freely.</p>
+  <p>An <a href="/what-is-a-kata/">architectural kata</a> gives you that situation to practice on. You design a system together, and because nothing ships or breaks, you can try ideas and change your mind freely.</p>
   <p>Working with others is the point, because a design nobody questions teaches you little. You start by reading the problem and end by testing your design against a surprise. You finish with a design, the reasons behind it, and a list of what you still don't know. There is no correct answer to find.</p>
   <section>
     <h2 id="getting-started">Getting Started{{ partial "anchor.html" "getting-started" }}</h2>
-    <p>You'll need a team, which usually means three to five people, plus paper or a whiteboard and an hour or two. The same steps work alone, and there's no code to write.</p>
+    <p>You'll need a team, which usually means three to five people, plus paper or a whiteboard and an hour or two. The same steps work alone, and there's no code to write. When you're ready, you can <a href="/taking-part-in-a-kata/">work through the same brief in more depth</a>, phase by phase.</p>
     <div class="callout">
       <ul>
         <li>
@@ -63,8 +63,8 @@
       <li>What would each take to build, run, and change?</li>
       <li>Which assumption would change your mind if wrong?</li>
     </ul>
-    <p>Once you lean one way, draw the main parts and label how they connect. Say what each part is responsible for. Then follow a room change and an attendee opening the program through the drawing, and mark what's unresolved.</p>
-    <p>Write down each decision, the alternatives you considered, and the cost you accept. Those notes turn a drawing into a proposal others can question.</p>
+    <p>Once you lean one way, <a href="/toolkit/#c4-diagrams">draw the main parts</a> and label how they connect. Say what each part is responsible for. Then follow a room change and an attendee opening the program through the drawing, and mark what's unresolved.</p>
+    <p><a href="/toolkit/#architectural-decision-records">Write down each decision</a>, the alternatives you considered, and the cost you accept. Those notes turn a drawing into a proposal others can question.</p>
   </section>
   <section>
     <h2 id="challenging-the-design">Challenging the Design{{ partial "anchor.html" "challenging-the-design" }}</h2>

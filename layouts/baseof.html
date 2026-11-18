@@ -19,6 +19,11 @@
   {{ with resources.Get "css/header.css" }}<link rel="stylesheet" href="{{ .RelPermalink }}">{{ end }}
   {{ with resources.Get "css/footer.css" }}<link rel="stylesheet" href="{{ .RelPermalink }}">{{ end }}
   {{ with resources.Get "css/brief.css" }}<link rel="stylesheet" href="{{ .RelPermalink }}">{{ end }}
+  {{ with resources.Get "css/phases.css" }}<link rel="stylesheet" href="{{ .RelPermalink }}">{{ end }}
+  {{ with resources.Get "css/handoff.css" }}<link rel="stylesheet" href="{{ .RelPermalink }}">{{ end }}
+  {{ with resources.Get "css/questions.css" }}<link rel="stylesheet" href="{{ .RelPermalink }}">{{ end }}
+  {{ with resources.Get "css/terms.css" }}<link rel="stylesheet" href="{{ .RelPermalink }}">{{ end }}
+  {{ with resources.Get "css/page-link.css" }}<link rel="stylesheet" href="{{ .RelPermalink }}">{{ end }}
   {{ with resources.Get "css/not-found.css" }}<link rel="stylesheet" href="{{ .RelPermalink }}">{{ end }}
 </head>
 <body>

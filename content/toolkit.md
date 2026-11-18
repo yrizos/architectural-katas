@@ -5,7 +5,7 @@ description: A guide to architectural decision records, release timelines, and C
 
 ## Architectural Katas
 
-Ted Neward created architectural katas to give software architects a way to practice their craft, and the canonical place to find them is [architecturalkatas.com](https://www.architecturalkatas.com/). Since that site is the reference for the rules, the problems, and how to run a kata, start there, then come back here for the tools that help once you have begun.
+Ted Neward created [architectural katas](/what-is-a-kata/) to give software architects a way to practice their craft, and the canonical place to find them is [architecturalkatas.com](https://www.architecturalkatas.com/). Since that site is the reference for the rules, the problems, and how to run a kata, start there, then come back here for the tools that help once you have begun.
 
 {{< callout >}}
 {{< callout-item icon="book" >}}
@@ -25,7 +25,7 @@ Start with the rules if the format is new to you. When you want to run a kata wi
 
 An architectural decision record, or ADR, is [a short document that captures and explains a decision](https://martinfowler.com/bliki/ArchitectureDecisionRecord.html). It holds the context, the alternatives, and the consequences. A later reader can then see why a system looks the way it does.
 
-In a kata, the records are the only memory your design has. Write one for each choice, such as where the data lives or how two parts communicate. Note the alternative you rejected and the cost you accept.
+In a kata, the records are the only memory your design has, and you write them as you [design](/taking-part-in-a-kata/#design). Write one for each choice, such as where the data lives or how two parts communicate. Note the alternative you rejected and the cost you accept.
 
 When a requirement changes, reread your records and write a new one to replace any whose context no longer holds. To start capturing decisions, choose from [several formats](https://adr.github.io/), including MADR, Michael Nygard's original, and the one-sentence Y-Statement.
 
@@ -33,7 +33,7 @@ When a requirement changes, reread your records and write a new one to replace a
 
 A release timeline shows what ships when, with a date attached to each step. A date limits what can be built before it. The timeline forces the team to decide which needs come first and which can wait.
 
-In a kata, a common practice is to split the delivery into phases such as MVP and Phase 1. Each phase gets a due date, such as Week 1, Month 1, or Q1.
+In a kata, a common practice is to split the delivery into phases such as MVP and Phase 1. Each phase gets a due date, such as Week 1, Month 1, or Q1. You scope the first release while you [understand and prioritize](/taking-part-in-a-kata/#understand-and-prioritize), and you lay out the rest once you [design](/taking-part-in-a-kata/#design).
 
 Start with the earliest date and ask what the system must do by then. Everything else moves to a later phase, and each move changes other decisions:
 
@@ -47,7 +47,7 @@ A later phase can still shape the first one, so sketch what comes after the MVP 
 
 ## C4 Diagrams
 
-The [C4 model](https://c4model.com/) is Simon Brown's approach to diagramming software architecture. It describes a system at four levels of detail, from context down to code. Each level answers a different question for a different reader. Most teams only need the first two levels, and a kata is no different.
+The [C4 model](https://c4model.com/) is Simon Brown's approach to diagramming software architecture. It describes a system at four levels of detail, from context down to code. Each level answers a different question for a different reader. Most teams only need the first two levels, and [a kata](/taking-part-in-a-kata/#design) is no different.
 
 {{< callout >}}
 {{< callout-item icon="globe" >}}
@@ -79,4 +79,4 @@ Some catas belong to the team at the table, and they show how you architect your
 
 Others belong to whoever runs the kata. **The Over-Corrector** jumps in at the first sign of trouble. **The Tech-Savvy Stakeholder** plays the business role but hands teams the solution.
 
-It's worth a read before your next kata, and again after it.
+It's worth a read before [your next kata](/taking-part-in-a-kata/), and again after it.

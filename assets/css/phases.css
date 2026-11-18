@@ -1,0 +1,53 @@
+.phases {
+  display: grid;
+  gap: var(--gap-section);
+  margin-block: var(--gap-section);
+  padding: 0;
+  list-style: none;
+  counter-reset: phase;
+}
+
+.phases li {
+  padding-top: var(--gap-base);
+  border-top: 0.2em solid var(--color-accent);
+  counter-increment: phase;
+}
+
+.phases li::before {
+  content: counter(phase);
+  display: block;
+  color: var(--color-graphite);
+  font-size: calc(var(--font-size-base) * 2);
+  font-weight: 800;
+  line-height: 1;
+}
+
+.phases a {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--gap-base) * 0.5);
+  margin-top: calc(var(--gap-base) * 0.75);
+  font-size: calc(var(--font-size-base) * 8 / 7);
+  font-weight: bold;
+}
+
+.phases p {
+  margin: calc(var(--gap-base) * 0.5) 0 0;
+}
+
+.phases svg {
+  flex-shrink: 0;
+  width: 1.25em;
+  height: 1.25em;
+  fill: none;
+  stroke: var(--color-accent);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+@media (min-width: 768px) {
+  .phases {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
