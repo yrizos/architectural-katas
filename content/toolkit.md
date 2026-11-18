@@ -65,3 +65,18 @@ A [code diagram](https://c4model.com/diagrams/code) shows the classes inside one
 {{< /callout >}}
 
 Label every connection on each diagram, and keep the diagrams beside your ADRs. A diagram shows what you decided, and the record explains why.
+
+## Catas to Avoid
+
+[Catas to Avoid](https://architecture-catas.com/) is a tongue-in-cheek collection of anti-patterns for architectural katas.
+
+Some catas belong to the team at the table, and they show how you architect yourself into a corner:
+
+- **The Solution-First Thinker** skips the problem and jumps straight to picking technologies.
+- **The Loudest Voice** dictates the design while the rest of the team watches.
+- **The Empty Hands Fear** rushes to fill the whiteboard, because presenting nothing feels worse than presenting the wrong thing.
+- **The Silent Audience** sits through other teams' presentations without asking a single question.
+
+Others belong to whoever runs the kata. **The Over-Corrector** jumps in at the first sign of trouble. **The Tech-Savvy Stakeholder** plays the business role but hands teams the solution.
+
+It's worth a read before your next kata, and again after it.
