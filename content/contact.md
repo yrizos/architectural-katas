@@ -3,13 +3,13 @@ title: Contact
 description: Who we are, why we introduced architectural katas, and what changes when we take them to tech events.
 ---
 
-We, Yannis Rizos and Aggelos Bellos, introduced architectural katas at [Epignosis](https://www.epignosishq.com/) as its [Architecture Modernization Enabling Team](https://medium.com/nick-tune-tech-strategy-blog/architecture-modernization-enabling-teams-amet-23a7f867b284). Our purpose was single-minded: reaching what Gregor Hohpe calls [architecture without architects](https://architectelevator.com/architecture/organizing-architecture/).
+We, Yannis Rizos and Aggelos Bellos, started running architectural katas at [Epignosis](https://www.epignosishq.com/) as its [Architecture Modernization Enabling Team](https://medium.com/nick-tune-tech-strategy-blog/architecture-modernization-enabling-teams-amet-23a7f867b284). We were after what Gregor Hohpe calls [architecture without architects](https://architectelevator.com/architecture/organizing-architecture/), where teams own their architecture and anyone on the team can play architect for a while when a big decision comes up.
 
-In that world, teams own their architecture. When a major decision lands, nobody waits for an architect to show up, because anyone on the team can step into the role for a while. Hohpe is honest about the catch, though. The model only works for teams with an architectural mindset and decision discipline, so an organization has to earn it.
+Hohpe also points out the catch. The model only works for teams with an architectural mindset and decision discipline, and neither of those shows up because someone sent a memo. People build them by designing systems, again and again.
 
-That's where the katas come in. They give everyone on our teams a place to practice design far more often than real projects allow, and nothing they try there can break production.
+Real projects rarely offer that many chances, so that's what our katas are for. Everyone on our teams gets far more design practice on made-up problems, and nothing they try there can break production.
 
-Feel free to reach out. We can happily talk architecture for hours 😉
+If any of this sounds familiar, feel free to reach out. We can happily talk architecture for hours 😉
 
 {{< people >}}
 {{< person name="Aggelos Bellos" role="Staff Engineer at Epignosis" github="bellangelo" linkedin="in/aggelos-bellos" >}}
@@ -18,9 +18,12 @@ Feel free to reach out. We can happily talk architecture for hours 😉
 
 ## Katas at Tech Events
 
-Inside the company, everyone at the table already works together. We wanted to see whether the format holds up without that, and running katas at tech events turned out to be a whole different level.
+Inside the company, everyone around the table already works together. We were curious whether the format holds up without that, so we started taking katas to tech events.
 
-Ted Neward's [rules](https://www.architecturalkatas.com/rules.html) already ask for it. Co-workers may not share a group, and inside a company people should at least avoid teaming up with those they work with regularly. At a tech event, nobody has to arrange any of that, because most people at a table have only just met and have to build trust while they design. Two other things change as well:
+Ted Neward's [rules](https://www.architecturalkatas.com/rules.html) already push in this direction. Co-workers aren't supposed to share a group, and inside a company people should at least avoid teaming up with the folks they work with regularly. At a tech event, that happens all by itself.
 
-- The room mixes far more specialties and experience levels than one company does, so a developer on a first design can share a table with an architect from another industry, and both have to make their case.
-- A conference slot cuts the session from two hours to one, so teams have to prioritize faster and leave more questions open.
+Running katas at tech events is a whole different level, because three things change at once:
+
+- Most people at a table have only just met, so the team has to build trust while it designs.
+- The room mixes far more specialties and experience levels than any one company, so someone on their first design can end up next to an architect from a completely different industry, and both have to argue their case.
+- A conference slot is one hour instead of two, so teams have to prioritize faster and leave more questions open.
