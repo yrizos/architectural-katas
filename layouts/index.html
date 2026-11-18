@@ -30,63 +30,7 @@
   <section>
     <h2 id="reading-the-brief">Reading the Brief{{ partial "anchor.html" "reading-the-brief" }}</h2>
     <p>The organizers of a fictional technology conference need a platform to run it each year. Read their brief below once, then again for what it leaves out, because those gaps shape your design as much as the stated needs.</p>
-    <div class="brief">
-      <p class="brief__title">The Show Must Go On!</p>
-      <div class="brief__columns">
-        <div>
-          <p class="brief__label">Description</p>
-          <p>A team of organizers runs a large annual technology conference, bringing together thousands of developers, technology professionals, and industry experts.</p>
-          <p>Each year features a new lineup of speakers, talks, and activities. The organizers need a platform to manage the conference, keep attendees informed, and support interactions between speakers and participants.</p>
-          <p>Early-bird ticket sales open in three months.</p>
-          <p>The platform must also maintain an archive of previous editions, allowing visitors to explore past schedules, speakers, and presentations.</p>
-        </div>
-        <div>
-          <p class="brief__label">Users</p>
-          <ul>
-            <li>
-              {{ partial "icons/users.html" }}
-              Thousands of attendees
-            </li>
-            <li>
-              {{ partial "icons/microphone.html" }}
-              Hundreds of speakers
-            </li>
-            <li>
-              {{ partial "icons/badge.html" }}
-              Dozens of staff
-            </li>
-          </ul>
-        </div>
-      </div>
-      <p class="brief__label">Requirements</p>
-      <ol>
-        <li>
-          {{ partial "icons/calendar.html" }}
-          <p class="brief__requirement">Conference Management</p>
-          <p>Organizers and speakers can manage talks, schedules, room assignments, and conference information.</p>
-        </li>
-        <li>
-          {{ partial "icons/message.html" }}
-          <p class="brief__requirement">Attendee Engagement</p>
-          <p>Attendees can explore the program, interact with talks, provide feedback, and receive important updates.</p>
-        </li>
-        <li>
-          {{ partial "icons/archive.html" }}
-          <p class="brief__requirement">Conference Archive</p>
-          <p>Visitors can explore previous editions, including their programs, speakers, and presentations.</p>
-        </li>
-        <li>
-          {{ partial "icons/smartphone.html" }}
-          <p class="brief__requirement">Mobile Accessibility</p>
-          <p>All capabilities must be usable on mobile devices, including during the conference.</p>
-        </li>
-        <li>
-          {{ partial "icons/shield-check.html" }}
-          <p class="brief__requirement">Reliability</p>
-          <p>The platform must remain useful during periods of high demand and unreliable venue connectivity.</p>
-        </li>
-      </ol>
-    </div>
+{{ partial "brief.html" . }}
   </section>
   <section>
     <h2 id="finding-the-gaps">Finding the Gaps{{ partial "anchor.html" "finding-the-gaps" }}</h2>

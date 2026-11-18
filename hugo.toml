@@ -4,9 +4,17 @@ languageCode = "en"
 enableRobotsTXT = true
 
 [[menu.main]]
+name = "What Is a Kata"
+pageRef = "/what-is-a-kata"
+weight = 1
+
+[menu.main.params]
+icon = "book"
+
+[[menu.main]]
 name = "Toolkit"
 pageRef = "/toolkit"
-weight = 1
+weight = 2
 
 [menu.main.params]
 icon = "toolbox"
@@ -14,7 +22,7 @@ icon = "toolbox"
 [[menu.main]]
 name = "About"
 pageRef = "/about"
-weight = 2
+weight = 3
 
 [menu.main.params]
 icon = "lightbulb"
@@ -22,7 +30,7 @@ icon = "lightbulb"
 [[menu.main]]
 name = "Contact"
 pageRef = "/contact"
-weight = 3
+weight = 4
 
 [menu.main.params]
 icon = "message"
