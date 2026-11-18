@@ -18,3 +18,11 @@ weight = 2
 
 [menu.main.params]
 icon = "lightbulb"
+
+[[menu.main]]
+name = "Contact"
+pageRef = "/contact"
+weight = 3
+
+[menu.main.params]
+icon = "message"
