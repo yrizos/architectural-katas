@@ -11,13 +11,12 @@ Mandatory rules for AI coding agents.
 - Do only what was explicitly asked. Never rewrite surrounding content or add unrequested content.
 - Read `docs/css.md` before touching any CSS.
 - Read `docs/html.md` before touching any HTML or template.
-- Read `docs/homepage-narrative.md` before changing the homepage.
 - Read `docs/writing.md` before changing site copy in `content/` or `layouts/`.
 
 ### Confirm First
 
 - A plan for multi-step or multi-file changes.
-- Changes to headings, titles or structure the user wrote.
+- Changes to titles or structure the user wrote.
 - Deleting or overwriting content the user did not name.
 - Risky or history-rewriting Git operations: amending the last commit, squashing on an unshared branch, force pushing to a personal branch, interactive rebase on a local branch.
 - Destructive commands. The user must also name the exact target. Destructive Git operations: force pushing, deleting branches the agent does not own, resetting or rewriting pushed commits, `git restore`, `git checkout -- <path>`, `git reset --hard`, `git clean`.
@@ -37,4 +36,5 @@ Mandatory rules for AI coding agents.
 - Commit titles use the conventional commit types in `.gitlint`.
 - Commit only when explicitly asked.
 - Write the commit message from the staged diff, not from memory of the work.
-- 1 logical change per commit. Never combine unrelated changes or batch independent fixes.
+- When you stage changes yourself, stage 1 logical change per commit. Never combine unrelated changes or batch independent fixes.
+- When the user has staged changes, commit everything staged as one commit.
