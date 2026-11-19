@@ -1,3 +1,49 @@
 <footer>
-  <p>Architectural katas were created by <a href="https://www.architecturalkatas.com/" target="_blank" rel="noopener">Ted Neward</a> to give software architects a way to practice their craft.</p>
+  <div>
+    <nav aria-label="Footer">
+      <p class="footer__title">Explore</p>
+      <ul>
+        {{ range site.Menus.main }}
+          <li><a href="{{ .URL }}"{{ if $.IsMenuCurrent "main" . }} aria-current="page"{{ end }}>{{ with .Params.icon }}{{ partial (printf "icons/%s.html" .) }}{{ else }}{{ errorf "Menu item %q has no icon. Set icon under params in hugo.toml." .Name }}{{ end }}{{ .Name }}</a></li>
+        {{ end }}
+      </ul>
+    </nav>
+    {{ with site.GetPage "/events" }}
+      {{ range first 1 (where .Pages "Date" "ge" now).ByDate }}
+        <div role="group" aria-labelledby="footer-event-title">
+          <p class="footer__title" id="footer-event-title">Next Event</p>
+          <a class="footer__event" href="{{ .RelPermalink }}">
+            <span class="footer__event-name">{{ .Title }}</span>
+            <span class="footer__event-fact">
+              {{ partial "icons/calendar.html" }}
+              <time datetime="{{ .Date | time.Format "2006-01-02" }}">{{ .Date | time.Format "January 2, 2006" }}</time>
+            </span>
+            <span class="footer__event-fact">
+              {{ partial "icons/map-pin.html" }}
+              <span>{{ .Params.venue }}, {{ .Params.city }}</span>
+            </span>
+          </a>
+        </div>
+      {{ end }}
+    {{ end }}
+    <div role="group" aria-labelledby="footer-facilitators-title">
+      <p class="footer__title" id="footer-facilitators-title">Facilitators</p>
+      <ul class="footer__people">
+        <li>
+          <p class="footer__name">Aggelos Bellos</p>
+          <ul>
+            <li><a href="https://github.com/bellangelo" target="_blank" rel="noopener">{{ partial "icons/github.html" }}GitHub<span class="footer__hidden">, Aggelos Bellos (opens in a new tab)</span></a></li>
+            <li><a href="https://www.linkedin.com/in/aggelos-bellos" target="_blank" rel="noopener">{{ partial "icons/linkedin.html" }}LinkedIn<span class="footer__hidden">, Aggelos Bellos (opens in a new tab)</span></a></li>
+          </ul>
+        </li>
+        <li>
+          <p class="footer__name">Yannis Rizos</p>
+          <ul>
+            <li><a href="https://github.com/yrizos" target="_blank" rel="noopener">{{ partial "icons/github.html" }}GitHub<span class="footer__hidden">, Yannis Rizos (opens in a new tab)</span></a></li>
+            <li><a href="https://www.linkedin.com/in/yrizos" target="_blank" rel="noopener">{{ partial "icons/linkedin.html" }}LinkedIn<span class="footer__hidden">, Yannis Rizos (opens in a new tab)</span></a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
 </footer>
