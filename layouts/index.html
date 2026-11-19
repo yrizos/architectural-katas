@@ -48,7 +48,7 @@
   <section>
     <h2 id="where-to-start">Where to Start{{ partial "anchor.html" "where-to-start" }}</h2>
     <p>Each page builds on the one before it, so they read best in this order. If you only want to try a kata with your own team, the first three pages are enough:</p>
-    <ol class="phases">
+    <ol class="phases" role="list">
       {{ range slice
         (dict "path" "/what-is-a-kata" "text" "See what a kata asks of you and read the conference brief that the next page works through. Notice the gaps it leaves, because they shape the design as much as the stated needs.")
         (dict "path" "/taking-part-in-a-kata" "text" "Follow a team through that same brief, phase by phase, from setting priorities to defending the design. Read it from top to bottom, because each phase starts from what the last one left you with.")

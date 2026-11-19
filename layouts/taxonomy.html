@@ -1,7 +1,7 @@
 {{ define "main" }}
   <h1>{{ .Title }}</h1>
   {{ .Content }}
-  <ol class="events">
+  <ol class="events" role="list">
     {{ range .Pages.ByDate.Reverse }}
       <li>
         <a href="{{ .RelPermalink }}">
