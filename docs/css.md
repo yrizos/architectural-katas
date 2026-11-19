@@ -43,7 +43,7 @@ Heading sizes are written as `calc(var(--font-size-base) * n / d)`.
 | `h3` | base × 8 / 7 |
 | `h4` | base |
 
-The font is Inter, loaded from Google Fonts in `baseof.html`. `--font-sans` is the fallback stack.
+The font is Inter, served locally from `static/fonts/inter.woff2` and declared in `typography.css`. `--font-sans` is the fallback stack.
 
 ### Page layout
 
