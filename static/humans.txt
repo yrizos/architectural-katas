@@ -1,0 +1,16 @@
+/* TEAM */
+Name: Aggelos Bellos
+Role: Staff Engineer at Epignosis
+GitHub: https://github.com/bellangelo
+LinkedIn: https://www.linkedin.com/in/aggelos-bellos
+
+Name: Yannis Rizos
+Role: Director of Engineering at Epignosis
+GitHub: https://github.com/yrizos
+LinkedIn: https://www.linkedin.com/in/yrizos
+
+/* SITE */
+Name: Architectural Katas
+URL: https://architectural-katas.yrizos.com/
+Software: Hugo
+Fonts: Inter
