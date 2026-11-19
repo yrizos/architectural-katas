@@ -234,8 +234,8 @@ Judgment grows over many katas, so the next one goes better if you look back at 
 
 Most of these are [anti-patterns](/toolkit/#catas-to-avoid), and they read differently once you've been through a kata. When you want another brief, [Ted Neward's collection](/toolkit/#architectural-katas) has plenty to choose from.
 
-## The One-Hour Workshop
+## Tools for the Kata
 
-We also run katas as a one-hour workshop at tech events, where you work through these phases with people you've just met.
+These phases ask you for decision records, release timelines, and C4 diagrams. The toolkit explains each one and how to use it in a kata.
 
-{{< page-link "workshop" "See how the workshop runs" >}}
+{{< page-link "toolkit" "See the tools in detail" >}}

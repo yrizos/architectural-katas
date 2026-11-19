@@ -95,6 +95,6 @@ It's worth a read before [your next kata](/working-through-a-brief/), and again 
 
 ## Using the Tools in a Kata
 
-Each of these tools has its place in a kata, from the first release you scope to the records you defend in front of the room.
+Each of these tools has its place in a kata, from the first release you scope to the records you defend in front of the room. The workshop is where you use them against a one-hour clock, with a team you've just met.
 
-{{< page-link "taking-part-in-a-kata" "Put the tools to work" >}}
+{{< page-link "workshop" "See how the workshop runs" >}}

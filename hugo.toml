@@ -30,7 +30,7 @@ icon = "route"
 [[menu.main]]
 name = "Workshop"
 pageRef = "/workshop"
-weight = 3
+weight = 4
 
 [menu.main.params]
 icon = "pencil-ruler"
@@ -38,7 +38,7 @@ icon = "pencil-ruler"
 [[menu.main]]
 name = "Events"
 pageRef = "/events"
-weight = 4
+weight = 5
 
 [menu.main.params]
 icon = "microphone"
@@ -46,7 +46,7 @@ icon = "microphone"
 [[menu.main]]
 name = "Toolkit"
 pageRef = "/toolkit"
-weight = 5
+weight = 3
 
 [menu.main.params]
 icon = "toolbox"
