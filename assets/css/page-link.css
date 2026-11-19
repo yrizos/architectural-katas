@@ -12,6 +12,10 @@
   transition: background-color 0.4s ease;
 }
 
+.page-link--slim {
+  padding: calc(var(--gap-base) * 0.7) calc(var(--gap-base) * 1.25);
+}
+
 .page-link:hover,
 .page-link:focus-visible {
   background: var(--color-link);

@@ -27,7 +27,11 @@ An architectural decision record, or ADR, is [a short document that captures and
 
 In a kata, the records are the only memory your design has, and you write them as you [design](/taking-part-in-a-kata/#design). Write one for each choice, such as where the data lives or how two parts communicate. Note the alternative you rejected and the cost you accept.
 
-When a requirement changes, reread your records and write a new one to replace any whose context no longer holds. To start capturing decisions, choose from [several formats](https://adr.github.io/), including MADR, Michael Nygard's original, and the one-sentence Y-Statement.
+When a requirement changes, reread your records and write a new one to replace any whose context no longer holds.
+
+{{< download-link "toolkit/adr-template.pdf" "Download the ADR template" >}}
+In the [workshop](/workshop/) we use a simplified ADR template. It fits on one A4 page and holds up to three decisions. Each decision has the same four fields: the decision itself, two alternatives, and the key trade-off.
+{{< /download-link >}}
 
 ## Release Timeline
 

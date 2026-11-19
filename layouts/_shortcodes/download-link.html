@@ -1,0 +1,1 @@
+{{ $path := .Get 0 }}{{ $label := .Get 1 }}<div class="callout callout--cta">{{ .Inner | .Page.RenderString (dict "display" "block") }}<a class="page-link page-link--slim" href="{{ $path | relURL }}" download>{{ partial "icons/download.html" }}{{ $label }}</a></div>

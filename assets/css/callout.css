@@ -46,4 +46,15 @@
   .callout {
     margin-inline: 0;
   }
+
+  .callout--cta {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: start;
+    column-gap: var(--gap-section);
+  }
+
+  .callout--cta > :first-child {
+    margin-bottom: 0;
+  }
 }
