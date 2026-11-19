@@ -5,7 +5,7 @@
       <p>Code gets cheaper every day, and an AI agent can now write a working feature in seconds. Every feature still carries design decisions, and making them on purpose takes practice.</p>
     </div>
     {{ with resources.Get "images/whiteboard-workshop.png" }}
-      {{ $img := .Crop "1533x720 top" }}
+      {{ $img := . }}
       {{ $srcset := slice }}
       {{ range slice 480 992 1440 }}
         {{ $srcset = $srcset | append (printf "%s %dw" ($img.Resize (printf "%dx webp" .)).RelPermalink .) }}
