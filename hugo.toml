@@ -3,6 +3,7 @@ title = "Architectural Katas"
 languageCode = "en"
 enableRobotsTXT = true
 buildFuture = true
+enableGitInfo = true
 
 [params]
 images = ["/share.png"]
