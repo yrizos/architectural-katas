@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Architecture Decision Record Template</title>
+  <meta name="author" content="Aggelos Bellos, Yannis Rizos">
+  <meta name="description" content="A one-page worksheet for recording up to three architectural decisions in an architectural kata, each with two alternatives and the key trade-off.">
+  <meta name="keywords" content="architecture kata, system design, architectural decision record, ADR, template">
+  <meta name="generator" content="WeasyPrint">
+  <meta name="dcterms.created" content="2026-11-17">
+  <meta name="dcterms.modified" content="2026-11-17">
+  <style>
+    @font-face {
+      font-family: "Inter";
+      font-style: normal;
+      font-weight: 400;
+      src: url("../static/fonts/inter.woff2") format("woff2");
+    }
+
+    @font-face {
+      font-family: "Inter";
+      font-style: normal;
+      font-weight: 700;
+      src: url("../static/fonts/inter.woff2") format("woff2");
+    }
+
+    @page {
+      size: A4;
+      margin: 30pt 40pt 46pt 40pt;
+
+      @bottom-center {
+        content: "{{ base_url }}";
+        font-family: "Inter", sans-serif;
+        font-size: 7.5pt;
+        color: #242b2a;
+      }
+    }
+
+    :root {
+      --graphite: #242b2a;
+    }
+
+    body {
+      margin: 0;
+      color: var(--graphite);
+      font-family: "Inter", sans-serif;
+    }
+
+    .sheet__header {
+      display: flex;
+      align-items: flex-end;
+    }
+
+    .sheet__title {
+      font-family: "Inter", sans-serif;
+      font-size: 19pt;
+      font-weight: 700;
+      line-height: 1;
+      margin: 0;
+    }
+
+    .sheet__team {
+      border-bottom: 0.75pt solid var(--graphite);
+      font-size: 8pt;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      line-height: 1.2;
+      margin: 0 0 0 auto;
+      padding-bottom: 4pt;
+      text-transform: uppercase;
+      width: 260pt;
+    }
+
+    .decisions {
+      list-style: none;
+      margin: 16pt 0 0;
+      padding: 0;
+    }
+
+    .decision {
+      border: 1pt solid var(--graphite);
+      display: flex;
+      height: 232pt;
+      margin-top: 14pt;
+    }
+
+    .decision:first-child {
+      margin-top: 0;
+    }
+
+    .decision__number {
+      border-right: 1pt solid var(--graphite);
+      box-sizing: border-box;
+      flex: none;
+      font-family: "Inter", sans-serif;
+      font-size: 14pt;
+      font-weight: 700;
+      line-height: 1;
+      padding: 12pt 0 0 13pt;
+      width: 34pt;
+    }
+
+    .decision__fields {
+      flex: 1;
+      padding: 12pt 16pt;
+    }
+
+    .decision__field {
+      height: 69pt;
+    }
+
+    .decision__field + .decision__field {
+      border-top: 0.5pt solid var(--graphite);
+      height: 59pt;
+      padding-top: 10pt;
+    }
+
+    .decision__field.decision__pair {
+      display: flex;
+      height: 69pt;
+      padding-top: 0;
+    }
+
+    .decision__alt {
+      flex: 1;
+      padding-top: 10pt;
+    }
+
+    .decision__alt + .decision__alt {
+      border-left: 0.5pt solid var(--graphite);
+      padding-left: 16pt;
+    }
+
+    .decision__label {
+      font-size: 7.5pt;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      line-height: 1.2;
+      margin: 0;
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+  <header class="sheet__header">
+    <h1 class="sheet__title">Decisions</h1>
+    <p class="sheet__team">Team</p>
+  </header>
+
+  <ol class="decisions">
+    <li class="decision">
+      <div class="decision__number">1</div>
+      <div class="decision__fields">
+        <div class="decision__field">
+          <p class="decision__label">Decision</p>
+        </div>
+        <div class="decision__field decision__pair">
+          <div class="decision__alt">
+            <p class="decision__label">Alternative A</p>
+          </div>
+          <div class="decision__alt">
+            <p class="decision__label">Alternative B</p>
+          </div>
+        </div>
+        <div class="decision__field">
+          <p class="decision__label">Key trade-off</p>
+        </div>
+      </div>
+    </li>
+    <li class="decision">
+      <div class="decision__number">2</div>
+      <div class="decision__fields">
+        <div class="decision__field">
+          <p class="decision__label">Decision</p>
+        </div>
+        <div class="decision__field decision__pair">
+          <div class="decision__alt">
+            <p class="decision__label">Alternative A</p>
+          </div>
+          <div class="decision__alt">
+            <p class="decision__label">Alternative B</p>
+          </div>
+        </div>
+        <div class="decision__field">
+          <p class="decision__label">Key trade-off</p>
+        </div>
+      </div>
+    </li>
+    <li class="decision">
+      <div class="decision__number">3</div>
+      <div class="decision__fields">
+        <div class="decision__field">
+          <p class="decision__label">Decision</p>
+        </div>
+        <div class="decision__field decision__pair">
+          <div class="decision__alt">
+            <p class="decision__label">Alternative A</p>
+          </div>
+          <div class="decision__alt">
+            <p class="decision__label">Alternative B</p>
+          </div>
+        </div>
+        <div class="decision__field">
+          <p class="decision__label">Key trade-off</p>
+        </div>
+      </div>
+    </li>
+  </ol>
+</body>
+</html>

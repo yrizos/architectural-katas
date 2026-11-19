@@ -15,6 +15,12 @@ icon: ## Generate favicon, iOS and Android icons in static/
 	magick "$(ICON)" -resize 192x192 static/android-chrome-192x192.png
 	magick "$(ICON)" -resize 512x512 static/android-chrome-512x512.png
 
+SITE_URL := $(patsubst %/,%,$(shell sed -n 's/^baseURL[[:space:]]*=[[:space:]]*"\(.*\)"/\1/p' hugo.toml))
+
+pdf: ## Build the ADR template PDF into static/toolkit/
+	mkdir -p static/toolkit
+	sed 's|{{ base_url }}|$(SITE_URL)|g' pdf/adr-template.html | weasyprint --custom-metadata -u pdf/ - static/toolkit/adr-template.pdf
+
 fix: ## Fix trailing whitespace, line endings and markdown
 	@status=0; \
 	pre-commit run trailing-whitespace --all-files || status=1; \
