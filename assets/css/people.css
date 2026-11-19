@@ -38,7 +38,7 @@
   display: inline-flex;
   align-items: center;
   column-gap: calc(var(--gap-base) * 0.5);
-  color: #fff;
+  color: var(--color-white);
   line-height: 1;
   text-decoration: none;
 }
