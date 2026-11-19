@@ -4,6 +4,9 @@ languageCode = "en"
 enableRobotsTXT = true
 buildFuture = true
 
+[params]
+images = ["/share.png"]
+
 [taxonomies]
 event = "events"
 
