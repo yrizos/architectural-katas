@@ -18,7 +18,7 @@
   {{ range slice "css/variables.css" "css/main.css" "css/typography.css" "css/callout.css" "css/people.css" "css/header.css" "css/footer.css" "css/brief.css" "css/phases.css" "css/handoff.css" "css/questions.css" "css/terms.css" "css/page-link.css" "css/events.css" "css/hero.css" "css/comparison.css" "css/not-found.css" }}{{ $css = $css | append (resources.Get .) }}{{ end }}
   {{ with $css | resources.Concat "css/site.css" | minify | fingerprint }}<link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}">{{ end }}
   <script data-goatcounter="https://architectural-katas-yrizos.goatcounter.com/count"
-          async src="//gc.zgo.at/count.js"></script>
+          async src="https://gc.zgo.at/count.js"></script>
 </head>
 <body>
   {{ if ne .Kind "404" }}{{ partial "header.html" . }}{{ end }}
