@@ -1,7 +1,7 @@
 <footer>
   <div>
-    <nav aria-label="Footer">
-      <p class="footer__title">Explore</p>
+    <nav aria-labelledby="footer-nav-title">
+      <p class="footer__title" id="footer-nav-title">Explore</p>
       <ul>
         {{ range site.Menus.main }}
           <li><a href="{{ .URL }}"{{ if $.IsMenuCurrent "main" . }} aria-current="page"{{ end }}>{{ with .Params.icon }}{{ partial (printf "icons/%s.html" .) }}{{ else }}{{ errorf "Menu item %q has no icon. Set icon under params in hugo.toml." .Name }}{{ end }}{{ .Name }}</a></li>
