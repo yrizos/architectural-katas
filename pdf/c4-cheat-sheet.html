@@ -1,0 +1,509 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>C4 Model</title>
+  <meta name="author" content="Yannis Rizos">
+  <style>
+    @font-face { font-family: "Inter"; font-style: normal; font-weight: 400; src: url("fonts/inter-400.woff2") format("woff2"); }
+    @font-face { font-family: "Inter"; font-style: italic; font-weight: 400; src: url("fonts/inter-400-italic.woff2") format("woff2"); }
+    @font-face { font-family: "Inter"; font-style: normal; font-weight: 600; src: url("fonts/inter-600.woff2") format("woff2"); }
+    @font-face { font-family: "Inter"; font-style: normal; font-weight: 700; src: url("fonts/inter-700.woff2") format("woff2"); }
+
+    @page { size: A4 landscape; margin: 0; }
+
+    :root {
+      --ink: #242b2a;
+      --muted: #5c6362;
+      --rule: #9aa09f;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: "Inter", sans-serif;
+      font-size: 9pt;
+      line-height: 1.5;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    p, h1, h2, h3, ol, ul { margin: 0; padding: 0; }
+
+    ol, ul { list-style: none; }
+
+    /* One landscape A4 sheet per section, with the timeline template's margins as padding. */
+    .page {
+      position: relative;
+      width: 841pt;
+      height: 586pt;
+      padding: 30pt 40pt 36pt;
+      overflow: hidden;
+      break-after: page;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .page:last-of-type { break-after: auto; }
+
+    .head { display: block; }
+
+    h1 { font-size: 19pt; font-weight: 700; line-height: 1; white-space: nowrap; }
+
+    .lede { margin-top: 10pt; font-size: 9.5pt; }
+
+    body { counter-reset: sheet; }
+
+    .page { counter-increment: sheet; }
+
+    .footer {
+      position: absolute;
+      bottom: 18pt;
+      left: 40pt;
+      right: 40pt;
+      display: flex;
+      justify-content: space-between;
+      font-size: 7.5pt;
+    }
+
+    .footer::after { content: counter(sheet); }
+
+    .footer a { color: inherit; text-decoration: none; }
+
+    .kicker {
+      font-size: 7.5pt;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      line-height: 1.2;
+      text-transform: uppercase;
+    }
+
+    .tag { color: var(--muted); font-size: 0.92em; }
+
+    /* Page 1: the four levels as a left-to-right zoom strip */
+    .levels-label { margin: 22pt 0 12pt; }
+
+    .levels { display: flex; }
+
+    .levels { gap: 30pt; }
+
+    .level { flex: 1; }
+
+    .level__figure {
+      align-items: center;
+      display: flex;
+      height: 92pt;
+      justify-content: center;
+      margin-bottom: 14pt;
+    }
+
+    .level__figure svg { max-height: 92pt; max-width: 100%; height: auto; }
+
+    .level__head { margin-bottom: 4pt; }
+
+    .num { margin-right: 4pt; }
+
+    h2 { font-size: 11pt; font-weight: 700; line-height: 1.2; }
+
+    .level__q { color: var(--muted); font-style: italic; margin-bottom: 4pt; }
+
+
+    .lower { border-top: 0.5pt solid var(--rule); display: flex; gap: 48pt; margin-top: 20pt; padding-top: 16pt; }
+
+    .lower > section:first-child { flex: 1.15; }
+
+    .lower > section:last-child { flex: 1; }
+
+    .lower .kicker { margin-bottom: 14pt; }
+
+    .notation { display: grid; grid-template-columns: repeat(4, 1fr); row-gap: 14pt; column-gap: 10pt; }
+
+    .notation li { text-align: center; }
+
+    .notation .mermaid { align-items: flex-end; height: 34pt; }
+
+    .notation .mermaid svg { height: 100% !important; width: auto !important; max-width: 100% !important; }
+
+    .notation span { color: var(--muted); display: block; font-size: 7.5pt; margin-top: 4pt; }
+
+    .tips li { padding-left: 12pt; position: relative; }
+
+    .tips li + li { margin-top: 7pt; }
+
+    .tips li::before { background: var(--ink); content: ""; height: 3pt; left: 0; position: absolute; top: 5pt; width: 3pt; }
+
+    /* Example pages */
+    .level-label { margin: 22pt 0 0; }
+
+    .diagram { align-items: center; display: flex; justify-content: center; }
+
+
+    .diagram svg { height: auto; }
+
+    /* Example pages: sections share the remaining height, and each diagram is scaled to fill its box. */
+    .stack { display: flex; flex: 1; flex-direction: column; gap: 14pt; margin-top: 16pt; min-height: 0; }
+
+    .stack > section { display: flex; flex-direction: column; min-height: 0; }
+
+    .stack > section:nth-child(1) { flex: 37; }
+
+    .stack > section:nth-child(2) { flex: 63; }
+
+    .stack--components > section:nth-child(1) { flex: 1; }
+
+    .stack--components > section:nth-child(2) { flex: none; }
+
+    .stack .kicker { margin-bottom: 6pt; }
+
+    .diagram.fit { flex: 1; min-height: 0; }
+
+
+    .trace-wrap .kicker { margin: 10pt 0 8pt; }
+
+    .trace { display: flex; gap: 22pt; }
+
+    .trace li { display: flex; flex: 1; gap: 8pt; }
+
+    .trace b { flex: none; font-size: 11pt; line-height: 1.2; width: 12pt; }
+
+    /* Mermaid labels */
+    .mermaid { display: flex; justify-content: center; margin: 0; font-family: "Inter", sans-serif; }
+    .nodeLabel strong { font-size: 11pt; font-weight: 700; }
+    .nodeLabel code { color: var(--muted); display: inline-block; font-family: "Inter", sans-serif; font-size: 8.5pt; margin: 1pt 0; }
+    .nodeLabel small { font-size: 9.5pt; }
+    .edgeLabel { font-size: 9.5pt; }
+    .edgeLabel code { color: var(--muted); font-family: "Inter", sans-serif; font-size: 8.5pt; }
+    .edgeLabel b { font-size: 10.5pt; font-weight: 700; margin-right: 3pt; }
+    .cluster-label .nodeLabel, .cluster-label .nodeLabel p { color: var(--muted) !important; font-size: 9pt !important; font-weight: 600 !important; }
+  </style>
+</head>
+<body>
+
+<section class="page">
+  <div class="head">
+    <h1>C4 Model</h1>
+    <p class="lede">Simon Brown created the C4 model and maintains its official site at c4model.com. The model describes a software system as a small set of diagrams, each one zooming further in, much like the zoom levels of a map. It prescribes no shapes or colors, so the notation below is one common convention.</p>
+  </div>
+
+  <p class="kicker levels-label">Four levels of zoom</p>
+  <ol class="levels">
+    <li class="level">
+      <div class="level__figure"><pre class="mermaid">
+flowchart LR
+  P["&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"]:::person --> S["Your system"]:::sys --> E["External"]:::ext
+      </pre></div>
+      <div class="level__head"><h2><span class="num">1</span>System Context</h2></div>
+      <p class="level__q">Who uses the system, and what does it depend on?</p>
+      <p>Start here, but don't spend too much time.</p>
+    </li>
+    <li class="level">
+      <div class="level__figure"><pre class="mermaid">
+flowchart LR
+  P["&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"]:::person
+  subgraph B["Your system"]
+    A["App"] --> S["Service"]
+    S --> D[("Data")]
+  end
+  P --> A
+  class B boundary
+      </pre></div>
+      <div class="level__head"><h2><span class="num">2</span>Containers</h2></div>
+      <p class="level__q">What are the main building blocks, and how do they communicate?</p>
+      <p>This is what you present. Start with containers and name each technology by its category, such as relational database, rather than by vendor.</p>
+    </li>
+    <li class="level">
+      <div class="level__figure"><pre class="mermaid">
+flowchart LR
+  A["App"]
+  subgraph B["Service"]
+    C1["Component"]:::comp --> C2["Component"]:::comp
+  end
+  A --> C1
+  C2 --> D[("Data")]
+  class B boundary
+      </pre></div>
+      <div class="level__head"><h2><span class="num">3</span>Components</h2></div>
+      <p class="level__q">How is one container organized inside?</p>
+      <p>Also what you present. Draw it only for the container that carries your most important decision.</p>
+    </li>
+    <li class="level">
+      <div class="level__figure"><pre class="mermaid">
+classDiagram
+  direction TB
+  class A["Class"]
+  class B["Class "]
+  class C["Class  "]
+  A <|-- C
+  B <|-- C
+      </pre></div>
+      <div class="level__head"><h2><span class="num">4</span>Code</h2></div>
+      <p class="level__q">How is a component implemented?</p>
+      <p>Skip it in the kata.</p>
+    </li>
+  </ol>
+
+  <div class="lower">
+    <section>
+      <p class="kicker">Notation</p>
+      <ul class="notation">
+        <li><pre class="mermaid">
+flowchart LR
+  P["&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"]:::person
+        </pre><span>Person</span></li>
+        <li><pre class="mermaid">
+flowchart LR
+  S["&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"]:::sys
+        </pre><span>Your system</span></li>
+        <li><pre class="mermaid">
+flowchart LR
+  E["&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"]:::ext
+        </pre><span>External system</span></li>
+        <li><pre class="mermaid">
+flowchart LR
+  C["&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"]
+        </pre><span>Container</span></li>
+        <li><pre class="mermaid">
+flowchart LR
+  C["&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"]:::comp
+        </pre><span>Component</span></li>
+        <li><pre class="mermaid">
+flowchart LR
+  D[("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")]
+        </pre><span>Data store</span></li>
+        <li><pre class="mermaid">
+flowchart LR
+  subgraph B["System"]
+    X["&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"]:::hidden
+  end
+  class B boundary
+        </pre><span>Boundary</span></li>
+        <li><pre class="mermaid">
+flowchart LR
+  A[" "]:::hidden -- label --> B[" "]:::hidden
+        </pre><span>Relationship</span></li>
+      </ul>
+    </section>
+    <section>
+      <p class="kicker">Tips</p>
+      <ul class="tips">
+        <li>Give each diagram a title and a key for your shapes and lines.</li>
+        <li>Label every arrow with what it does. An unlabeled arrow hides a decision.</li>
+        <li>Draw each arrow in one direction and make its label read the same way.</li>
+        <li>Show build or buy on the element itself, as in <span class="tag">[Container: managed relational database]</span>.</li>
+        <li>Mark each key decision on the diagram with its number from the decisions log.</li>
+      </ul>
+    </section>
+  </div>
+
+  <p class="footer"><a href="{{ base_url }}">{{ base_url }}</a></p>
+</section>
+
+<section class="page">
+  <div class="head">
+    <h1>C4 Example</h1>
+    <p class="lede">Here are the first three levels for a learning management system, drawn with the notation from the previous page. Each level zooms into one box from the level above it.</p>
+  </div>
+
+  <div class="stack">
+    <section>
+      <p class="kicker">1 · System context</p>
+      <div class="diagram fit">
+    <pre class="mermaid">
+%%{init: {"flowchart": {"nodeSpacing": 26, "rankSpacing": 60}}}%%
+flowchart LR
+  L["<strong>Learner</strong><br><code>[Person]</code><br><small>Takes courses on any device</small>"]:::person
+  I["<strong>Instructor</strong><br><code>[Person]</code><br><small>Builds courses and grades work</small>"]:::person
+  A["<strong>Administrator</strong><br><code>[Person]</code><br><small>Manages users and reports</small>"]:::person
+  LMS["<strong>LMS</strong><br><code>[Software system]</code><br><small>Delivers courses and tracks<br>learner progress</small>"]:::sys
+  IDP["<strong>Identity provider</strong><br><code>[Software system]</code><br><small>Single sign-on for all users</small>"]:::ext
+  HR["<strong>HR system</strong><br><code>[Software system]</code><br><small>Source of employees and teams</small>"]:::ext
+  EM["<strong>Email service</strong><br><code>[Software system]</code><br><small>Delivers notifications</small>"]:::ext
+  L -- Takes courses --> LMS
+  I -- Builds courses --> LMS
+  A -- Manages users --> LMS
+  LMS -- Signs users in --> IDP
+  LMS -- Imports users --> HR
+  LMS -- Sends email --> EM
+    </pre>
+      </div>
+    </section>
+    <section>
+      <p class="kicker">2 · Containers</p>
+      <div class="diagram fit">
+    <pre class="mermaid">
+%%{init: {"flowchart": {"nodeSpacing": 30, "rankSpacing": 40}}}%%
+flowchart TB
+  L["<strong>Learner</strong><br><code>[Person]</code>"]:::person
+  I["<strong>Instructor</strong><br><code>[Person]</code>"]:::person
+  A["<strong>Administrator</strong><br><code>[Person]</code>"]:::person
+  subgraph LMS["LMS [Software system]"]
+    MOB["<strong>Mobile app</strong><br><code>[Container: mobile app]</code><br><small>Course player, works offline</small>"]
+    WEB["<strong>Web app</strong><br><code>[Container: web app]</code><br><small>Learning, authoring, admin</small>"]
+    API["<strong>API</strong><br><code>[Container: API service]</code><br><small>Courses, enrollments, progress</small>"]
+    WRK["<strong>Worker</strong><br><code>[Container: background worker]</code><br><small>Imports, reports, notifications</small>"]
+    DB[("<strong>Database</strong><br><code>[Container: managed<br>relational database]</code><br><small>Users, courses, progress</small>")]
+    FS[("<strong>File storage</strong><br><code>[Container: managed<br>object storage]</code><br><small>Course media, certificates</small>")]
+    MB["<strong>Message broker</strong><br><code>[Container: managed<br>message broker]</code><br><small>Events between containers</small>"]
+  end
+  IDP["<strong>Identity provider</strong><br><code>[Software system]</code><br><small>Single sign-on</small>"]:::ext
+  HR["<strong>HR system</strong><br><code>[Software system]</code><br><small>Employees and teams</small>"]:::ext
+  EM["<strong>Email service</strong><br><code>[Software system]</code><br><small>Delivers email</small>"]:::ext
+  L -- Takes courses --> MOB
+  L -- Takes courses --> WEB
+  I -- Builds courses --> WEB
+  A -- Manages users --> WEB
+  MOB -- "Syncs progress <code>[sync]</code>" --> API
+  WEB -- "Calls <code>[sync]</code>" --> API
+  API -- "Validates sign-in <code>[sync]</code>" --> IDP
+  API -- "Reads and writes <code>[sync]</code>" --> DB
+  API -- "Stores files <code>[sync]</code>" --> FS
+  API -- "Publishes events <code>[async]</code>" --> MB
+  WRK -- "Consumes events <code>[async]</code>" --> MB
+  WRK -- "Imports users <code>[scheduled]</code>" --> HR
+  WRK -- "Sends notifications <code>[async]</code>" --> EM
+  class LMS boundary
+    </pre>
+      </div>
+    </section>
+  </div>
+
+  <p class="footer"><a href="{{ base_url }}">{{ base_url }}</a></p>
+</section>
+
+<section class="page">
+  <div class="head">
+    <h1>C4 Example</h1>
+    <p class="lede">The component diagram zooms into the API container from the previous page. Its components group related responsibilities behind clear interfaces, and all of them deploy together as one service.</p>
+  </div>
+
+  <p class="kicker level-label">3 · Components</p>
+  <div class="stack stack--components">
+      <section>
+      <div class="diagram fit">
+        <pre class="mermaid">
+%%{init: {"flowchart": {"nodeSpacing": 24, "rankSpacing": 54}}}%%
+flowchart TB
+  WEB["<strong>Web app</strong><br><code>[Container: web app]</code>"]
+  MOB["<strong>Mobile app</strong><br><code>[Container: mobile app]</code>"]
+  subgraph API["API [Container: API service]"]
+      GW["<strong>Request gateway</strong><br><code>[Component: request router]</code><br><small>Routes requests, checks sign-in</small>"]:::comp
+      CAT["<strong>Course catalog</strong><br><code>[Component: module]</code><br><small>Courses, modules, media links</small>"]:::comp
+      ENR["<strong>Enrollment</strong><br><code>[Component: module]</code><br><small>Who takes which course</small>"]:::comp
+      PRG["<strong>Progress tracking</strong><br><code>[Component: module]</code><br><small>Completions, scores, offline sync</small>"]:::comp
+  end
+  IDP["<strong>Identity provider</strong><br><code>[Software system]</code><br><small>Single sign-on</small>"]:::ext
+  FS[("<strong>File storage</strong><br><code>[Container: managed<br>object storage]</code>")]
+  DB[("<strong>Database</strong><br><code>[Container: managed<br>relational database]</code>")]
+  MB["<strong>Message broker</strong><br><code>[Container: managed<br>message broker]</code>"]
+  WEB -- "Calls <code>[sync]</code>" --> GW
+  MOB -- "<b>1</b>Syncs progress <code>[sync]</code>" --> GW
+  GW -- "<b>2</b>Verifies tokens <code>[sync]</code>" --> IDP
+  GW -- Routes requests --> CAT
+  GW -- Routes requests --> ENR
+  GW -- "<b>3</b>Routes requests" --> PRG
+  CAT -- "Links media <code>[sync]</code>" --> FS
+  CAT -- "Reads and writes <code>[sync]</code>" --> DB
+  ENR -- "Reads and writes <code>[sync]</code>" --> DB
+  PRG -- "<b>4</b>Reads and writes <code>[sync]</code>" --> DB
+  PRG -- "<b>5</b>Publishes completions <code>[async]</code>" --> MB
+  class API boundary
+        </pre>
+      </div>
+      </section>
+    <section class="trace-wrap">
+      <p class="kicker">Follow one request</p>
+      <ol class="trace">
+        <li><b>1</b><span>The Mobile app syncs a learner's progress to the Request gateway.</span></li>
+        <li><b>2</b><span>The gateway verifies the token with the Identity provider.</span></li>
+        <li><b>3</b><span>It routes the request to Progress tracking.</span></li>
+        <li><b>4</b><span>Progress tracking reads and writes the Database.</span></li>
+        <li><b>5</b><span>It publishes the completion to the Message broker.</span></li>
+      </ol>
+    </section>
+  </div>
+
+  <p class="footer"><a href="{{ base_url }}">{{ base_url }}</a></p>
+</section>
+
+  <script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+
+    // Ink-light print palette: pale tints, hairline strokes, dark text.
+    const defs = `
+  classDef default fill:#f3f4f4,stroke:#242b2a,stroke-width:0.75px,color:#242b2a
+  classDef sys fill:#e2e5e4,stroke:#242b2a,stroke-width:1.25px,color:#242b2a
+  classDef person fill:#e2e5e4,stroke:#242b2a,stroke-width:0.75px,color:#242b2a
+  classDef comp fill:#fff,stroke:#242b2a,stroke-width:0.75px,color:#242b2a
+  classDef ext fill:#fff,stroke:#5c6362,stroke-width:0.75px,stroke-dasharray:3 2,color:#242b2a
+  classDef boundary fill:none,stroke:#5c6362,stroke-width:0.75px,stroke-dasharray:5 3,color:#5c6362
+  classDef hidden fill:none,stroke:none,color:transparent`;
+    document.querySelectorAll("pre.mermaid").forEach((el) => {
+      if (/flowchart/.test(el.textContent)) el.insertAdjacentText("beforeend", defs);
+    });
+
+    mermaid.initialize({
+      startOnLoad: false,
+      theme: "base",
+      fontFamily: "Inter, sans-serif",
+      flowchart: { nodeSpacing: 16, rankSpacing: 22, padding: 10, useMaxWidth: false, curve: "linear" },
+      class: { useMaxWidth: false },
+      themeVariables: {
+        fontSize: "10px",
+        primaryColor: "#f3f4f4",
+        primaryTextColor: "#242b2a",
+        primaryBorderColor: "#242b2a",
+        lineColor: "#242b2a",
+        secondaryColor: "#fff",
+        tertiaryColor: "#fff",
+        clusterBkg: "none",
+        clusterBorder: "#5c6362",
+        edgeLabelBackground: "#fff",
+      },
+    });
+
+    await document.fonts.ready;
+    await mermaid.run();
+
+    // C4 person shape: a head on a rounded body.
+    const NS = "http://www.w3.org/2000/svg";
+    document.querySelectorAll("g.node.person").forEach((g) => {
+      const r = g.querySelector("rect");
+      if (!r) return;
+      const x = +r.getAttribute("x"), y = +r.getAttribute("y"), w = +r.getAttribute("width"), h = +r.getAttribute("height");
+      const rad = Math.min(11, h * 0.34);
+      r.setAttribute("rx", Math.min(14, h * 0.32));
+      r.setAttribute("ry", Math.min(14, h * 0.32));
+      const c = document.createElementNS(NS, "circle");
+      c.setAttribute("cx", x + w / 2);
+      c.setAttribute("cy", y - rad + 4);
+      c.setAttribute("r", rad);
+      c.setAttribute("style", r.getAttribute("style"));
+      g.appendChild(c);
+    });
+    document.querySelectorAll("g.node:not(.person) rect.label-container").forEach((r) => { r.setAttribute("rx", 3); r.setAttribute("ry", 3); });
+
+    // Crop each SVG to its content so heads are not clipped.
+    document.querySelectorAll(".mermaid svg").forEach((svg) => {
+      const b = svg.getBBox(), pad = 2;
+      svg.setAttribute("viewBox", `${b.x - pad} ${b.y - pad} ${b.width + pad * 2} ${b.height + pad * 2}`);
+      svg.setAttribute("width", b.width + pad * 2);
+      svg.setAttribute("height", b.height + pad * 2);
+      svg.style.maxWidth = "";
+    });
+
+    // Scale each example diagram to fill its box.
+    document.querySelectorAll(".diagram.fit").forEach((box) => {
+      const svg = box.querySelector("svg");
+      const w = +svg.getAttribute("width"), h = +svg.getAttribute("height");
+      const r = box.getBoundingClientRect();
+      const k = Math.min(r.width / w, r.height / h);
+      svg.style.width = w * k + "px";
+      svg.style.height = h * k + "px";
+    });
+
+    document.body.dataset.ready = "1";
+  </script>
+</body>
+</html>

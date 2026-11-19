@@ -22,6 +22,9 @@ pdf: ## Build the template PDFs into static/toolkit/
 	sed 's|{{ base_url }}|$(SITE_URL)|g' pdf/adr-template.html | weasyprint --custom-metadata -u pdf/ - static/toolkit/adr-template.pdf
 	sed 's|{{ base_url }}|$(SITE_URL)|g' pdf/timeline-template.html | weasyprint --custom-metadata -u pdf/ - static/toolkit/timeline-template.pdf
 	sed 's|{{ base_url }}|$(SITE_URL)|g' pdf/open-conf-booklet.html | weasyprint --custom-metadata -u pdf/ - static/events/architecture-kata-workshop-open-conf-26.pdf
+	sed 's|{{ base_url }}|$(SITE_URL)|g' pdf/c4-cheat-sheet.html > pdf/c4-cheat-sheet.build.html
+	swift pdf/print-landscape.swift pdf/c4-cheat-sheet.build.html static/toolkit/c4-cheat-sheet.pdf
+	rm pdf/c4-cheat-sheet.build.html
 
 fix: ## Fix trailing whitespace, line endings and markdown
 	@status=0; \
