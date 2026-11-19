@@ -1,5 +1,6 @@
 header {
   --header-height: calc(var(--gap-base) * 2 + var(--font-size-base) * 3);
+  --item-height: calc(var(--gap-base) * 3);
 
   position: relative;
   min-height: var(--header-height);
@@ -26,7 +27,7 @@ header nav a {
   display: flex;
   align-items: center;
   column-gap: calc(var(--gap-base) * 0.5);
-  min-height: var(--header-height);
+  min-height: var(--item-height);
   padding: 0 var(--gap-page);
   font-size: calc(var(--font-size-base) * 8 / 7);
 }
@@ -71,8 +72,9 @@ header a:focus-visible {
 header nav svg {
   width: 1.25em;
   height: 1.25em;
+  flex: none;
   fill: none;
-  stroke: currentcolor;
+  stroke: var(--color-accent);
   stroke-width: 1.5;
   stroke-linecap: round;
   stroke-linejoin: round;
@@ -127,18 +129,22 @@ header ul {
   list-style: none;
 }
 
+header li + li {
+  border-top: 1px solid rgb(255 255 255 / 0.1);
+}
+
 header nav a[aria-current="page"] {
   position: relative;
+  background: rgb(255 255 255 / 0.06);
 }
 
 header nav a[aria-current="page"]::before {
   content: "";
   position: absolute;
-  top: 50%;
+  top: 0;
+  bottom: 0;
   left: 0;
   width: 0.25em;
-  height: calc(var(--header-height) * 2 / 3);
-  transform: translateY(-50%);
   background: var(--color-accent);
 }
 
@@ -147,5 +153,54 @@ header nav a[aria-current="page"]::before {
     transition:
       grid-template-rows 0.45s cubic-bezier(0.22, 1, 0.36, 1),
       visibility 0.45s;
+  }
+}
+
+@media (min-width: 1024px) {
+  header {
+    flex-wrap: wrap;
+    padding-bottom: 0;
+  }
+
+  .menu-toggle {
+    display: none;
+  }
+
+  header nav,
+  header nav[data-open="false"] {
+    position: static;
+    display: block;
+    width: 100%;
+    margin-top: var(--gap-base);
+    visibility: visible;
+  }
+
+  header nav > div {
+    overflow: visible;
+  }
+
+  header ul {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  header li + li {
+    border-top: 0;
+  }
+
+  header nav a {
+    padding: 0;
+    font-size: var(--font-size-base);
+  }
+
+  header nav a[aria-current="page"] {
+    background: none;
+  }
+
+  header nav a[aria-current="page"]::before {
+    top: auto;
+    right: 0;
+    width: auto;
+    height: 0.2em;
   }
 }

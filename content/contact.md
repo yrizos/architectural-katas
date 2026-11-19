@@ -18,7 +18,7 @@ If any of this sounds familiar, feel free to reach out. We can happily talk arch
 
 ## Katas at Tech Events
 
-Inside the company, everyone around the table already works together. We were curious whether the format holds up without that, so we started taking katas to tech events.
+Inside the company, everyone around the table already works together. We were curious whether the format holds up without that, so we started [taking katas to tech events](/workshop/#at-tech-events).
 
 Ted Neward's [rules](https://www.architecturalkatas.com/rules.html) already push in this direction. Co-workers aren't supposed to share a group, and inside a company people should at least avoid teaming up with the folks they work with regularly. At a tech event, that happens all by itself.
 

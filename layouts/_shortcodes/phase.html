@@ -1,1 +1,1 @@
-{{ $name := .Get "name" }}<li><a href="#{{ anchorize $name }}">{{ partial (printf "icons/%s.html" (.Get "icon")) }}{{ $name }}</a>{{ .Inner | .Page.RenderString (dict "display" "block") }}</li>
+{{ $name := .Get "name" }}<li><a href="{{ with .Get "page" }}{{ (site.GetPage .).RelPermalink }}{{ end }}#{{ anchorize $name }}">{{ partial (printf "icons/%s.html" (.Get "icon")) }}{{ $name }}</a>{{ .Inner | .Page.RenderString (dict "display" "block") }}</li>
