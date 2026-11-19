@@ -25,7 +25,7 @@ Read the rules first if the format is new to you. Then take a random kata from t
 
 An architectural decision record, or ADR, is [a short document that captures and explains a decision](https://martinfowler.com/bliki/ArchitectureDecisionRecord.html). It holds the context, the alternatives, and the consequences. A later reader can then see why a system looks the way it does.
 
-In a kata, the records are the only memory your design has, and you write them as you [design](/taking-part-in-a-kata/#design). Write one for each choice, such as where the data lives or how two parts communicate. Note the alternative you rejected and the cost you accept.
+In a kata, the records are the only memory your design has, and you write them as you [design](/working-through-a-brief/#design). Write one for each choice, such as where the data lives or how two parts communicate. Note the alternative you rejected and the cost you accept.
 
 When a requirement changes, reread your records and write a new one to replace any whose context no longer holds.
 
@@ -37,7 +37,7 @@ In the [workshop](/workshop/) we use a simplified ADR template that fits on one 
 
 A release timeline shows what ships when, with a date attached to each step. A date limits what can be built before it. The timeline forces the team to decide which needs come first and which can wait.
 
-In a kata, a common practice is to split the delivery into phases such as MVP and Phase 1. Each phase gets a due date, such as Week 1, Month 1, or Q1. You scope the first release while you [understand and prioritize](/taking-part-in-a-kata/#understand-and-prioritize), and you lay out the rest once you [design](/taking-part-in-a-kata/#design).
+In a kata, a common practice is to split the delivery into phases such as MVP and Phase 1. Each phase gets a due date, such as Week 1, Month 1, or Q1. You scope the first release while you [understand and prioritize](/working-through-a-brief/#understand-and-prioritize), and you lay out the rest once you [design](/working-through-a-brief/#design).
 
 Start with the earliest date and ask what the system must do by then. Everything else moves to a later phase, and each move changes other decisions:
 
@@ -55,7 +55,7 @@ In the [workshop](/workshop/) we use a simple timeline template on one landscape
 
 ## C4 Diagrams
 
-The [C4 model](https://c4model.com/) is Simon Brown's approach to diagramming software architecture. It describes a system at four levels of detail, from context down to code. Each level answers a different question for a different reader. Most teams only need the first two levels, and [a kata](/taking-part-in-a-kata/#design) is no different.
+The [C4 model](https://c4model.com/) is Simon Brown's approach to diagramming software architecture. It describes a system at four levels of detail, from context down to code. Each level answers a different question for a different reader. Most teams only need the first two levels, and [a kata](/working-through-a-brief/#design) is no different.
 
 {{< callout >}}
 {{< callout-item icon="globe" >}}
@@ -91,7 +91,7 @@ Some catas belong to the team at the table, and they show how you architect your
 
 Others belong to whoever runs the kata. **The Over-Corrector** jumps in at the first sign of trouble. **The Tech-Savvy Stakeholder** plays the business role but hands teams the solution.
 
-It's worth a read before [your next kata](/taking-part-in-a-kata/), and again after it.
+It's worth a read before [your next kata](/working-through-a-brief/), and again after it.
 
 ## Using the Tools in a Kata
 

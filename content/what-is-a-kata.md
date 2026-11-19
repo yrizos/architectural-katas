@@ -11,10 +11,10 @@ Nobody writes code. The design stays on paper or a whiteboard, along with the re
 
 A brief says what a system must do, but it never says how to build it. Working that out is up to you, and it means you have to:
 
-- [Decide which requirements matter most](/taking-part-in-a-kata/#understand-and-prioritize), because no design serves all of them equally well.
-- [Question what the brief leaves out](/taking-part-in-a-kata/#understand-and-prioritize), and keep your assumptions apart from its facts.
-- [Sketch the main components](/taking-part-in-a-kata/#design) and how they fit together.
-- [Explain why your design beats the alternatives](/taking-part-in-a-kata/#share) you considered.
+- [Decide which requirements matter most](/working-through-a-brief/#understand-and-prioritize), because no design serves all of them equally well.
+- [Question what the brief leaves out](/working-through-a-brief/#understand-and-prioritize), and keep your assumptions apart from its facts.
+- [Sketch the main components](/working-through-a-brief/#design) and how they fit together.
+- [Explain why your design beats the alternatives](/working-through-a-brief/#share) you considered.
 
 None of these has a correct answer, only trade-offs. Every choice makes something easier and something else harder.
 

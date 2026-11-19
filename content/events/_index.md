@@ -9,4 +9,4 @@ Ted Neward's [rules](https://www.architecturalkatas.com/rules.html) already push
 
 - Most people at the table have only just met, so the team builds trust while it designs.
 - The room mixes more specialties and career stages than any one company does, so a first-time designer can end up next to an architect from another industry, and both have to argue their case.
-- The slot is one hour instead of two, so teams [prioritize faster](/taking-part-in-a-kata/#understand-and-prioritize) and leave more questions open.
+- The slot is one hour instead of two, so teams [prioritize faster](/working-through-a-brief/#understand-and-prioritize) and leave more questions open.

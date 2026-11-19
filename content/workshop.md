@@ -51,7 +51,7 @@ Whoever runs the session plays the organizers who wrote the brief. Ask them abou
 
 ## Making One Hour Count
 
-One hour is tight for a design, so you prioritize faster and leave more questions open. A few habits from the [phase-by-phase guide](/taking-part-in-a-kata/) help the hour go further:
+One hour is tight for a design, so you prioritize faster and leave more questions open. A few habits from the [phase-by-phase guide](/working-through-a-brief/) help the hour go further:
 
 {{< callout >}}
 {{< callout-item icon="book" >}}
@@ -75,7 +75,7 @@ Every team leaves with a design it can explain and defend. Behind that design si
 
 {{< callout >}}
 {{< callout-item icon="badge" >}}
-Your [top characteristics](/taking-part-in-a-kata/#understand-and-prioritize), ranked, so you know what to favor when two of them collide.
+Your [top characteristics](/working-through-a-brief/#understand-and-prioritize), ranked, so you know what to favor when two of them collide.
 {{< /callout-item >}}
 {{< callout-item icon="book" >}}
 Your key decisions with their alternatives and trade-offs, written as [decision records](/toolkit/#architectural-decision-records).

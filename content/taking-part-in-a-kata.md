@@ -1,6 +1,9 @@
 ---
 title: How Do You Work Through a Brief?
 description: What you do when you take part in an architectural kata, phase by phase, working through a brief for a conference platform.
+slug: working-through-a-brief
+aliases:
+  - /taking-part-in-a-kata/
 ---
 
 Picture a table with a few people you may have met minutes ago, a whiteboard, and a brief for a system that doesn't exist yet. Before the kata ends, your team has to agree on what matters, sketch a design, and defend it in front of the room.
