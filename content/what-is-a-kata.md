@@ -1,6 +1,6 @@
 ---
 title: What Is a Kata?
-description: What an architectural kata is, what it asks of you, why the practice matters, where the idea comes from, and what a brief looks like.
+description: An architectural kata is a practice exercise in software design. Read an example brief for a conference platform and see what a kata asks of you.
 ---
 
 An architectural kata is a practice exercise in software design. You get a short brief for a system that does not exist yet, and you work out an architecture that could serve it.

@@ -1,6 +1,6 @@
 ---
 title: How Do You Reach Us?
-description: Who we are and why we introduced architectural katas.
+description: Who we are, why we started running architectural katas at Epignosis, and how to reach Aggelos Bellos and Yannis Rizos on GitHub and LinkedIn.
 ---
 
 We started running [architectural katas](/what-is-a-kata/) at [Epignosis](https://www.epignosishq.com/) as its [Architecture Modernization Enabling Team](https://medium.com/nick-tune-tech-strategy-blog/architecture-modernization-enabling-teams-amet-23a7f867b284). We were after what Gregor Hohpe calls [architecture without architects](https://architectelevator.com/architecture/organizing-architecture/), where teams own their architecture and anyone on the team can play architect for a while when a big decision comes up.
