@@ -1,5 +1,10 @@
 <div class="person">
-    <img class="person__photo" src="/people/{{ .Get "github" }}.jpg" alt="{{ .Get "name" }}" width="400" height="400" loading="lazy">
+    {{- with resources.Get (printf "people/%s.jpg" ($.Get "github")) }}
+    {{- $photo := .Process "resize 192x webp q80" }}
+    <img class="person__photo" src="{{ $photo.RelPermalink }}" alt="{{ $.Get "name" }}" width="{{ $photo.Width }}" height="{{ $photo.Height }}" loading="lazy">
+    {{- else }}
+    {{- errorf "person: missing assets/people/%s.jpg" ($.Get "github") }}
+    {{- end }}
     <p class="person__name">{{ .Get "name" }}</p>
     <p class="person__role">{{ .Get "role" }}</p>
     <ul>
