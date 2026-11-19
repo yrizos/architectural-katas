@@ -4,7 +4,7 @@
 
 ### File layout
 
-CSS lives in `assets/css/` and is loaded through Hugo's `resources.Get` in `layouts/baseof.html`.
+CSS lives in `assets/css/`. `layouts/baseof.html` combines the files into one minified, fingerprinted stylesheet with `resources.Concat`.
 
 - `variables.css` holds colour and spacing custom properties.
 - `main.css` holds the reset, `html`, `body` and `main` rules.
@@ -23,14 +23,15 @@ CSS lives in `assets/css/` and is loaded through Hugo's `resources.Get` in `layo
 - `events.css` holds the `.events` list and the `.event-session` and `.event-facts` blocks' styles, including their icons.
 - `hero.css` holds the homepage `.hero` block's styles.
 - `comparison.css` holds the `.comparison` table's styles.
+- `not-found.css` holds the 404 page's `.not-found` block's styles.
 
 ### Load order
 
-The files load in this order: `variables.css`, `main.css`, `typography.css`, `callout.css`, `people.css`, `header.css`, `footer.css`, `brief.css`, `phases.css`, `handoff.css`, `questions.css`, `terms.css`, `page-link.css`, `events.css`, `hero.css`, `comparison.css`. A later file overrides an earlier one when selectors have equal specificity.
+The files load in this order: `variables.css`, `main.css`, `typography.css`, `callout.css`, `people.css`, `header.css`, `footer.css`, `brief.css`, `phases.css`, `handoff.css`, `questions.css`, `terms.css`, `page-link.css`, `events.css`, `hero.css`, `comparison.css`, `not-found.css`. A later file overrides an earlier one when selectors have equal specificity.
 
 ### Component files
 
-Each component gets its own CSS file in `assets/css/`, named after it. For example, `header.css` styles `layouts/_partials/header.html`. New component files are linked in `baseof.html` after `typography.css`.
+Each component gets its own CSS file in `assets/css/`, named after it. For example, `header.css` styles `layouts/_partials/header.html`. New component files are added to the stylesheet list in `baseof.html` after `typography.css`.
 
 ### Typography
 
