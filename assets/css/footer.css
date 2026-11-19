@@ -29,6 +29,7 @@ footer nav ul {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(calc(var(--font-size-base) * 10), 1fr));
   column-gap: var(--gap-section);
+  margin-block: calc(var(--gap-base) * -0.5);
 }
 
 .footer__title {
@@ -43,9 +44,13 @@ footer a {
   display: flex;
   align-items: center;
   column-gap: calc(var(--gap-base) * 0.75);
-  min-height: calc(var(--font-size-base) * 3.2);
+  padding-block: calc(var(--gap-base) * 0.5);
   color: var(--color-text);
   text-decoration: none;
+}
+
+.footer__license a {
+  margin-block: calc(var(--gap-base) * -0.5);
 }
 
 footer a:hover {
@@ -77,8 +82,7 @@ footer svg {
 .footer__event {
   display: grid;
   row-gap: calc(var(--gap-base) * 0.25);
-  min-height: 0;
-  padding: calc(var(--gap-base) * 0.25) 0;
+  padding-block: 0;
 }
 
 .footer__event:hover {
@@ -109,13 +113,5 @@ footer svg {
     margin-top: 0;
     padding-top: 0;
     border-top: 0;
-  }
-
-  footer a {
-    min-height: calc(var(--font-size-base) * 2.5);
-  }
-
-  .footer__event {
-    min-height: 0;
   }
 }
