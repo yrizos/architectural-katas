@@ -68,3 +68,9 @@ ul > li::marker {
 h2:hover .anchor {
   opacity: 1;
 }
+
+blockquote {
+  margin-inline: 0;
+  padding-left: var(--gap-base);
+  border-left: 2px solid var(--color-accent);
+}
