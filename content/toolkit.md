@@ -74,8 +74,8 @@ A [code diagram](https://c4model.com/diagrams/code) shows the classes inside one
 
 Label every connection on each diagram, and keep the diagrams beside your ADRs. A diagram shows what you decided, and the record explains why.
 
-{{< download-link "events/architecture-kata-workshop-fosscomm-26.pdf#page=4" "C4 cheat sheet" >}}
-We have a C4 cheat sheet in our [FOSSCOMM 2026](/events/fosscomm-2026/) booklet. It covers the four levels, a common notation, and tips for drawing your diagrams. The booklet also walks through an example for a learning management system.
+{{< download-link "toolkit/c4-cheat-sheet.pdf" "C4 cheat sheet" >}}
+The C4 cheat sheet may be too much for an hour-long workshop, but it is a good reference to keep beside you while you draw. Its first page covers the four levels, a common notation, and tips for drawing your diagrams. The other two pages walk through a learning management system, from its system context down to the components of its API.
 {{< /download-link >}}
 
 ## Catas to Avoid
