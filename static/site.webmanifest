@@ -1,5 +1,8 @@
 {
   "name": "Architectural Katas",
+  "short_name": "Katas",
+  "start_url": "/",
+  "theme_color": "#d86b42",
   "icons": [
     { "src": "/android-chrome-192x192.png", "sizes": "192x192", "type": "image/png" },
     { "src": "/android-chrome-512x512.png", "sizes": "512x512", "type": "image/png" }
