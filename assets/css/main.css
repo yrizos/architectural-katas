@@ -11,6 +11,17 @@ html {
   text-size-adjust: 100%;
 }
 
+html::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: -1;
+  height: 50vh;
+  background: var(--color-graphite);
+}
+
 @media (prefers-reduced-motion: no-preference) {
   html {
     scroll-behavior: smooth;
