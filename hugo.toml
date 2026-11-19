@@ -8,36 +8,36 @@ buildFuture = true
 event = "events"
 
 [[menu.main]]
-name = "What Is a Kata"
+name = "Kata"
 pageRef = "/what-is-a-kata"
 weight = 1
 
 [menu.main.params]
-icon = "book"
+icon = "scroll-text"
 
 [[menu.main]]
-name = "Taking Part in a Kata"
+name = "Guide"
 pageRef = "/taking-part-in-a-kata"
 weight = 2
 
 [menu.main.params]
-icon = "flag"
+icon = "route"
 
 [[menu.main]]
-name = "The Workshop"
+name = "Workshop"
 pageRef = "/workshop"
 weight = 3
 
 [menu.main.params]
-icon = "users"
+icon = "pencil-ruler"
 
 [[menu.main]]
-name = "Tech Events"
+name = "Events"
 pageRef = "/events"
 weight = 4
 
 [menu.main.params]
-icon = "calendar"
+icon = "microphone"
 
 [[menu.main]]
 name = "Toolkit"
@@ -48,9 +48,9 @@ weight = 5
 icon = "toolbox"
 
 [[menu.main]]
-name = "Contact"
+name = "Team"
 pageRef = "/contact"
 weight = 6
 
 [menu.main.params]
-icon = "message"
+icon = "users"
