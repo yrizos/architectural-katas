@@ -11,6 +11,15 @@ images = ["/share.png"]
 [taxonomies]
 event = "events"
 
+[outputFormats.llms]
+mediaType = "text/plain"
+baseName = "llms"
+isPlainText = true
+notAlternative = true
+
+[outputs]
+home = ["html", "rss", "llms"]
+
 [[menu.main]]
 name = "Kata"
 pageRef = "/what-is-a-kata"

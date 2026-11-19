@@ -1,0 +1,11 @@
+# {{ site.Title }}
+
+> {{ .Description }}
+
+## Pages
+
+{{ range site.Menus.main -}}
+{{ with .Page -}}
+- [{{ .Title }}]({{ .Permalink }}){{ with .Description }}: {{ . }}{{ end }}
+{{ end -}}
+{{ end -}}
