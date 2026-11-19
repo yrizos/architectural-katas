@@ -2,7 +2,7 @@
     <p class="person__name">{{ .Get "name" }}</p>
     <p class="person__role">{{ .Get "role" }}</p>
     <ul>
-      <li><a href="https://github.com/{{ .Get "github" }}" target="_blank" rel="noopener">{{ partial "icons/github.html" }}/{{ .Get "github" }}</a></li>
-      <li><a href="https://www.linkedin.com/{{ .Get "linkedin" }}" target="_blank" rel="noopener">{{ partial "icons/linkedin.html" }}/{{ .Get "linkedin" }}</a></li>
+      <li><a href="https://github.com/{{ .Get "github" }}" target="_blank" rel="noopener">{{ partial "icons/github.html" }}<span class="visually-hidden">GitHub </span>/{{ .Get "github" }}</a></li>
+      <li><a href="https://www.linkedin.com/{{ .Get "linkedin" }}" target="_blank" rel="noopener">{{ partial "icons/linkedin.html" }}<span class="visually-hidden">LinkedIn </span>/{{ .Get "linkedin" }}</a></li>
     </ul>
 </div>
