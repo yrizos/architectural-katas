@@ -27,13 +27,6 @@
     @page {
       size: A4;
       margin: 30pt 40pt 46pt 40pt;
-
-      @bottom-center {
-        content: "{{ base_url }}";
-        font-family: "Inter", sans-serif;
-        font-size: 7.5pt;
-        color: #242b2a;
-      }
     }
 
     :root {
@@ -44,6 +37,17 @@
       margin: 0;
       color: var(--graphite);
       font-family: "Inter", sans-serif;
+    }
+
+    .sheet__url {
+      bottom: -28pt;
+      color: var(--graphite);
+      font-size: 7.5pt;
+      left: 0;
+      position: fixed;
+      right: 0;
+      text-align: center;
+      text-decoration: none;
     }
 
     .sheet__header {
@@ -206,5 +210,7 @@
       </div>
     </li>
   </ol>
+
+  <a class="sheet__url" href="{{ base_url }}">{{ base_url }}</a>
 </body>
 </html>

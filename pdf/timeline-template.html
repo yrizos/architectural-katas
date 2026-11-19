@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Timeline Template</title>
+  <meta name="author" content="Aggelos Bellos, Yannis Rizos">
+  <meta name="description" content="A one-page landscape worksheet for planning the releases of an architectural kata, with the MVP, later phases, due dates and the scope of each phase.">
+  <meta name="keywords" content="architecture kata, system design, timeline, release plan, MVP, template">
+  <meta name="generator" content="WeasyPrint">
+  <meta name="dcterms.created" content="2026-11-17">
+  <meta name="dcterms.modified" content="2026-11-17">
+  <style>
+    @font-face {
+      font-family: "Inter";
+      font-style: normal;
+      font-weight: 400;
+      src: url("../static/fonts/inter.woff2") format("woff2");
+    }
+
+    @font-face {
+      font-family: "Inter";
+      font-style: normal;
+      font-weight: 700;
+      src: url("../static/fonts/inter.woff2") format("woff2");
+    }
+
+    @page {
+      size: A4 landscape;
+      margin: 30pt 40pt 46pt 40pt;
+    }
+
+    :root {
+      --graphite: #242b2a;
+    }
+
+    body {
+      margin: 0;
+      color: var(--graphite);
+      font-family: "Inter", sans-serif;
+    }
+
+    .sheet__url {
+      bottom: -28pt;
+      color: var(--graphite);
+      font-size: 7.5pt;
+      left: 0;
+      position: fixed;
+      right: 0;
+      text-align: center;
+      text-decoration: none;
+    }
+
+    .sheet__header {
+      display: flex;
+      align-items: flex-end;
+    }
+
+    .sheet__title {
+      font-family: "Inter", sans-serif;
+      font-size: 19pt;
+      font-weight: 700;
+      line-height: 1;
+      margin: 0;
+    }
+
+    .sheet__team {
+      border-bottom: 0.75pt solid var(--graphite);
+      font-size: 8pt;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      line-height: 1.2;
+      margin: 0 0 0 auto;
+      padding-bottom: 4pt;
+      text-transform: uppercase;
+      width: 260pt;
+    }
+
+    .timeline {
+      border: 1pt solid var(--graphite);
+      border-collapse: collapse;
+      margin: 16pt 0 0;
+      table-layout: fixed;
+      width: 100%;
+    }
+
+    .timeline th,
+    .timeline td {
+      border: 0.5pt solid var(--graphite);
+      padding: 10pt 12pt;
+    }
+
+    .timeline th {
+      font-size: 8pt;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      line-height: 1.2;
+      text-align: left;
+      text-transform: uppercase;
+    }
+
+    .timeline__due {
+      height: 56pt;
+    }
+
+    .timeline__due td {
+      font-size: 7pt;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      line-height: 1.2;
+      text-transform: uppercase;
+      text-align: right;
+      vertical-align: top;
+    }
+
+    .timeline__plan td {
+      height: 374pt;
+    }
+  </style>
+</head>
+<body>
+  <header class="sheet__header">
+    <h1 class="sheet__title">Timeline</h1>
+    <p class="sheet__team">Team</p>
+  </header>
+
+  <table class="timeline">
+    <thead>
+      <tr>
+        <th scope="col">MVP</th>
+        <th scope="col">Phase 1</th>
+        <th scope="col">Phase 2</th>
+        <th scope="col">Phase 3</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="timeline__due">
+        <td>Done by</td>
+        <td>Done by</td>
+        <td>Done by</td>
+        <td>Done by</td>
+      </tr>
+      <tr class="timeline__plan">
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <a class="sheet__url" href="{{ base_url }}">{{ base_url }}</a>
+</body>
+</html>
