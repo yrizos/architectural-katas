@@ -20,10 +20,11 @@ CSS lives in `assets/css/` and is loaded through Hugo's `resources.Get` in `layo
 - `questions.css` holds the `.questions` block's styles.
 - `terms.css` holds the `.terms` block's styles.
 - `page-link.css` holds the `.page-link` button's styles, including its icon.
+- `events.css` holds the `.events` list and the `.event-session` and `.event-facts` blocks' styles, including their icons.
 
 ### Load order
 
-The files load in this order: `variables.css`, `main.css`, `typography.css`, `callout.css`, `people.css`, `header.css`, `footer.css`, `brief.css`, `phases.css`, `handoff.css`, `questions.css`, `terms.css`, `page-link.css`. A later file overrides an earlier one when selectors have equal specificity.
+The files load in this order: `variables.css`, `main.css`, `typography.css`, `callout.css`, `people.css`, `header.css`, `footer.css`, `brief.css`, `phases.css`, `handoff.css`, `questions.css`, `terms.css`, `page-link.css`, `events.css`. A later file overrides an earlier one when selectors have equal specificity.
 
 ### Component files
 

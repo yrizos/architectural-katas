@@ -2,6 +2,10 @@ baseURL = "https://example.com/"
 title = "Architectural Katas"
 languageCode = "en"
 enableRobotsTXT = true
+buildFuture = true
+
+[taxonomies]
+event = "events"
 
 [[menu.main]]
 name = "What Is a Kata"
@@ -20,9 +24,17 @@ weight = 2
 icon = "flag"
 
 [[menu.main]]
+name = "Tech Events"
+pageRef = "/events"
+weight = 3
+
+[menu.main.params]
+icon = "calendar"
+
+[[menu.main]]
 name = "Toolkit"
 pageRef = "/toolkit"
-weight = 3
+weight = 4
 
 [menu.main.params]
 icon = "toolbox"

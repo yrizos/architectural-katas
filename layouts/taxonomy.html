@@ -1,0 +1,25 @@
+{{ define "main" }}
+  <h1>{{ .Title }}</h1>
+  {{ .Content }}
+  <ol class="events">
+    {{ range .Pages.ByDate.Reverse }}
+      <li>
+        <a href="{{ .RelPermalink }}">
+          <span class="events__when">
+            <time datetime="{{ .Date | time.Format "2006-01-02" }}">{{ .Date | time.Format "January 2, 2006" }}</time>
+            <span>{{ .Date | time.Format "Monday" }}, {{ .Params.time }}</span>
+          </span>
+          <span class="events__what">
+            <span class="events__name">{{ .Title }}</span>
+            {{ with .Params.room_summary }}<span>{{ . }}</span>{{ end }}
+          </span>
+          <span class="events__where">
+            {{ partial "icons/map-pin.html" }}
+            <span>{{ .Params.room }}<br>{{ .Params.venue }}, {{ .Params.city }}</span>
+          </span>
+          {{ partial "icons/arrow-right.html" }}
+        </a>
+      </li>
+    {{ end }}
+  </ol>
+{{ end }}

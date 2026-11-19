@@ -1,0 +1,40 @@
+{{ define "main" }}
+  <h1>{{ .Title }}</h1>
+  <p class="event-session">{{ .Params.session }}</p>
+  <dl class="event-facts">
+    <div>
+      <dt>{{ partial "icons/calendar.html" }}Date</dt>
+      <dd><time datetime="{{ .Date | time.Format "2006-01-02" }}">{{ .Date | time.Format "Monday, January 2, 2006" }}</time>, {{ .Params.time }}</dd>
+    </div>
+    <div>
+      <dt>{{ partial "icons/globe.html" }}Place</dt>
+      <dd>{{ .Params.room }}, {{ .Params.venue }}, {{ with .Params.address }}{{ . }}, {{ end }}{{ .Params.city }}</dd>
+    </div>
+    <div>
+      <dt>{{ partial "icons/message.html" }}Language</dt>
+      <dd>{{ .Params.language }}</dd>
+    </div>
+    {{ with .Params.level }}
+      <div>
+        <dt>{{ partial "icons/badge.html" }}Level</dt>
+        <dd>{{ . }}</dd>
+      </div>
+    {{ end }}
+    <div>
+      <dt>{{ partial "icons/users.html" }}Facilitators</dt>
+      <dd>{{ delimit .Params.facilitators ", " " and " }}</dd>
+    </div>
+    <div>
+      <dt>{{ partial "icons/globe.html" }}Event Site</dt>
+      <dd><a href="{{ .Params.conference_url }}" target="_blank" rel="noopener">{{ (urls.Parse .Params.conference_url).Host }}</a></dd>
+    </div>
+  </dl>
+  {{ .Content }}
+  {{ with .Params.booklet }}
+    <section>
+      <h2 id="session-booklet">Session Booklet{{ partial "anchor.html" "session-booklet" }}</h2>
+      <p>Everything used in the session, from the brief to the worksheets, in one printable PDF.</p>
+      <a class="page-link" href="{{ . }}" download>Download the booklet{{ partial "icons/arrow-right.html" }}</a>
+    </section>
+  {{ end }}
+{{ end }}
