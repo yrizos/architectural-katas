@@ -52,25 +52,14 @@
   </section>
   <section>
     <h2 id="where-to-start">Where to Start{{ partial "anchor.html" "where-to-start" }}</h2>
-    <p>Each page builds on the one before it, so they read best in this order. If you only want to try a kata with your own team, the first three pages are enough:</p>
-    <ol class="phases" role="list">
-      {{ range slice
-        (dict "path" "/what-is-a-kata" "text" "See what a kata asks of you and read the conference brief that the next page works through. Notice the gaps it leaves, because they shape the design as much as the stated needs.")
-        (dict "path" "/taking-part-in-a-kata" "text" "Follow a team through that same brief, phase by phase, from setting priorities to defending the design. Read it from top to bottom, because each phase starts from what the last one left you with.")
-        (dict "path" "/toolkit" "text" "Learn the decision records, release timelines, and C4 diagrams a kata uses, and find more katas to practice on. Keep it open beside the Guide and jump to a tool whenever the Guide points you there.")
-        (dict "path" "/workshop" "text" "See how a kata runs in one hour at a tech event, with a team of people you just met. It shows what changes when the clock is shorter and the table mixes specialties.")
-        (dict "path" "/events" "text" "Find the tech events where we run the workshop, with the date, venue, and session details for each. It also explains why a tech event changes how a kata plays out.")
-      }}
-        {{ $text := .text }}
-        {{ with site.GetPage .path }}
-          {{ $page := . }}
-          {{ $icon := "" }}
-          {{ range site.Menus.main }}{{ $entry := . }}{{ with .Page }}{{ if eq .RelPermalink $page.RelPermalink }}{{ $icon = $entry.Params.icon }}{{ end }}{{ end }}{{ end }}
-          <li>{{ with $icon }}{{ partial (printf "icons/%s.html" .) }}{{ else }}{{ errorf "homepage: page %q has no menu icon" $page.Path }}{{ end }}<div><h3><a href="{{ $page.RelPermalink }}">{{ $page.Title }}</a></h3><p>{{ $text }}</p></div></li>
-        {{ else }}
-          {{ errorf "homepage: page %q not found" .path }}
-        {{ end }}
-      {{ end }}
-    </ol>
+    <p>A kata takes an hour or two. Start with the example brief for a conference platform, which the rest of the site works through.</p>
+    {{ with site.GetPage "/what-is-a-kata" }}
+      {{ $page := . }}
+      {{ $icon := "" }}
+      {{ range site.Menus.main }}{{ $entry := . }}{{ with .Page }}{{ if eq .RelPermalink $page.RelPermalink }}{{ $icon = $entry.Params.icon }}{{ end }}{{ end }}{{ end }}
+      <a class="page-link" href="{{ $page.RelPermalink }}">{{ with $icon }}{{ partial (printf "icons/%s.html" .) }}{{ else }}{{ errorf "homepage: page %q has no menu icon" $page.Path }}{{ end }}See what a kata asks of you{{ partial "icons/arrow-right.html" }}</a>
+    {{ else }}
+      {{ errorf "homepage: page %q not found" "/what-is-a-kata" }}
+    {{ end }}
   </section>
 {{ end }}
