@@ -9,9 +9,15 @@
       </ul>
     </nav>
     {{ with site.GetPage "/events" }}
-      {{ range first 1 (where .Pages "Date" "ge" now).ByDate }}
+      {{ $title := "Next Event" }}
+      {{ $events := first 1 (where .Pages "Date" "ge" now).ByDate }}
+      {{ if not $events }}
+        {{ $title = "Latest Event" }}
+        {{ $events = first 1 (where .Pages "Date" "lt" now).ByDate.Reverse }}
+      {{ end }}
+      {{ range $events }}
         <div role="group" aria-labelledby="footer-event-title">
-          <p class="footer__title" id="footer-event-title">Next Event</p>
+          <p class="footer__title" id="footer-event-title">{{ $title }}</p>
           <a class="footer__event" href="{{ .RelPermalink }}">
             <span class="footer__event-name">{{ .Title }}</span>
             <span class="footer__event-fact">
