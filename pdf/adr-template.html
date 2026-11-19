@@ -39,14 +39,19 @@
       font-family: "Inter", sans-serif;
     }
 
-    .sheet__url {
+    .sheet__footer {
       bottom: -28pt;
       color: var(--graphite);
       font-size: 7.5pt;
       left: 0;
+      margin: 0;
       position: fixed;
       right: 0;
       text-align: center;
+    }
+
+    .sheet__footer a {
+      color: inherit;
       text-decoration: none;
     }
 
@@ -211,6 +216,6 @@
     </li>
   </ol>
 
-  <a class="sheet__url" href="{{ base_url }}">{{ base_url }}</a>
+  <p class="sheet__footer">Guides and templates for architectural katas: <a href="{{ base_url }}">{{ base_url }}</a></p>
 </body>
 </html>
