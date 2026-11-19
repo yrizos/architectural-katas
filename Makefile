@@ -21,6 +21,7 @@ pdf: ## Build the template PDFs into static/toolkit/
 	mkdir -p static/toolkit
 	sed 's|{{ base_url }}|$(SITE_URL)|g' pdf/adr-template.html | weasyprint --custom-metadata -u pdf/ - static/toolkit/adr-template.pdf
 	sed 's|{{ base_url }}|$(SITE_URL)|g' pdf/timeline-template.html | weasyprint --custom-metadata -u pdf/ - static/toolkit/timeline-template.pdf
+	sed 's|{{ base_url }}|$(SITE_URL)|g' pdf/open-conf-booklet.html | weasyprint --custom-metadata -u pdf/ - static/events/architecture-kata-workshop-open-conf-26.pdf
 
 fix: ## Fix trailing whitespace, line endings and markdown
 	@status=0; \

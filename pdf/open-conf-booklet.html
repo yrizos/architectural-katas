@@ -1,0 +1,997 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Architectural Katas: Practicing System Design</title>
+  <meta name="author" content="Yannis Rizos">
+  <meta name="description" content="Workbook for the Architecture Kata workshop at Open Conf 2026, November 21, 2026.">
+  <meta name="keywords" content="architecture kata, system design, workshop, Open Conf">
+  <meta name="generator" content="WeasyPrint">
+  <meta name="dcterms.created" content="2026-11-19">
+  <meta name="dcterms.modified" content="2026-11-19">
+  <style>
+    @font-face {
+      font-family: "Inter";
+      font-style: normal;
+      font-weight: 400;
+      src: url("../static/fonts/inter.woff2") format("woff2");
+    }
+
+    @font-face {
+      font-family: "Inter";
+      font-style: normal;
+      font-weight: 600;
+      src: url("../static/fonts/inter.woff2") format("woff2");
+    }
+
+    @font-face {
+      font-family: "Inter";
+      font-style: normal;
+      font-weight: 700;
+      src: url("../static/fonts/inter.woff2") format("woff2");
+    }
+
+    @page {
+      size: A4;
+      margin: 40pt 40pt 44pt 40pt;
+
+      @bottom-left {
+        content: element(sheet-footer);
+        padding-bottom: 18pt;
+        vertical-align: bottom;
+      }
+
+      @bottom-right {
+        color: var(--graphite);
+        content: counter(page);
+        font-family: "Inter", sans-serif;
+        font-size: 7.5pt;
+        padding-bottom: 18pt;
+        vertical-align: bottom;
+      }
+    }
+
+    @page :first {
+      counter-reset: page 0;
+
+      @bottom-left {
+        content: none;
+      }
+
+      @bottom-right {
+        content: none;
+      }
+    }
+
+    :root {
+      --graphite: #242b2a;
+      --muted: #666d6b;
+      --accent: #d86b42;
+      --border: #e8e8e5;
+    }
+
+    body {
+      margin: 0;
+      color: var(--graphite);
+      font-family: "Inter", sans-serif;
+      font-size: 9pt;
+      line-height: 1.5;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    p {
+      margin: 0;
+    }
+
+    .page {
+      break-before: page;
+    }
+
+    .page:first-child {
+      break-before: auto;
+    }
+
+    .label {
+      color: var(--muted);
+      font-size: 7pt;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      line-height: 1.2;
+      text-transform: uppercase;
+    }
+
+    /* Running header */
+
+    .page__header {
+      display: flex;
+      align-items: flex-end;
+      border-bottom: 1pt solid var(--graphite);
+      padding-bottom: 8pt;
+    }
+
+    .page__title {
+      flex: none;
+      white-space: nowrap;
+      font-size: 17pt;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1;
+      margin: 0;
+    }
+
+    .page__event {
+      margin: 0 0 0 auto;
+    }
+
+    .page__team {
+      border-bottom: 0.75pt solid var(--graphite);
+      margin: 0 0 0 auto;
+      padding-bottom: 3pt;
+      width: 220pt;
+    }
+
+    /* Cover */
+
+    .cover__art {
+      display: block;
+      margin: 0 auto;
+      width: 78%;
+    }
+
+    .cover__heading {
+      border-bottom: 1pt solid var(--graphite);
+      margin-top: 18pt;
+      padding-bottom: 16pt;
+    }
+
+    .cover__title {
+      font-size: 34pt;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      line-height: 1;
+      margin: 0;
+    }
+
+    .cover__subtitle {
+      color: var(--muted);
+      font-size: 16pt;
+      letter-spacing: -0.015em;
+      line-height: 1.2;
+      margin-top: 6pt;
+    }
+
+    .cover__subtitle::before {
+      background: var(--accent);
+      content: "";
+      display: inline-block;
+      height: 2.5pt;
+      margin: 0 8pt 0.3em 0;
+      vertical-align: middle;
+      width: 22pt;
+    }
+
+    .cover__body {
+      display: flex;
+      margin-top: 20pt;
+    }
+
+    .facts {
+      flex: none;
+      margin: 0;
+      width: 150pt;
+    }
+
+    .facts dt {
+      margin-top: 20pt;
+    }
+
+    .facts dt:first-child {
+      margin-top: 0;
+    }
+
+    .facts dd {
+      margin: 3pt 0 0;
+    }
+
+    .facts__main {
+      font-size: 10.5pt;
+      font-weight: 600;
+      line-height: 1.3;
+    }
+
+    .facts__note {
+      color: var(--muted);
+      font-size: 8pt;
+    }
+
+    .facts__main + .facts__note {
+      margin-top: 2pt;
+    }
+
+    .facts__person + .facts__person {
+      margin-top: 18pt;
+    }
+
+    .facts__links {
+      list-style: none;
+      margin: 6pt 0 0;
+      padding: 0;
+      font-size: 8pt;
+    }
+
+    .facts__links li {
+      white-space: nowrap;
+    }
+
+    .facts__links li + li {
+      margin-top: 2pt;
+    }
+
+    .facts__links svg {
+      height: 8pt;
+      margin-right: 5pt;
+      vertical-align: -1pt;
+      width: 8pt;
+    }
+
+    .about {
+      border-left: 0.75pt solid var(--accent);
+      flex: 1;
+      padding-left: 20pt;
+    }
+
+    .about h2 {
+      font-size: 12pt;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin: 0 0 8pt;
+    }
+
+    .about__lead {
+      font-size: 11pt;
+      line-height: 1.45;
+    }
+
+    .about p + p {
+      margin-top: 8pt;
+    }
+
+    .about a {
+      border-bottom: 0.75pt solid var(--accent);
+    }
+
+    .resources {
+      border-top: 0.5pt solid var(--border);
+      margin-top: 10pt;
+      padding-top: 10pt;
+    }
+
+    .resource {
+      display: flex;
+    }
+
+    .resource + .resource {
+      margin-top: 10pt;
+    }
+
+    .resource__qr {
+      flex: none;
+      height: 68pt;
+      margin-right: 12pt;
+      width: 68pt;
+    }
+
+    .resource h3 {
+      font-size: 10pt;
+      font-weight: 700;
+      line-height: 1.3;
+      margin: 0 0 2pt;
+    }
+
+    .resource p {
+      font-size: 8.5pt;
+    }
+
+    .resource__text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .about .resource__url {
+      margin-top: auto;
+      padding-top: 4pt;
+    }
+
+    .resource__url {
+      font-size: 8pt;
+      font-weight: 600;
+    }
+
+    /* Row layout shared by the kata and the cheat sheet */
+
+    .row {
+      border-bottom: 0.5pt solid var(--border);
+      display: flex;
+      padding: 14pt 0;
+    }
+
+    .row:last-child {
+      border-bottom: 0;
+    }
+
+    .row__head {
+      flex: none;
+      font-size: 10.5pt;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      line-height: 1.3;
+      margin: 0;
+      width: 160pt;
+    }
+
+    .row__body {
+      flex: 1;
+    }
+
+    .row__body p + p {
+      margin-top: 6pt;
+    }
+
+    /* The kata */
+
+    .kata__title {
+      font-size: 26pt;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      margin: 26pt 0 6pt;
+    }
+
+    .users {
+      display: flex;
+    }
+
+    .users div {
+      flex: 1;
+    }
+
+    .users strong {
+      display: block;
+      font-size: 13pt;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+    }
+
+    .users span {
+      color: var(--muted);
+      font-size: 8pt;
+    }
+
+    .requirements {
+      counter-reset: req;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .requirements li {
+      counter-increment: req;
+      display: flex;
+    }
+
+    .requirements li + li {
+      border-top: 0.5pt solid var(--border);
+      margin-top: 10pt;
+      padding-top: 10pt;
+    }
+
+    .requirements li::before {
+      color: var(--accent);
+      content: counter(req);
+      flex: none;
+      font-size: 15pt;
+      font-weight: 700;
+      line-height: 1;
+      width: 22pt;
+    }
+
+    .requirements h3 {
+      font-size: 10pt;
+      font-weight: 700;
+      margin: 0 0 2pt;
+    }
+
+    /* Cheat sheet */
+
+    .steps {
+      counter-reset: step;
+    }
+
+    .step .row__head {
+      counter-increment: step;
+      display: flex;
+    }
+
+    .step .row__head::before {
+      color: var(--accent);
+      content: counter(step);
+      flex: none;
+      font-size: 15pt;
+      line-height: 0.95;
+      width: 18pt;
+    }
+
+    .columns {
+      column-gap: 5pt;
+      list-style: none;
+      margin: 0 0 -5pt;
+      padding: 0;
+    }
+
+    .columns--2 {
+      columns: 2;
+    }
+
+    .columns--3 {
+      columns: 3;
+    }
+
+    .columns li {
+      border: 0.75pt solid var(--accent);
+      border-radius: 3pt;
+      break-inside: avoid;
+      font-size: 8pt;
+      line-height: 1.2;
+      margin: 0 0 5pt;
+      padding: 3pt 7pt;
+    }
+
+    .phase strong {
+      display: block;
+      font-size: 9.5pt;
+    }
+
+    .phase + .phase {
+      margin-top: 6pt;
+    }
+
+    .phasing__note {
+      color: var(--muted);
+      font-style: italic;
+      margin-top: 8pt;
+    }
+
+    .rules {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .rules li {
+      display: flex;
+    }
+
+    .rules li + li {
+      margin-top: 4pt;
+    }
+
+    .rules li::before {
+      background: var(--accent);
+      content: "";
+      flex: none;
+      height: 4pt;
+      margin: 0.55em 8pt 0 0;
+      width: 4pt;
+    }
+
+    .repo {
+      align-items: center;
+      display: flex;
+      font-weight: 600;
+      margin-top: 6pt;
+    }
+
+    .repo svg {
+      height: 9pt;
+      margin-right: 5pt;
+      width: 9pt;
+    }
+
+    /* Worksheets */
+
+    .ws__heading {
+      font-size: 11pt;
+      font-weight: 700;
+      margin: 18pt 0 8pt;
+    }
+
+    .top3 {
+      display: flex;
+    }
+
+    .top3 div {
+      border: 1pt solid var(--graphite);
+      flex: 1;
+      font-size: 13pt;
+      font-weight: 700;
+      height: 40pt;
+      line-height: 1;
+      padding: 8pt 10pt;
+    }
+
+    .top3 div + div {
+      margin-left: 10pt;
+    }
+
+    .canvas {
+      border: 1pt solid var(--graphite);
+      height: 578pt;
+      margin-top: 10pt;
+    }
+
+    /* Decisions and timeline: same as pdf/adr-template.html and pdf/timeline-template.html */
+
+    @page decisions {
+      size: A4;
+      margin: 30pt 40pt 46pt 40pt;
+    }
+
+    @page timeline {
+      size: A4 landscape;
+      margin: 30pt 40pt 46pt 40pt;
+    }
+
+    .page--decisions {
+      page: decisions;
+    }
+
+    .page--timeline {
+      page: timeline;
+    }
+
+    .sheet__footer {
+      color: var(--graphite);
+      font-size: 7.5pt;
+      line-height: normal;
+      margin: 0;
+      position: running(sheet-footer);
+      text-align: left;
+    }
+
+    .sheet__footer a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .sheet__header {
+      display: flex;
+      align-items: flex-end;
+    }
+
+    .sheet__title {
+      font-family: "Inter", sans-serif;
+      font-size: 19pt;
+      font-weight: 700;
+      line-height: 1;
+      margin: 0;
+    }
+
+    .sheet__team {
+      border-bottom: 0.75pt solid var(--graphite);
+      font-size: 8pt;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      line-height: 1.2;
+      margin: 0 0 0 auto;
+      padding-bottom: 4pt;
+      text-transform: uppercase;
+      width: 260pt;
+    }
+
+    .decisions {
+      list-style: none;
+      margin: 16pt 0 0;
+      padding: 0;
+    }
+
+    .decision {
+      border: 1pt solid var(--graphite);
+      display: flex;
+      height: 232pt;
+      margin-top: 14pt;
+    }
+
+    .decision:first-child {
+      margin-top: 0;
+    }
+
+    .decision__number {
+      border-right: 1pt solid var(--graphite);
+      box-sizing: border-box;
+      flex: none;
+      font-family: "Inter", sans-serif;
+      font-size: 14pt;
+      font-weight: 700;
+      line-height: 1;
+      padding: 12pt 0 0 13pt;
+      width: 34pt;
+    }
+
+    .decision__fields {
+      flex: 1;
+      padding: 12pt 16pt;
+    }
+
+    .decision__field {
+      height: 69pt;
+    }
+
+    .decision__field + .decision__field {
+      border-top: 0.5pt solid var(--graphite);
+      height: 59pt;
+      padding-top: 10pt;
+    }
+
+    .decision__field.decision__pair {
+      display: flex;
+      height: 69pt;
+      padding-top: 0;
+    }
+
+    .decision__alt {
+      flex: 1;
+      padding-top: 10pt;
+    }
+
+    .decision__alt + .decision__alt {
+      border-left: 0.5pt solid var(--graphite);
+      padding-left: 16pt;
+    }
+
+    .decision__label {
+      font-size: 7.5pt;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      line-height: 1.2;
+      margin: 0;
+      text-transform: uppercase;
+    }
+
+    .timeline {
+      border: 1pt solid var(--graphite);
+      border-collapse: collapse;
+      margin: 16pt 0 0;
+      table-layout: fixed;
+      width: 100%;
+    }
+
+    .timeline th,
+    .timeline td {
+      border: 0.5pt solid var(--graphite);
+      padding: 10pt 12pt;
+    }
+
+    .timeline th {
+      font-size: 8pt;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      line-height: 1.2;
+      text-align: left;
+      text-transform: uppercase;
+    }
+
+    .timeline__due {
+      height: 56pt;
+    }
+
+    .timeline__due td {
+      font-size: 7pt;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      line-height: 1.2;
+      text-transform: uppercase;
+      text-align: right;
+      vertical-align: top;
+    }
+
+    .timeline__plan td {
+      height: 374pt;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Cover -->
+  <section class="page cover">
+    <p class="sheet__footer"><a href="{{ base_url }}">{{ base_url }}</a></p>
+    <img class="cover__art" src="../assets/images/whiteboard-workshop.png" alt="Four people gather around a table covered in system diagrams.">
+
+    <div class="cover__heading">
+      <h1 class="cover__title">Architectural Katas</h1>
+      <p class="cover__subtitle">Practicing System Design</p>
+    </div>
+
+    <div class="cover__body">
+      <dl class="facts">
+        <dt class="label">Venue</dt>
+        <dd>
+          <p class="facts__main">Open Conf 2026</p>
+          <p class="facts__note">Dais Events Center, Athens</p>
+          <p class="facts__note"><a href="https://open-conf.gr/">open-conf.gr</a></p>
+        </dd>
+
+        <dt class="label">Date</dt>
+        <dd>
+          <p class="facts__main">November 21, 2026</p>
+        </dd>
+
+        <dt class="label">Facilitators</dt>
+        <dd>
+          <div class="facts__person">
+            <p class="facts__main">Aggelos Bellos</p>
+            <p class="facts__note">Staff Engineer, Epignosis</p>
+            <ul class="facts__links">
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#d86b42" transform="scale(1.5)" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/></svg><a href="https://github.com/bellangelo">/bellangelo</a></li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#d86b42" transform="scale(1.5)" d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z"/></svg><a href="https://www.linkedin.com/in/aggelos-bellos/">/in/aggelos-bellos</a></li>
+            </ul>
+          </div>
+          <div class="facts__person">
+            <p class="facts__main">Yannis Rizos</p>
+            <p class="facts__note">Director of Engineering, Epignosis</p>
+            <ul class="facts__links">
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#d86b42" transform="scale(1.5)" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/></svg><a href="https://github.com/yrizos">/yrizos</a></li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#d86b42" transform="scale(1.5)" d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z"/></svg><a href="https://www.linkedin.com/in/yrizos/">/in/yrizos</a></li>
+            </ul>
+          </div>
+        </dd>
+      </dl>
+
+      <div class="about">
+        <h2>About the Workshop</h2>
+        <p class="about__lead">Most engineers design a system from scratch only a few times in their career. Ted Neward created Architectural Katas so they could do it far more often.</p>
+        <p>Each team gets a realistic brief, makes the design calls and defends them when the room pushes back. When another team solves the same problem differently, you start to see the assumptions you didn’t know you were making.</p>
+        <p>We run katas at Epignosis to give our engineers that experience away from production. Whether you’re a developer new to architecture, a tech lead who wants your decisions challenged or an architect after more reps, you’ll get something out of today.</p>
+        <div class="resources">
+          <div class="resource">
+            <svg class="resource__qr" aria-hidden="true" viewBox="0 0 29 29" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg"> <g> <path stroke="#242b2a" transform="translate(0,0.5)" d="M0,0h1M1,0h1M2,0h1M3,0h1M4,0h1M5,0h1M6,0h1M9,0h1M14,0h1M18,0h1M22,0h1M23,0h1M24,0h1M25,0h1M26,0h1M27,0h1M28,0h1M0,1h1M6,1h1M8,1h1M9,1h1M11,1h1M13,1h1M14,1h1M16,1h1M17,1h1M18,1h1M20,1h1M22,1h1M28,1h1M0,2h1M2,2h1M3,2h1M4,2h1M6,2h1M8,2h1M9,2h1M10,2h1M11,2h1M14,2h1M20,2h1M22,2h1M24,2h1M25,2h1M26,2h1M28,2h1M0,3h1M2,3h1M3,3h1M4,3h1M6,3h1M8,3h1M11,3h1M13,3h1M16,3h1M17,3h1M19,3h1M20,3h1M22,3h1M24,3h1M25,3h1M26,3h1M28,3h1M0,4h1M2,4h1M3,4h1M4,4h1M6,4h1M9,4h1M10,4h1M12,4h1M13,4h1M16,4h1M18,4h1M19,4h1M22,4h1M24,4h1M25,4h1M26,4h1M28,4h1M0,5h1M6,5h1M9,5h1M14,5h1M18,5h1M22,5h1M28,5h1M0,6h1M1,6h1M2,6h1M3,6h1M4,6h1M5,6h1M6,6h1M8,6h1M10,6h1M12,6h1M14,6h1M16,6h1M18,6h1M20,6h1M22,6h1M23,6h1M24,6h1M25,6h1M26,6h1M27,6h1M28,6h1M8,7h1M10,7h1M12,7h1M14,7h1M15,7h1M16,7h1M20,7h1M0,8h1M6,8h1M8,8h1M10,8h1M13,8h1M17,8h1M19,8h1M21,8h1M22,8h1M25,8h1M26,8h1M27,8h1M2,9h1M3,9h1M5,9h1M8,9h1M9,9h1M12,9h1M13,9h1M14,9h1M15,9h1M16,9h1M19,9h1M23,9h1M24,9h1M26,9h1M27,9h1M2,10h1M4,10h1M6,10h1M7,10h1M9,10h1M10,10h1M11,10h1M13,10h1M14,10h1M15,10h1M16,10h1M20,10h1M21,10h1M22,10h1M24,10h1M3,11h1M5,11h1M8,11h1M11,11h1M14,11h1M15,11h1M18,11h1M21,11h1M25,11h1M5,12h1M6,12h1M7,12h1M8,12h1M9,12h1M10,12h1M13,12h1M14,12h1M15,12h1M19,12h1M20,12h1M22,12h1M23,12h1M28,12h1M1,13h1M2,13h1M4,13h1M5,13h1M8,13h1M13,13h1M15,13h1M16,13h1M18,13h1M19,13h1M20,13h1M21,13h1M22,13h1M23,13h1M24,13h1M27,13h1M28,13h1M2,14h1M4,14h1M6,14h1M7,14h1M9,14h1M10,14h1M12,14h1M13,14h1M14,14h1M15,14h1M16,14h1M18,14h1M23,14h1M25,14h1M26,14h1M1,15h1M2,15h1M3,15h1M7,15h1M9,15h1M10,15h1M12,15h1M13,15h1M14,15h1M15,15h1M19,15h1M20,15h1M22,15h1M24,15h1M26,15h1M28,15h1M1,16h1M3,16h1M4,16h1M6,16h1M9,16h1M12,16h1M14,16h1M17,16h1M20,16h1M25,16h1M26,16h1M0,17h1M2,17h1M4,17h1M5,17h1M10,17h1M11,17h1M15,17h1M16,17h1M19,17h1M20,17h1M22,17h1M23,17h1M24,17h1M26,17h1M27,17h1M28,17h1M0,18h1M1,18h1M2,18h1M3,18h1M4,18h1M6,18h1M8,18h1M9,18h1M10,18h1M12,18h1M13,18h1M14,18h1M15,18h1M16,18h1M18,18h1M19,18h1M22,18h1M23,18h1M25,18h1M28,18h1M0,19h1M3,19h1M4,19h1M9,19h1M10,19h1M12,19h1M14,19h1M15,19h1M20,19h1M21,19h1M24,19h1M0,20h1M4,20h1M6,20h1M8,20h1M9,20h1M16,20h1M17,20h1M18,20h1M20,20h1M21,20h1M22,20h1M23,20h1M24,20h1M26,20h1M27,20h1M28,20h1M8,21h1M9,21h1M13,21h1M15,21h1M17,21h1M18,21h1M19,21h1M20,21h1M24,21h1M25,21h1M0,22h1M1,22h1M2,22h1M3,22h1M4,22h1M5,22h1M6,22h1M10,22h1M11,22h1M13,22h1M14,22h1M15,22h1M16,22h1M17,22h1M19,22h1M20,22h1M22,22h1M24,22h1M25,22h1M26,22h1M0,23h1M6,23h1M12,23h1M13,23h1M18,23h1M19,23h1M20,23h1M24,23h1M27,23h1M28,23h1M0,24h1M2,24h1M3,24h1M4,24h1M6,24h1M9,24h1M10,24h1M13,24h1M16,24h1M19,24h1M20,24h1M21,24h1M22,24h1M23,24h1M24,24h1M25,24h1M28,24h1M0,25h1M2,25h1M3,25h1M4,25h1M6,25h1M11,25h1M15,25h1M16,25h1M17,25h1M21,25h1M23,25h1M25,25h1M26,25h1M28,25h1M0,26h1M2,26h1M3,26h1M4,26h1M6,26h1M9,26h1M10,26h1M13,26h1M14,26h1M15,26h1M18,26h1M19,26h1M21,26h1M22,26h1M23,26h1M24,26h1M25,26h1M26,26h1M27,26h1M0,27h1M6,27h1M9,27h1M10,27h1M11,27h1M12,27h1M15,27h1M16,27h1M19,27h1M22,27h1M23,27h1M24,27h1M25,27h1M26,27h1M28,27h1M0,28h1M1,28h1M2,28h1M3,28h1M4,28h1M5,28h1M6,28h1M8,28h1M10,28h1M11,28h1M12,28h1M15,28h1M16,28h1M17,28h1M19,28h1M22,28h1M24,28h1M26,28h1"/> </g> </svg>
+            <div class="resource__text">
+              <h3>Guides and Templates</h3>
+              <p>Kata guides, plus these worksheets as separate PDFs.</p>
+              <p class="resource__url"><a href="{{ base_url }}">architectural-katas.yrizos.com</a></p>
+            </div>
+          </div>
+          <div class="resource">
+            <svg class="resource__qr" aria-hidden="true" viewBox="0 0 37 37" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg"> <g> <path stroke="#242b2a" transform="translate(0,0.5)" d="M0,0h1M1,0h1M2,0h1M3,0h1M4,0h1M5,0h1M6,0h1M9,0h1M10,0h1M14,0h1M15,0h1M18,0h1M20,0h1M21,0h1M22,0h1M24,0h1M28,0h1M30,0h1M31,0h1M32,0h1M33,0h1M34,0h1M35,0h1M36,0h1M0,1h1M6,1h1M10,1h1M11,1h1M14,1h1M15,1h1M16,1h1M17,1h1M18,1h1M19,1h1M21,1h1M22,1h1M25,1h1M27,1h1M30,1h1M36,1h1M0,2h1M2,2h1M3,2h1M4,2h1M6,2h1M8,2h1M12,2h1M13,2h1M15,2h1M19,2h1M20,2h1M21,2h1M24,2h1M26,2h1M27,2h1M30,2h1M32,2h1M33,2h1M34,2h1M36,2h1M0,3h1M2,3h1M3,3h1M4,3h1M6,3h1M8,3h1M9,3h1M10,3h1M11,3h1M13,3h1M14,3h1M15,3h1M16,3h1M17,3h1M18,3h1M19,3h1M20,3h1M22,3h1M25,3h1M26,3h1M30,3h1M32,3h1M33,3h1M34,3h1M36,3h1M0,4h1M2,4h1M3,4h1M4,4h1M6,4h1M8,4h1M9,4h1M12,4h1M13,4h1M15,4h1M16,4h1M18,4h1M19,4h1M20,4h1M23,4h1M26,4h1M28,4h1M30,4h1M32,4h1M33,4h1M34,4h1M36,4h1M0,5h1M6,5h1M8,5h1M9,5h1M11,5h1M14,5h1M15,5h1M18,5h1M20,5h1M22,5h1M26,5h1M27,5h1M28,5h1M30,5h1M36,5h1M0,6h1M1,6h1M2,6h1M3,6h1M4,6h1M5,6h1M6,6h1M8,6h1M10,6h1M12,6h1M14,6h1M16,6h1M18,6h1M20,6h1M22,6h1M24,6h1M26,6h1M28,6h1M30,6h1M31,6h1M32,6h1M33,6h1M34,6h1M35,6h1M36,6h1M8,7h1M9,7h1M10,7h1M13,7h1M15,7h1M16,7h1M19,7h1M20,7h1M24,7h1M26,7h1M27,7h1M28,7h1M0,8h1M2,8h1M3,8h1M4,8h1M5,8h1M6,8h1M9,8h1M15,8h1M18,8h1M19,8h1M20,8h1M21,8h1M22,8h1M24,8h1M25,8h1M26,8h1M27,8h1M30,8h1M31,8h1M32,8h1M33,8h1M34,8h1M1,9h1M2,9h1M3,9h1M4,9h1M7,9h1M8,9h1M9,9h1M10,9h1M15,9h1M16,9h1M17,9h1M21,9h1M28,9h1M31,9h1M33,9h1M34,9h1M35,9h1M1,10h1M3,10h1M6,10h1M7,10h1M8,10h1M9,10h1M11,10h1M12,10h1M17,10h1M20,10h1M21,10h1M23,10h1M24,10h1M26,10h1M27,10h1M28,10h1M30,10h1M31,10h1M32,10h1M35,10h1M36,10h1M1,11h1M2,11h1M8,11h1M10,11h1M11,11h1M13,11h1M16,11h1M18,11h1M21,11h1M22,11h1M23,11h1M29,11h1M30,11h1M36,11h1M1,12h1M2,12h1M3,12h1M5,12h1M6,12h1M8,12h1M10,12h1M11,12h1M13,12h1M17,12h1M22,12h1M23,12h1M24,12h1M25,12h1M26,12h1M27,12h1M29,12h1M30,12h1M32,12h1M34,12h1M35,12h1M36,12h1M0,13h1M2,13h1M3,13h1M4,13h1M7,13h1M8,13h1M9,13h1M11,13h1M14,13h1M16,13h1M17,13h1M18,13h1M19,13h1M20,13h1M21,13h1M22,13h1M23,13h1M26,13h1M28,13h1M29,13h1M31,13h1M0,14h1M1,14h1M6,14h1M7,14h1M11,14h1M12,14h1M15,14h1M16,14h1M17,14h1M21,14h1M26,14h1M27,14h1M31,14h1M32,14h1M33,14h1M35,14h1M36,14h1M1,15h1M4,15h1M11,15h1M12,15h1M13,15h1M16,15h1M17,15h1M18,15h1M19,15h1M21,15h1M22,15h1M23,15h1M24,15h1M26,15h1M27,15h1M28,15h1M30,15h1M31,15h1M32,15h1M35,15h1M1,16h1M6,16h1M8,16h1M12,16h1M13,16h1M14,16h1M16,16h1M19,16h1M21,16h1M23,16h1M24,16h1M25,16h1M26,16h1M27,16h1M28,16h1M29,16h1M30,16h1M32,16h1M34,16h1M0,17h1M1,17h1M2,17h1M5,17h1M9,17h1M12,17h1M14,17h1M15,17h1M18,17h1M20,17h1M21,17h1M22,17h1M24,17h1M26,17h1M28,17h1M31,17h1M35,17h1M1,18h1M6,18h1M7,18h1M8,18h1M9,18h1M11,18h1M13,18h1M14,18h1M15,18h1M16,18h1M17,18h1M18,18h1M19,18h1M24,18h1M26,18h1M27,18h1M28,18h1M30,18h1M31,18h1M33,18h1M35,18h1M36,18h1M0,19h1M5,19h1M10,19h1M11,19h1M12,19h1M14,19h1M15,19h1M19,19h1M20,19h1M21,19h1M22,19h1M23,19h1M26,19h1M27,19h1M28,19h1M31,19h1M32,19h1M33,19h1M36,19h1M0,20h1M1,20h1M4,20h1M6,20h1M8,20h1M11,20h1M12,20h1M14,20h1M15,20h1M17,20h1M19,20h1M20,20h1M24,20h1M25,20h1M26,20h1M28,20h1M29,20h1M30,20h1M32,20h1M33,20h1M34,20h1M3,21h1M4,21h1M7,21h1M8,21h1M9,21h1M11,21h1M16,21h1M18,21h1M19,21h1M20,21h1M23,21h1M26,21h1M28,21h1M33,21h1M1,22h1M6,22h1M9,22h1M11,22h1M15,22h1M18,22h1M20,22h1M22,22h1M26,22h1M27,22h1M28,22h1M29,22h1M30,22h1M31,22h1M32,22h1M33,22h1M35,22h1M36,22h1M1,23h1M3,23h1M4,23h1M7,23h1M8,23h1M9,23h1M10,23h1M13,23h1M15,23h1M16,23h1M27,23h1M29,23h1M30,23h1M31,23h1M32,23h1M36,23h1M0,24h1M1,24h1M5,24h1M6,24h1M7,24h1M8,24h1M9,24h1M11,24h1M12,24h1M13,24h1M14,24h1M15,24h1M18,24h1M19,24h1M20,24h1M21,24h1M22,24h1M23,24h1M24,24h1M25,24h1M29,24h1M30,24h1M32,24h1M34,24h1M35,24h1M0,25h1M2,25h1M3,25h1M7,25h1M9,25h1M11,25h1M12,25h1M13,25h1M14,25h1M15,25h1M16,25h1M17,25h1M23,25h1M34,25h1M0,26h1M3,26h1M6,26h1M7,26h1M8,26h1M10,26h1M11,26h1M12,26h1M13,26h1M14,26h1M17,26h1M20,26h1M22,26h1M24,26h1M25,26h1M27,26h1M30,26h1M34,26h1M35,26h1M36,26h1M0,27h1M2,27h1M4,27h1M7,27h1M10,27h1M12,27h1M14,27h1M16,27h1M21,27h1M27,27h1M28,27h1M29,27h1M31,27h1M35,27h1M36,27h1M0,28h1M5,28h1M6,28h1M7,28h1M11,28h1M14,28h1M16,28h1M17,28h1M22,28h1M24,28h1M25,28h1M26,28h1M27,28h1M28,28h1M29,28h1M30,28h1M31,28h1M32,28h1M33,28h1M34,28h1M36,28h1M8,29h1M9,29h1M11,29h1M12,29h1M14,29h1M16,29h1M17,29h1M18,29h1M19,29h1M20,29h1M21,29h1M22,29h1M23,29h1M24,29h1M25,29h1M27,29h1M28,29h1M32,29h1M33,29h1M0,30h1M1,30h1M2,30h1M3,30h1M4,30h1M5,30h1M6,30h1M10,30h1M11,30h1M15,30h1M16,30h1M17,30h1M21,30h1M24,30h1M25,30h1M26,30h1M28,30h1M30,30h1M32,30h1M34,30h1M35,30h1M36,30h1M0,31h1M6,31h1M8,31h1M9,31h1M10,31h1M11,31h1M13,31h1M14,31h1M16,31h1M17,31h1M18,31h1M19,31h1M21,31h1M22,31h1M28,31h1M32,31h1M33,31h1M35,31h1M0,32h1M2,32h1M3,32h1M4,32h1M6,32h1M8,32h1M12,32h1M14,32h1M16,32h1M21,32h1M23,32h1M24,32h1M25,32h1M26,32h1M27,32h1M28,32h1M29,32h1M30,32h1M31,32h1M32,32h1M34,32h1M35,32h1M0,33h1M2,33h1M3,33h1M4,33h1M6,33h1M8,33h1M9,33h1M10,33h1M12,33h1M14,33h1M15,33h1M17,33h1M18,33h1M20,33h1M22,33h1M23,33h1M26,33h1M27,33h1M29,33h1M30,33h1M32,33h1M33,33h1M36,33h1M0,34h1M2,34h1M3,34h1M4,34h1M6,34h1M8,34h1M9,34h1M10,34h1M13,34h1M15,34h1M16,34h1M19,34h1M21,34h1M24,34h1M27,34h1M28,34h1M34,34h1M35,34h1M36,34h1M0,35h1M6,35h1M9,35h1M10,35h1M12,35h1M13,35h1M15,35h1M19,35h1M20,35h1M21,35h1M22,35h1M24,35h1M26,35h1M28,35h1M30,35h1M32,35h1M33,35h1M36,35h1M0,36h1M1,36h1M2,36h1M3,36h1M4,36h1M5,36h1M6,36h1M8,36h1M10,36h1M14,36h1M15,36h1M17,36h1M18,36h1M19,36h1M20,36h1M22,36h1M24,36h1M25,36h1M26,36h1M29,36h1M30,36h1M32,36h1M34,36h1M35,36h1M36,36h1"/> </g> </svg>
+            <div class="resource__text">
+              <h3>C4 Cheat Sheet</h3>
+              <p>Diagram software architecture at four levels of zoom.</p>
+              <p class="resource__url"><a href="{{ base_url }}toolkit/c4-cheat-sheet.pdf">architectural-katas.yrizos.com/toolkit/c4-cheat-sheet.pdf</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The kata -->
+  <section class="page">
+    <header class="page__header">
+      <h2 class="page__title">The Kata</h2>
+      <p class="page__event label">Open Conf 2026</p>
+    </header>
+
+    <h1 class="kata__title">The Show Must Go On!</h1>
+
+    <div class="row">
+      <h3 class="row__head">Description</h3>
+      <div class="row__body">
+        <p>A team of organizers runs a large annual technology conference, bringing together thousands of developers, technology professionals, and industry experts.</p>
+        <p>Each year features a new lineup of speakers, talks, and activities. The organizers need a platform to manage the conference, keep attendees informed, and support interactions between speakers and participants.</p>
+        <p>Early-bird ticket sales open on February 21, 2027.</p>
+        <p>The platform must also maintain an archive of previous editions, allowing visitors to explore past schedules, speakers, and presentations.</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <h3 class="row__head">Users</h3>
+      <div class="row__body users">
+        <div><strong>Thousands</strong><span>of attendees</span></div>
+        <div><strong>Hundreds</strong><span>of speakers</span></div>
+        <div><strong>Dozens</strong><span>of organizers and event staff</span></div>
+      </div>
+    </div>
+
+    <div class="row">
+      <h3 class="row__head">Requirements</h3>
+      <ol class="row__body requirements">
+        <li><div><h3>Conference Management</h3><p>Organizers and speakers can manage talks, schedules, room assignments, and conference information.</p></div></li>
+        <li><div><h3>Attendee Engagement</h3><p>Attendees can explore the program, interact with talks, provide feedback, and receive important updates.</p></div></li>
+        <li><div><h3>Conference Archive</h3><p>Visitors can explore previous editions, including their programs, speakers, and presentations.</p></div></li>
+        <li><div><h3>Mobile Accessibility</h3><p>All capabilities must be usable on mobile devices, including during the conference.</p></div></li>
+        <li><div><h3>Reliability</h3><p>The platform must remain useful during periods of high demand and unreliable venue connectivity.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Cheat sheet -->
+  <section class="page">
+    <header class="page__header">
+      <h2 class="page__title">Cheat Sheet</h2>
+      <p class="page__event label">Open Conf 2026</p>
+    </header>
+
+    <div class="steps">
+      <div class="row step">
+        <h3 class="row__head">Understand and Prioritize</h3>
+        <p class="row__body">List the actors and what they do, write down assumptions, pick the top three characteristics, and decide what must ship first and what can wait.</p>
+      </div>
+      <div class="row step">
+        <h3 class="row__head">Design</h3>
+        <p class="row__body">Group actions into components, decide what to build and what to buy, choose a style, draw the architecture, and note each key decision on the diagram with the trade‑off it accepts.</p>
+      </div>
+      <div class="row step">
+        <h3 class="row__head">Share</h3>
+        <p class="row__body">Present your top characteristics, diagram, release plan, and one key trade‑off.</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <h3 class="row__head">Architectural Characteristics</h3>
+      <ul class="row__body columns columns--2">
+        <li>Availability</li><li>Scalability</li><li>Elasticity</li><li>Performance</li><li>Security</li><li>Maintainability</li><li>Testability</li><li>Deployability</li><li>Interoperability</li><li>Cost</li>
+      </ul>
+    </div>
+
+    <div class="row">
+      <h3 class="row__head">Architectural Styles</h3>
+      <ul class="row__body columns columns--2">
+        <li>Layered</li><li>Modular monolith</li><li>Service-based</li><li>Microservices</li><li>Event-driven</li><li>Microkernel</li>
+      </ul>
+    </div>
+
+    <div class="row">
+      <h3 class="row__head">Product Decisions</h3>
+      <ul class="row__body columns columns--2">
+        <li>Build or buy</li><li>Off-the-shelf, open source, or custom</li><li>Managed service or self-hosted</li><li>Extend an existing system or replace it</li>
+      </ul>
+    </div>
+
+    <div class="row">
+      <h3 class="row__head">Phasing</h3>
+      <div class="row__body">
+        <div class="phase"><strong>First release</strong>The smallest scope that delivers value to the main actor.</div>
+        <div class="phase"><strong>Later releases</strong>Everything else, ordered by value.</div>
+        <p class="phasing__note">Time is a factor. The date you must ship by limits what fits in the first release.</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <h3 class="row__head">Ground Rules</h3>
+      <ul class="row__body rules">
+        <li>There is no correct answer, only trade‑offs.</li>
+        <li>No technology names until the shape is clear.</li>
+        <li>An unstated assumption is a hidden decision.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Worksheet: characteristics and features -->
+  <section class="page">
+    <header class="page__header">
+      <h2 class="page__title">Architecture Kata</h2>
+      <p class="page__team label">Team</p>
+    </header>
+
+    <h3 class="ws__heading">Top Three Characteristics</h3>
+    <div class="top3"><div>1</div><div>2</div><div>3</div></div>
+
+    <div class="canvas"></div>
+  </section>
+
+  <!-- Worksheet: decisions -->
+  <section class="page page--decisions">
+    <header class="sheet__header">
+      <h2 class="sheet__title">Decisions</h2>
+      <p class="sheet__team">Team</p>
+    </header>
+
+    <ol class="decisions">
+    <li class="decision">
+      <div class="decision__number">1</div>
+      <div class="decision__fields">
+        <div class="decision__field">
+          <p class="decision__label">Decision</p>
+        </div>
+        <div class="decision__field decision__pair">
+          <div class="decision__alt">
+            <p class="decision__label">Alternative A</p>
+          </div>
+          <div class="decision__alt">
+            <p class="decision__label">Alternative B</p>
+          </div>
+        </div>
+        <div class="decision__field">
+          <p class="decision__label">Key trade-off</p>
+        </div>
+      </div>
+    </li>
+    <li class="decision">
+      <div class="decision__number">2</div>
+      <div class="decision__fields">
+        <div class="decision__field">
+          <p class="decision__label">Decision</p>
+        </div>
+        <div class="decision__field decision__pair">
+          <div class="decision__alt">
+            <p class="decision__label">Alternative A</p>
+          </div>
+          <div class="decision__alt">
+            <p class="decision__label">Alternative B</p>
+          </div>
+        </div>
+        <div class="decision__field">
+          <p class="decision__label">Key trade-off</p>
+        </div>
+      </div>
+    </li>
+    <li class="decision">
+      <div class="decision__number">3</div>
+      <div class="decision__fields">
+        <div class="decision__field">
+          <p class="decision__label">Decision</p>
+        </div>
+        <div class="decision__field decision__pair">
+          <div class="decision__alt">
+            <p class="decision__label">Alternative A</p>
+          </div>
+          <div class="decision__alt">
+            <p class="decision__label">Alternative B</p>
+          </div>
+        </div>
+        <div class="decision__field">
+          <p class="decision__label">Key trade-off</p>
+        </div>
+      </div>
+    </li>
+    </ol>
+  </section>
+
+  <!-- Worksheet: timeline -->
+  <section class="page page--timeline">
+    <header class="sheet__header">
+      <h2 class="sheet__title">Timeline</h2>
+      <p class="sheet__team">Team</p>
+    </header>
+
+    <table class="timeline">
+      <thead>
+        <tr>
+          <th scope="col">MVP</th>
+          <th scope="col">Phase 1</th>
+          <th scope="col">Phase 2</th>
+          <th scope="col">Phase 3</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="timeline__due">
+          <td>Done by</td>
+          <td>Done by</td>
+          <td>Done by</td>
+          <td>Done by</td>
+        </tr>
+        <tr class="timeline__plan">
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+</body>
+</html>

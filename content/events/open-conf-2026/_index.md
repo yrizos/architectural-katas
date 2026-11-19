@@ -10,6 +10,7 @@ venue: Dais Events Center
 city: Athens
 language: Greek and English
 level: Intermediate
+booklet: /events/architecture-kata-workshop-open-conf-26.pdf
 room_summary: AI-native engineering leads this year's program, for an audience of more than 1,000 from across the Greek software sector.
 facilitators:
   - Aggelos Bellos
