@@ -1,92 +1,71 @@
 {{ define "main" }}
-  <h1>Practice System Design as a Team</h1>
-  <p>Picture a design project before anything is decided. A few people stand at a whiteboard with a page of requirements. Each would start drawing something different, because each has reasons the others haven't heard.</p>
-  {{ with resources.Get "images/whiteboard-workshop.png" }}
-    {{ $img := . }}
-    {{ $srcset := slice }}
-    {{ range slice 480 893 1440 }}
-      {{ $srcset = $srcset | append (printf "%s %dw" ($img.Resize (printf "%dx" .)).RelPermalink .) }}
+  <div class="hero">
+    <h1>Practice System Design as a Team</h1>
+    <div class="hero__text">
+      <p>Code gets cheaper every day, and an AI agent can now write a working feature in seconds. Every feature still carries design decisions, and making them on purpose takes practice.</p>
+    </div>
+    {{ with resources.Get "images/whiteboard-workshop.png" }}
+      {{ $img := .Crop "1533x720 top" }}
+      {{ $srcset := slice }}
+      {{ range slice 480 992 1440 }}
+        {{ $srcset = $srcset | append (printf "%s %dw" ($img.Resize (printf "%dx" .)).RelPermalink .) }}
+      {{ end }}
+      {{ $default := $img.Resize "992x" }}
+      <img src="{{ $default.RelPermalink }}" srcset="{{ delimit $srcset ", " }}" sizes="(min-width: 842px) 794px, calc(100vw - 48px)" width="{{ $default.Width }}" height="{{ $default.Height }}" alt="Four people gather around a table covered in system diagrams.">
     {{ end }}
-    {{ $default := .Resize "893x" }}
-    <img src="{{ $default.RelPermalink }}" srcset="{{ delimit $srcset ", " }}" sizes="(min-width: 941px) 893px, calc(100vw - 48px)" width="{{ $default.Width }}" height="{{ $default.Height }}" alt="Four people gather around a whiteboard covered in system diagrams.">
-  {{ end }}
-  <p>An <a href="/what-is-a-kata/">architectural kata</a> gives you that situation to practice on. You design a system together, and because nothing ships or breaks, you can try ideas and change your mind freely.</p>
-  <p>Working with others is the point, because a design nobody questions teaches you little. You start by reading the problem and end by testing your design against a surprise. You finish with a design, the reasons behind it, and a list of what you still don't know. There is no correct answer to find.</p>
+    <div class="hero__text">
+      <p>In an architectural kata, your team agrees on what matters, sketches a design, and backs every choice with a reason the others can follow. You leave with the design, the reasons behind it, and a list of what you still don't know.</p>
+    </div>
+  </div>
   <section>
-    <h2 id="getting-started">Getting Started{{ partial "anchor.html" "getting-started" }}</h2>
-    <p>You'll need a team, which usually means three to five people, plus paper or a whiteboard and an hour or two. The same steps work alone, and there's no code to write. When you're ready, you can <a href="/taking-part-in-a-kata/">work through the same brief in more depth</a>, phase by phase.</p>
+    <h2 id="why-design-takes-practice">Why Design Takes Practice{{ partial "anchor.html" "why-design-takes-practice" }}</h2>
+    <p>Most developers design a system from scratch only a few times in their career. Judgment about trade-offs grows with repetition, and a kata gives you far more of it than real work does:</p>
+    <table class="comparison">
+      <thead>
+        <tr><td></td><th scope="col">On a Real Project</th><th scope="col">In a Kata</th></tr>
+      </thead>
+      <tbody>
+        <tr><th scope="row">How often you decide</th><td>A few times in a career</td><td>Many times in one sitting</td></tr>
+        <tr><th scope="row">When the consequences show up</th><td>Months or years later</td><td>Within minutes, when someone asks why</td></tr>
+        <tr><th scope="row">What a wrong choice breaks</th><td>A system people rely on</td><td>Nothing, because nothing ships</td></tr>
+      </tbody>
+    </table>
+    <p>An architectural kata is a practice exercise where your team designs a system that doesn't exist yet from a short brief, with no code to write and no correct answer. You can try an idea, see what it costs, and change your mind as often as the discussion needs.</p>
+  </section>
+  <section>
+    <h2 id="why-ai-makes-practice-necessary">Why AI Makes Practice Necessary{{ partial "anchor.html" "why-ai-makes-practice-necessary" }}</h2>
+    <p>Writing code used to be slow enough that design decisions came up along the way. Now an AI agent can write a working feature in seconds, and that feature answers questions nobody put to it:</p>
     <div class="callout">
       <ul>
-        <li>
-          {{ partial "icons/message.html" }}
-          <div>
-            <p>The one rule is that every choice comes with a reason. When someone suggests an approach, the group asks what makes it suitable and what it makes harder.</p>
-          </div>
-        </li>
+        <li>{{ partial "icons/archive.html" }}<div><p>Where does the data live?</p></div></li>
+        <li>{{ partial "icons/zap.html" }}<div><p>What happens when a call fails?</p></div></li>
+        <li>{{ partial "icons/puzzle.html" }}<div><p>What will the next change have to touch?</p></div></li>
       </ul>
     </div>
-    <p>Keep a page of notes, because each later part builds on it.</p>
+    <p>If nobody answers them on purpose, the code answers them anyway, and nobody notices until the answer costs something. You can no longer afford to forget about architecture, because the code no longer gives you time to notice it's missing.</p>
+    <p>The skill that matters now is seeing which decisions a change involves and weighing what each option costs. A kata is where you practice that, with a team that asks you to explain every choice.</p>
   </section>
   <section>
-    <h2 id="reading-the-brief">Reading the Brief{{ partial "anchor.html" "reading-the-brief" }}</h2>
-    <p>The organizers of a fictional technology conference need a platform to run it each year. Read their brief below once, then again for what it leaves out, because those gaps shape your design as much as the stated needs.</p>
-{{ partial "brief.html" . }}
-  </section>
-  <section>
-    <h2 id="finding-the-gaps">Finding the Gaps{{ partial "anchor.html" "finding-the-gaps" }}</h2>
-    <p>The brief says what the organizers want but not which needs come first. Early-bird ticket sales open soon, yet nothing says whether your platform sells the tickets.</p>
-    <p>Picture an attendee heading to a room just as that talk moves, then work through these questions to find your priorities:</p>
-    <ul>
-      <li>Does the platform sell tickets, or does another system handle that?</li>
-      <li>What must organizers and attendees be able to do by the time ticket sales open?</li>
-      <li>What must keep working when demand peaks or the connection drops?</li>
-      <li>Does interacting with a talk mean questions, polls, feedback, or something else?</li>
-    </ul>
-    <p>Some answers won't be available, such as the budget and the builders. Write down what you're assuming and which choice depends on it, and keep it apart from the brief's facts.</p>
-    <div class="callout">
-      <ul>
-        <li>
-          {{ partial "icons/flag.html" }}
-          <div>
-            <p>Mark the one open question that could change your design most. Return to it when you test your proposal.</p>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </section>
-  <section>
-    <h2 id="sketching-a-design">Sketching a Design{{ partial "anchor.html" "sketching-a-design" }}</h2>
-    <p>You have priorities, assumptions, and one marked question. The brief raises a choice to compare. Earlier editions could stay in the live platform, or each could be published as a snapshot.</p>
-    <p>Neither wins by default, because each costs something different:</p>
-    <ul>
-      <li>Which of your priorities does each option serve?</li>
-      <li>What would each take to build, run, and change?</li>
-      <li>Which assumption would change your mind if wrong?</li>
-    </ul>
-    <p>Once you lean one way, <a href="/toolkit/#c4-diagrams">draw the main parts</a> and label how they connect. Say what each part is responsible for. Then follow a room change and an attendee opening the program through the drawing, and mark what's unresolved.</p>
-    <p><a href="/toolkit/#architectural-decision-records">Write down each decision</a>, the alternatives you considered, and the cost you accept. Those notes turn a drawing into a proposal others can question.</p>
-  </section>
-  <section>
-    <h2 id="challenging-the-design">Challenging the Design{{ partial "anchor.html" "challenging-the-design" }}</h2>
-    <p>Check whether your choices hold when the organizers ask for something new.</p>
-    <div class="callout">
-      <ul>
-        <li>
-          {{ partial "icons/zap.html" }}
-          <div>
-            <p>Suppose they add a second venue with its own schedule. That isn't in the brief.</p>
-          </div>
-        </li>
-      </ul>
-    </div>
-    <p>Follow a room change through your drawing again:</p>
-    <ul>
-      <li>Which decisions and assumptions does the change affect?</li>
-      <li>Does it make your marked question matter more or less?</li>
-      <li>Do you still accept what your earlier choices cost?</li>
-    </ul>
-    <p>Then ask a teammate or another group what worries them about a choice. Answer by pointing to the need or assumption behind it.</p>
-    <p>Working alone, revisit an option you rejected. Discussion can show a weakness but can't measure performance, so that claim stays open until someone measures it.</p>
-    <p>For each choice, decide whether to keep, revise, or investigate it, and write down why. Record what changed in your thinking and what remains open.</p>
+    <h2 id="where-to-start">Where to Start{{ partial "anchor.html" "where-to-start" }}</h2>
+    <p>Each page builds on the one before it, so they read best in this order. If you only want to try a kata with your own team, the first three pages are enough:</p>
+    <ol class="phases">
+      {{ range slice
+        (dict "path" "/what-is-a-kata" "text" "See what a kata asks of you and read the conference brief that the next page works through. Notice the gaps it leaves, because they shape the design as much as the stated needs.")
+        (dict "path" "/taking-part-in-a-kata" "text" "Follow a team through that same brief, phase by phase, from setting priorities to defending the design. Read it from top to bottom, because each phase starts from what the last one left you with.")
+        (dict "path" "/toolkit" "text" "Learn the decision records, release timelines, and C4 diagrams a kata uses, and find more katas to practice on. Keep it open beside the Guide and jump to a tool whenever the Guide points you there.")
+        (dict "path" "/workshop" "text" "See how a kata runs in one hour at a tech event, with a team of people you just met. It shows what changes when the clock is shorter and the table mixes specialties.")
+        (dict "path" "/events" "text" "Find the tech events where we run the workshop, with the date, venue, and session details for each. It also explains why a tech event changes how a kata plays out.")
+      }}
+        {{ $text := .text }}
+        {{ with site.GetPage .path }}
+          {{ $page := . }}
+          {{ $icon := "" }}
+          {{ range site.Menus.main }}{{ $entry := . }}{{ with .Page }}{{ if eq .RelPermalink $page.RelPermalink }}{{ $icon = $entry.Params.icon }}{{ end }}{{ end }}{{ end }}
+          <li>{{ with $icon }}{{ partial (printf "icons/%s.html" .) }}{{ else }}{{ errorf "homepage: page %q has no menu icon" $page.Path }}{{ end }}<div><h3><a href="{{ $page.RelPermalink }}">{{ $page.Title }}</a></h3><p>{{ $text }}</p></div></li>
+        {{ else }}
+          {{ errorf "homepage: page %q not found" .path }}
+        {{ end }}
+      {{ end }}
+    </ol>
   </section>
 {{ end }}
