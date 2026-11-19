@@ -71,6 +71,15 @@ h2:hover .anchor {
 
 blockquote {
   margin-inline: 0;
-  padding-left: var(--gap-base);
-  border-left: 2px solid var(--color-accent);
+  padding: var(--gap-inline);
+  border-left: 4px solid var(--color-accent);
+  background: var(--color-off-white);
+}
+
+blockquote > :first-child {
+  margin-top: 0;
+}
+
+blockquote > :last-child {
+  margin-bottom: 0;
 }
