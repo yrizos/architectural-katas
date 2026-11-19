@@ -28,6 +28,8 @@
   {{ with resources.Get "css/hero.css" }}<link rel="stylesheet" href="{{ .RelPermalink }}">{{ end }}
   {{ with resources.Get "css/comparison.css" }}<link rel="stylesheet" href="{{ .RelPermalink }}">{{ end }}
   {{ with resources.Get "css/not-found.css" }}<link rel="stylesheet" href="{{ .RelPermalink }}">{{ end }}
+  <script data-goatcounter="https://architectural-katas-yrizos.goatcounter.com/count"
+          async src="//gc.zgo.at/count.js"></script>
 </head>
 <body>
   {{ if ne .Kind "404" }}{{ partial "header.html" . }}{{ end }}
