@@ -90,34 +90,6 @@ footer svg {
   margin-top: calc((1lh - 1.25em) / 2);
 }
 
-.footer__people > li + li {
-  margin-top: var(--gap-base);
-}
-
-.footer__name {
-  font-weight: bold;
-}
-
-.footer__people ul {
-  display: flex;
-  flex-wrap: wrap;
-  column-gap: var(--gap-inline);
-}
-
-.footer__people svg {
-  fill: currentcolor;
-  stroke: none;
-}
-
-.footer__hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip-path: inset(50%);
-  white-space: nowrap;
-}
-
 @media (min-width: 768px) {
   footer a {
     min-height: calc(var(--font-size-base) * 2.5);
