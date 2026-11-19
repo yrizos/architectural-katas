@@ -30,7 +30,7 @@ In a kata, the records are the only memory your design has, and you write them a
 When a requirement changes, reread your records and write a new one to replace any whose context no longer holds.
 
 {{< download-link "toolkit/adr-template.pdf" "Download the ADR template" >}}
-In the [workshop](/workshop/) we use a simplified ADR template. It fits on one A4 page and holds up to three decisions. Each decision has the same four fields: the decision itself, two alternatives, and the key trade-off.
+In the [workshop](/workshop/) we use a simplified ADR template that fits on one A4 page. It holds up to three decisions, and each one follows the same pattern. You name the decision, write down two alternatives, and finish with the key trade-off between them.
 {{< /download-link >}}
 
 ## Release Timeline
@@ -48,6 +48,10 @@ Start with the earliest date and ask what the system must do by then. Everything
 - What the team builds and what it buys or reuses.
 
 A later phase can still shape the first one, so sketch what comes after the MVP before you settle how to build it. Whenever you move a requirement to a different phase, revisit these decisions.
+
+{{< download-link "toolkit/timeline-template.pdf" "Download the timeline template" >}}
+In the [workshop](/workshop/) we use a simple timeline template on one landscape A4 page. It gives the MVP and each of three later phases a column of its own. Every column starts with a due date and leaves room below for what that phase covers.
+{{< /download-link >}}
 
 ## C4 Diagrams
 
