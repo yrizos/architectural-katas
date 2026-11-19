@@ -14,23 +14,9 @@
   <link rel="manifest" href="/site.webmanifest">
   {{ with site.Home.OutputFormats.Get "rss" }}<link rel="alternate" type="application/rss+xml" href="{{ .Permalink }}" title="{{ site.Title }}">{{ end }}
   <link rel="preload" href="/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
-  {{ with resources.Get "css/variables.css" }}<link rel="stylesheet" href="{{ .RelPermalink }}">{{ end }}
-  {{ with resources.Get "css/main.css" }}<link rel="stylesheet" href="{{ .RelPermalink }}">{{ end }}
-  {{ with resources.Get "css/typography.css" }}<link rel="stylesheet" href="{{ .RelPermalink }}">{{ end }}
-  {{ with resources.Get "css/callout.css" }}<link rel="stylesheet" href="{{ .RelPermalink }}">{{ end }}
-  {{ with resources.Get "css/people.css" }}<link rel="stylesheet" href="{{ .RelPermalink }}">{{ end }}
-  {{ with resources.Get "css/header.css" }}<link rel="stylesheet" href="{{ .RelPermalink }}">{{ end }}
-  {{ with resources.Get "css/footer.css" }}<link rel="stylesheet" href="{{ .RelPermalink }}">{{ end }}
-  {{ with resources.Get "css/brief.css" }}<link rel="stylesheet" href="{{ .RelPermalink }}">{{ end }}
-  {{ with resources.Get "css/phases.css" }}<link rel="stylesheet" href="{{ .RelPermalink }}">{{ end }}
-  {{ with resources.Get "css/handoff.css" }}<link rel="stylesheet" href="{{ .RelPermalink }}">{{ end }}
-  {{ with resources.Get "css/questions.css" }}<link rel="stylesheet" href="{{ .RelPermalink }}">{{ end }}
-  {{ with resources.Get "css/terms.css" }}<link rel="stylesheet" href="{{ .RelPermalink }}">{{ end }}
-  {{ with resources.Get "css/page-link.css" }}<link rel="stylesheet" href="{{ .RelPermalink }}">{{ end }}
-  {{ with resources.Get "css/events.css" }}<link rel="stylesheet" href="{{ .RelPermalink }}">{{ end }}
-  {{ with resources.Get "css/hero.css" }}<link rel="stylesheet" href="{{ .RelPermalink }}">{{ end }}
-  {{ with resources.Get "css/comparison.css" }}<link rel="stylesheet" href="{{ .RelPermalink }}">{{ end }}
-  {{ with resources.Get "css/not-found.css" }}<link rel="stylesheet" href="{{ .RelPermalink }}">{{ end }}
+  {{ $css := slice }}
+  {{ range slice "css/variables.css" "css/main.css" "css/typography.css" "css/callout.css" "css/people.css" "css/header.css" "css/footer.css" "css/brief.css" "css/phases.css" "css/handoff.css" "css/questions.css" "css/terms.css" "css/page-link.css" "css/events.css" "css/hero.css" "css/comparison.css" "css/not-found.css" }}{{ $css = $css | append (resources.Get .) }}{{ end }}
+  {{ with $css | resources.Concat "css/site.css" | minify | fingerprint }}<link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}">{{ end }}
   <script data-goatcounter="https://architectural-katas-yrizos.goatcounter.com/count"
           async src="//gc.zgo.at/count.js"></script>
 </head>
