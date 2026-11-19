@@ -4,21 +4,19 @@
   <ol class="events" role="list">
     {{ range .Pages.ByDate.Reverse }}
       <li>
-        <a href="{{ .RelPermalink }}">
-          <span class="events__when">
-            <time datetime="{{ .Date | time.Format "2006-01-02" }}">{{ .Date | time.Format "January 2, 2006" }}</time>
-            <span>{{ .Date | time.Format "Monday" }}, {{ .Params.time }}</span>
-          </span>
-          <span class="events__what">
-            <span class="events__name">{{ .Title }}</span>
-            {{ with .Params.room_summary }}<span>{{ . }}</span>{{ end }}
-          </span>
-          <span class="events__where">
-            {{ partial "icons/map-pin.html" }}
-            <span>{{ .Params.room }}<br>{{ .Params.venue }}, {{ .Params.city }}</span>
-          </span>
-          {{ partial "icons/arrow-right.html" }}
-        </a>
+        <span class="events__when">
+          <time datetime="{{ .Date | time.Format "2006-01-02" }}">{{ .Date | time.Format "January 2, 2006" }}</time>
+          <span>{{ .Date | time.Format "Monday" }}, {{ .Params.time }}</span>
+        </span>
+        <span class="events__what">
+          <a class="events__name" href="{{ .RelPermalink }}">{{ .Title }}</a>
+          {{ with .Params.room_summary }}<span>{{ . }}</span>{{ end }}
+        </span>
+        <span class="events__where">
+          {{ partial "icons/map-pin.html" }}
+          <span>{{ .Params.room }}<br>{{ .Params.venue }}, {{ .Params.city }}</span>
+        </span>
+        {{ partial "icons/arrow-right.html" }}
       </li>
     {{ end }}
   </ol>

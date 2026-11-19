@@ -18,8 +18,8 @@
       {{ range $events }}
         <div role="group" aria-labelledby="footer-event-title">
           <p class="footer__title" id="footer-event-title">{{ $title }}</p>
-          <a class="footer__event" href="{{ .RelPermalink }}">
-            <span class="footer__event-name">{{ .Title }}</span>
+          <div class="footer__event">
+            <a class="footer__event-name" href="{{ .RelPermalink }}">{{ .Title }}</a>
             <span class="footer__event-fact">
               {{ partial "icons/calendar.html" }}
               <time datetime="{{ .Date | time.Format "2006-01-02" }}">{{ .Date | time.Format "January 2, 2006" }}</time>
@@ -28,7 +28,7 @@
               {{ partial "icons/map-pin.html" }}
               <span>{{ .Params.venue }}, {{ .Params.city }}</span>
             </span>
-          </a>
+          </div>
         </div>
       {{ end }}
     {{ end }}

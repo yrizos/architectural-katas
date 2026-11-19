@@ -80,19 +80,36 @@ footer svg {
 }
 
 .footer__event {
+  position: relative;
   display: grid;
   row-gap: calc(var(--gap-base) * 0.25);
-  padding-block: 0;
 }
 
 .footer__event:hover {
-  text-decoration: none;
+  color: var(--color-link);
 }
 
 .footer__event-name {
+  padding-block: 0;
+  color: inherit;
   font-weight: bold;
   text-decoration: underline;
   text-underline-offset: 0.25em;
+}
+
+.footer__event-name::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.footer__event-name:focus-visible {
+  outline: none;
+}
+
+.footer__event-name:focus-visible::after {
+  outline: 2px solid var(--color-graphite);
+  outline-offset: 2px;
 }
 
 .footer__event-fact {
