@@ -12,8 +12,8 @@ language: Greek and English
 level: Intermediate
 room_summary: AI-native engineering leads this year's program, for an audience of more than 1,000 from across the Greek software sector.
 facilitators:
-  - Yannis Rizos
   - Aggelos Bellos
+  - Yannis Rizos
 ---
 
 [Open Conf](https://open-conf.gr/) is an annual tech conference in Athens, backed by the Greek software and IT sector, from major companies to open communities, startups, hubs, and research centers. It draws more than 1,000 attendees a year, and the 2026 edition runs on 20 and 21 November at the Dais Events Center in Marousi.

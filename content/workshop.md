@@ -11,13 +11,13 @@ You don't need to prepare anything or read up on architecture first. Everything 
 
 {{< callout >}}
 {{< callout-item icon="users" >}}
-Your team has three to five people, most likely from different specialties and companies.
+Your team is three to five people you just met, most likely from different specialties.
 {{< /callout-item >}}
 {{< callout-item icon="calendar" >}}
 The session runs for one hour, from the first read of the brief to the last question from the room.
 {{< /callout-item >}}
 {{< callout-item icon="lightbulb" >}}
-Nobody writes code. The whole hour goes into sketching, discussing, and deciding, on paper or a whiteboard.
+The whole hour goes into sketching, discussing, and deciding, on paper or a whiteboard. Nobody writes code.
 {{< /callout-item >}}
 {{< /callout >}}
 
@@ -46,16 +46,6 @@ A table of strangers can still fall in behind whoever speaks first, the anti-pat
 Every team in the room gets the same brief, such as the [one for a conference platform](/what-is-a-kata/#what-a-brief-looks-like). The hour moves through three phases, and each one starts from what the last one left you with:
 
 {{< phases >}}
-{{< phase icon="book" name="Understand and Prioritize" page="taking-part-in-a-kata" >}}
-List who the platform serves, rank the characteristics that matter most, and scope a first release.
-{{< /phase >}}
-{{< phase icon="puzzle" name="Design" page="taking-part-in-a-kata" >}}
-Group the work into components, decide what to build and what to buy, draw the architecture, and record each key decision.
-{{< /phase >}}
-{{< phase icon="users" name="Share" page="taking-part-in-a-kata" >}}
-Present your design to the room and question how other teams solved the same brief.
-{{< /phase >}}
-{{< /phases >}}
 
 Whoever runs the session plays the organizers who wrote the brief. Ask them about anything it leaves out, such as whether the platform sells the tickets or what interacting with a talk means. Some answers won't be clear, the way they wouldn't be on a real project.
 
@@ -100,8 +90,8 @@ A [release timeline](/toolkit/#release-timeline) that shows what ships first and
 
 You also leave with the questions other teams asked about your design. They expose the assumptions you didn't know you were making, and those stay useful long after the session ends.
 
-## Next Step
+## Dates and Venues
 
 Each tech event gives the workshop its own date, room, and language. To see where it has run and where it's headed next, look through the events.
 
-{{< page-link "events" "See where the workshop runs" >}}
+{{< page-link "events" "Browse the tech events" >}}

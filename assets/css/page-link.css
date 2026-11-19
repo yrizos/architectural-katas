@@ -1,12 +1,13 @@
 .page-link {
-  display: inline-flex;
-  align-items: center;
+  display: flex;
+  width: fit-content;
+  margin-left: auto;
+  align-items: flex-start;
   gap: calc(var(--gap-base) * 0.75);
   padding: var(--gap-base) var(--gap-inline);
   background: var(--color-graphite);
   color: var(--color-background);
-  font-size: calc(var(--font-size-base) * 9 / 7);
-  font-weight: bold;
+  font-size: var(--font-size-base);
   text-decoration: none;
   transition: background-color 0.4s ease;
 }
@@ -19,6 +20,7 @@
 
 .page-link svg {
   flex-shrink: 0;
+  margin-top: calc((1lh - 1.25em) / 2);
   width: 1.25em;
   height: 1.25em;
   fill: none;

@@ -34,7 +34,12 @@
     <section>
       <h2 id="session-booklet">Session Booklet{{ partial "anchor.html" "session-booklet" }}</h2>
       <p>Everything used in the session, from the brief to the worksheets, in one printable PDF.</p>
-      <a class="page-link" href="{{ . }}" download>Download the booklet{{ partial "icons/arrow-right.html" }}</a>
+      <a class="page-link" href="{{ . }}" download>{{ partial "icons/download.html" }}Download the booklet{{ partial "icons/arrow-right.html" }}</a>
     </section>
   {{ end }}
+  <section>
+    <h2 id="the-session-format">The Session Format{{ partial "anchor.html" "the-session-format" }}</h2>
+    <p>Teams work through a brief in three phases, from understanding it to presenting a design to the room.</p>
+    <a class="page-link" href="{{ (site.GetPage "workshop").RelPermalink }}">{{ partial "icons/pencil-ruler.html" }}See what happens in the workshop{{ partial "icons/arrow-right.html" }}</a>
+  </section>
 {{ end }}

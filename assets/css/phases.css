@@ -1,44 +1,42 @@
 .phases {
-  display: grid;
-  gap: var(--gap-section);
-  margin-block: var(--gap-section);
-  padding: 0;
+  margin: var(--gap-section) calc(-1 * var(--gap-inline));
+  padding: var(--gap-base) var(--gap-inline);
   list-style: none;
   counter-reset: phase;
+  background: var(--color-surface);
 }
 
 .phases li {
-  padding-top: var(--gap-base);
-  border-top: 0.2em solid var(--color-accent);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: var(--gap-base);
   counter-increment: phase;
 }
 
-.phases li::before {
-  content: counter(phase);
-  display: block;
-  color: var(--color-graphite);
-  font-size: calc(var(--font-size-base) * 2);
-  font-weight: 800;
-  line-height: 1;
+.phases li + li {
+  margin-top: var(--gap-base);
 }
 
-.phases a {
-  display: flex;
-  align-items: center;
-  gap: calc(var(--gap-base) * 0.5);
-  margin-top: calc(var(--gap-base) * 0.75);
-  font-size: calc(var(--font-size-base) * 8 / 7);
-  font-weight: bold;
+.phases h3 {
+  margin: 0;
+  font-size: var(--font-size-base);
+  letter-spacing: normal;
+}
+
+.phases h3::before {
+  content: counter(phase, decimal-leading-zero) ".";
+  margin-right: 0.5em;
+  font-variant-numeric: tabular-nums;
 }
 
 .phases p {
-  margin: calc(var(--gap-base) * 0.5) 0 0;
+  margin: calc(var(--gap-base) * 0.25) 0 0;
 }
 
 .phases svg {
-  flex-shrink: 0;
   width: 1.25em;
   height: 1.25em;
+  margin-top: calc((1lh - 1.25em) / 2);
   fill: none;
   stroke: var(--color-accent);
   stroke-width: 1.5;
@@ -48,6 +46,6 @@
 
 @media (min-width: 768px) {
   .phases {
-    grid-template-columns: repeat(3, 1fr);
+    margin-inline: 0;
   }
 }

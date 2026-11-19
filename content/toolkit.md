@@ -5,21 +5,21 @@ description: A guide to architectural decision records, release timelines, and C
 
 ## Architectural Katas
 
-Ted Neward created [architectural katas](/what-is-a-kata/) to give software architects a way to practice their craft, and the canonical place to find them is [architecturalkatas.com](https://www.architecturalkatas.com/). Since that site is the reference for the rules, the problems, and how to run a kata, start there, then come back here for the tools that help once you have begun.
+You need three things to run a kata, and [architecturalkatas.com](https://www.architecturalkatas.com/) has all of them. Each one answers a different question you'll have before you start.
 
 {{< callout >}}
-{{< callout-item icon="book" >}}
-The rules explain how a kata works.
-{{< /callout-item >}}
 {{< callout-item icon="archive" >}}
-A big selection of katas gives you new problems to practice.
+The collection gives you [a random kata](https://www.architecturalkatas.com/kata.html) to practice.
+{{< /callout-item >}}
+{{< callout-item icon="book" >}}
+The [rules](https://www.architecturalkatas.com/rules.html) explain how a kata works.
 {{< /callout-item >}}
 {{< callout-item icon="users" >}}
-The guidance shows you how to run a kata yourself.
+The [facilitation guide](https://www.architecturalkatas.com/lead.html) shows you how to run a kata.
 {{< /callout-item >}}
 {{< /callout >}}
 
-Start with the rules if the format is new to you. When you want to run a kata with your own team, pick one from the selection and follow the guidance.
+Read the rules first if the format is new to you. Then take a random kata from the collection and use the facilitation guide to run it with your own team.
 
 ## Architectural Decision Records
 
@@ -80,3 +80,9 @@ Some catas belong to the team at the table, and they show how you architect your
 Others belong to whoever runs the kata. **The Over-Corrector** jumps in at the first sign of trouble. **The Tech-Savvy Stakeholder** plays the business role but hands teams the solution.
 
 It's worth a read before [your next kata](/taking-part-in-a-kata/), and again after it.
+
+## Using the Tools in a Kata
+
+Each of these tools has its place in a kata, from the first release you scope to the records you defend in front of the room.
+
+{{< page-link "taking-part-in-a-kata" "Put the tools to work" >}}

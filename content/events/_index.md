@@ -3,8 +3,10 @@ title: Where Do We Run It?
 description: "The tech events where we run our architectural kata workshop, with dates, venues, and session details."
 ---
 
-Our katas started inside our own teams, with people who already share a codebase and a way of working. A conference takes all of that away.
+Our katas started inside our own teams, where everyone already shares a codebase and a way of working. A tech event takes all of that away, so we [bring the workshop there](/workshop/) to see whether the format still holds up.
 
-You sit down with strangers from different specialties and stages of their careers. Nobody at the table has seen the brief, and you have about an hour to turn it into a design you can defend.
+Ted Neward's [rules](https://www.architecturalkatas.com/rules.html) already push a kata in this direction, because co-workers aren't supposed to share a group. At a tech event that happens by itself, and three things change at once:
 
-[We bring the katas to tech events](/workshop/) to find out whether they [hold up in that setting](/contact/#katas-at-tech-events).
+- Most people at the table have only just met, so the team builds trust while it designs.
+- The room mixes more specialties and career stages than any one company does, so a first-time designer can end up next to an architect from another industry, and both have to argue their case.
+- The slot is one hour instead of two, so teams [prioritize faster](/taking-part-in-a-kata/#understand-and-prioritize) and leave more questions open.

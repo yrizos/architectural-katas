@@ -52,8 +52,8 @@ Ted Neward applied the idea to software architecture. He created architectural k
 
 The katas started as a workshop he presented. His site, [architecturalkatas.com](https://www.architecturalkatas.com/), now holds the rules, a large selection of briefs, and guidance on running a kata yourself.
 
-## Next Step
+## Trying It Yourself
 
-To try one yourself, work through this same brief with a small team, from the first read to a design you can present to others. Along the way, you'll capture what you decide with [decision records, release timelines, and diagrams](/toolkit/).
+To try one yourself, work through this same brief with a small team, from the first read to a design you can present to others. Along the way, you'll capture what you decide with decision records, release timelines, and diagrams.
 
 {{< page-link "taking-part-in-a-kata" "Work through the brief" >}}

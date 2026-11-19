@@ -8,16 +8,6 @@ Picture a table with a few people you may have met minutes ago, a whiteboard, an
 The work moves through three phases, and each one starts from what the last one left you with. By the end, your team has a short list of priorities, a diagram with the decisions behind it, and a plan for what ships first.
 
 {{< phases >}}
-{{< phase icon="book" name="Understand and Prioritize" >}}
-Work out who the platform serves, what matters most, and what has to ship first.
-{{< /phase >}}
-{{< phase icon="puzzle" name="Design" >}}
-Turn those priorities into components, a diagram, and decisions with their trade-offs.
-{{< /phase >}}
-{{< phase icon="users" name="Share" >}}
-Present your design and question how other teams solved the same brief.
-{{< /phase >}}
-{{< /phases >}}
 
 Three ground rules hold through every phase. They come up again and again, so keep them in view from the start:
 
@@ -42,7 +32,7 @@ You don't need to prepare anything or know the brief by heart. Most of what you 
 You work in a team of three to five people, often with people you don't work with every day.
 {{< /callout-item >}}
 {{< callout-item icon="calendar" >}}
-A kata takes an hour or two. At a [tech event](/workshop/#at-tech-events) it gets one hour, so you prioritize faster and leave more questions open.
+A kata takes an hour or two. At a [tech event](/workshop/) it gets one hour, so you prioritize faster and leave more questions open.
 {{< /callout-item >}}
 {{< callout-item icon="lightbulb" >}}
 Nobody writes code. The whole time goes into sketching, discussing, and deciding, on paper or a whiteboard.
@@ -123,7 +113,7 @@ Next, agree on the architectural characteristics that matter most. They aren't f
 
 Pick three and rank them, because these qualities pull against each other and no design serves all ten. The ranking settles arguments later, when two of them collide.
 
-Picture [attendees checking the schedule on their phones](/what-is-a-kata/#what-a-brief-looks-like) while the venue Wi-Fi struggles. They make a strong case for availability. The three months until ticket sales make a different one, for cost and deployability, because a small team has to ship quickly and keep changing what it shipped.
+Picture attendees checking the schedule on their phones while the venue Wi-Fi struggles. They make a strong case for availability. The three months until ticket sales make a different one, for cost and deployability, because a small team has to ship quickly and keep changing what it shipped.
 
 Last, scope a first release. It's the smallest scope that still gives the main actor something of value, and the ticket-sales date limits what fits. Everything else waits for a later release, and every move to a later release [changes other decisions](/toolkit/#release-timeline).
 
@@ -189,9 +179,9 @@ Now draw it. A context and a container diagram from the [C4 model](/toolkit/#c4-
 
 Each key decision gets an [architectural decision record](/toolkit/#architectural-decision-records), so the reasoning is written down by the time you present. In a kata, the record carries the decision's number, names two alternatives you considered, and states the trade-off you accept.
 
-[Keeping a copy of the schedule on each phone](/what-is-a-kata/#what-a-brief-looks-like) makes a good first record. The alternatives are a schedule that lives only on the server and a copy kept on every phone. Choosing the copy means attendees can still read the program when the Wi-Fi drops, and the trade-off you accept is that every room change has to reach all of those copies.
+Keeping a copy of the schedule on each phone makes a good first record. The alternatives are a schedule that lives only on the server and a copy kept on every phone. Choosing the copy means attendees can still read the program when the Wi-Fi drops, and the trade-off you accept is that every room change has to reach all of those copies.
 
-If time runs short, stop drawing and finish the records. A half-drawn diagram with clear reasons says more than a full whiteboard nobody can explain, and rushing to fill the board is the anti-pattern known as The Empty Hands Fear.
+If time runs short, stop drawing and finish the records. A half-drawn diagram with clear reasons says more than a full whiteboard nobody can explain, and rushing to fill the board is the anti-pattern known as [The Empty Hands Fear](/toolkit/#catas-to-avoid).
 
 Finally, turn your first release into a [release timeline](/toolkit/#release-timeline). Now that you know what you build and what you buy, you can see what really fits before ticket sales. A bought audience tool might let interaction ship early, while building your own could push it past this year's conference.
 
@@ -222,7 +212,7 @@ Every team worked from the same brief, so the differences between the designs ar
 
 This is where the first ground rule matters most. When another team chose differently, ask what their design gives up and what yours does, instead of deciding who is right.
 
-While the others present, ask each team at least one question about an assumption or a trade-off. Sitting through every presentation in silence is the anti-pattern known as The Silent Audience, and the questions you ask often show you what your own team took for granted.
+While the others present, ask each team at least one question about an assumption or a trade-off. Sitting through every presentation in silence is the anti-pattern known as [The Silent Audience](/toolkit/#catas-to-avoid), and the questions you ask often show you what your own team took for granted.
 
 If you're practicing alone, write the presentation down for someone who wasn't there. Ask them to question it, or set it aside for a day and question it yourself.
 
@@ -236,3 +226,9 @@ Judgment grows over many katas, so the next one goes better if you look back at 
 - Did you ask every presenting team a question?
 
 Most of these are [anti-patterns](/toolkit/#catas-to-avoid), and they read differently once you've been through a kata. When you want another brief, [Ted Neward's collection](/toolkit/#architectural-katas) has plenty to choose from.
+
+## The One-Hour Workshop
+
+We also run katas as a one-hour workshop at tech events, where you work through these phases with people you've just met.
+
+{{< page-link "workshop" "See how the workshop runs" >}}

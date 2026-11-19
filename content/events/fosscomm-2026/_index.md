@@ -13,8 +13,8 @@ language: Greek
 booklet: /events/architecture-kata-workshop-fosscomm-26.pdf
 room_summary: The Greek open-source community's own summit, free to attend and run entirely by volunteers since 2008.
 facilitators:
-  - Yannis Rizos
   - Aggelos Bellos
+  - Yannis Rizos
 ---
 
 [FOSSCOMM](https://2026.fosscomm.gr/) is the annual summit of the Greek free and open-source community. It has run since 2008, is free to attend, and is organized entirely by volunteers, with a focus on digital freedom, privacy, and open technology.
