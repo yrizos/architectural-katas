@@ -8,10 +8,10 @@
       {{ $img := .Crop "1533x720 top" }}
       {{ $srcset := slice }}
       {{ range slice 480 992 1440 }}
-        {{ $srcset = $srcset | append (printf "%s %dw" ($img.Resize (printf "%dx" .)).RelPermalink .) }}
+        {{ $srcset = $srcset | append (printf "%s %dw" ($img.Resize (printf "%dx webp" .)).RelPermalink .) }}
       {{ end }}
-      {{ $default := $img.Resize "992x" }}
-      <img src="{{ $default.RelPermalink }}" srcset="{{ delimit $srcset ", " }}" sizes="(min-width: 842px) 794px, calc(100vw - 48px)" width="{{ $default.Width }}" height="{{ $default.Height }}" alt="Four people gather around a table covered in system diagrams.">
+      {{ $default := $img.Resize "992x webp" }}
+      <img fetchpriority="high" src="{{ $default.RelPermalink }}" srcset="{{ delimit $srcset ", " }}" sizes="(min-width: 842px) 794px, calc(100vw - 48px)" width="{{ $default.Width }}" height="{{ $default.Height }}" alt="Four people gather around a table covered in system diagrams.">
     {{ end }}
     <div class="hero__text">
       <p>In an architectural kata, your team agrees on what matters, sketches a design, and backs every choice with a reason the others can follow. You leave with the design, the reasons behind it, and a list of what you still don't know.</p>
