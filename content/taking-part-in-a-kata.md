@@ -186,6 +186,8 @@ Keeping a copy of the schedule on each phone makes a good first record. The alte
 
 If time runs short, stop drawing and finish the records. A half-drawn diagram with clear reasons says more than a full whiteboard nobody can explain, and rushing to fill the board is the anti-pattern known as [The Empty Hands Fear](/toolkit/#catas-to-avoid).
 
+Then go back to the open question you marked, and ask how your design would change if the answer went the other way. If the platform turned out to sell tickets, for example, payments would need a component of their own and would have to work before early-bird sales. Decisions that flip like this are the ones to point out when you present.
+
 Finally, turn your first release into a [release timeline](/toolkit/#release-timeline). Now that you know what you build and what you buy, you can see what really fits before ticket sales. A bought audience tool might let interaction ship early, while building your own could push it past this year's conference.
 
 ## Share
@@ -197,6 +199,7 @@ Finally, turn your first release into a [release timeline](/toolkit/#release-tim
 - Your diagram, with its numbered decisions.
 - Your decision records.
 - Your release timeline.
+- Your assumptions, with one open question marked.
 {{< /handoff-item >}}
 {{< handoff-item label="You leave with" >}}
 - The questions other teams asked about your design.
@@ -204,12 +207,13 @@ Finally, turn your first release into a [release timeline](/toolkit/#release-tim
 {{< /handoff-item >}}
 {{< /handoff >}}
 
-Now every team presents to the room. Each one shows the same four things, so the designs are easy to compare:
+Now every team presents to the room. Each one shows the same five things, so the designs are easy to compare:
 
 1. Your three characteristics, in rank order.
 2. Your diagram.
 3. Your release timeline.
 4. One key trade-off, usually the one you argued about longest.
+5. Your open question, and the decisions it could change.
 
 Every team worked from the same brief, so the differences between the designs are the interesting part. They point to assumptions each team didn't know it was making, and that includes yours.
 
