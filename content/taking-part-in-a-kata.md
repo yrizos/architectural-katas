@@ -42,7 +42,7 @@ You don't need to prepare anything or know the brief by heart. Most of what you 
 You work in a team of three to five people, often with people you don't work with every day.
 {{< /callout-item >}}
 {{< callout-item icon="calendar" >}}
-A kata takes an hour or two. At a [tech event](/about/#why-katas-at-tech-events) it gets one hour, so you prioritize faster and leave more questions open.
+A kata takes an hour or two. At a tech event it gets one hour, so you prioritize faster and leave more questions open.
 {{< /callout-item >}}
 {{< callout-item icon="lightbulb" >}}
 Nobody writes code. The whole time goes into sketching, discussing, and deciding, on paper or a whiteboard.
