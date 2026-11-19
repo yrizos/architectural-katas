@@ -9,15 +9,11 @@ Hohpe also points out the catch. The model only works for teams with an architec
 
 Real projects rarely offer that many chances, so that's what our katas are for. Everyone on our teams gets far more design practice on made-up problems, and nothing they try there can break production.
 
+Technical leadership has the same catch. Habits like explaining a blocker to someone outside engineering or stating what a decision costs don't show up because of a memo either. You build them through [short exercises for everyday technical leadership](https://leadership-katas.yrizos.com/), which take 10 to 15 minutes of deliberate practice whenever one of those moments comes up at work.
+
 If any of this sounds familiar, feel free to reach out. We can happily talk architecture for hours 😉
 
 {{< people >}}
 {{< person name="Aggelos Bellos" role="Staff Engineer at Epignosis" github="bellangelo" linkedin="in/aggelos-bellos" >}}
 {{< person name="Yannis Rizos" role="Director of Engineering at Epignosis" github="yrizos" linkedin="in/yrizos" >}}
 {{< /people >}}
-
-## An Example Brief
-
-A kata starts from a short brief for a system that doesn't exist yet, and the gaps it leaves matter as much as what it states.
-
-{{< page-link "what-is-a-kata" "See an example brief" >}}
