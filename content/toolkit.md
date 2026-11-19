@@ -29,7 +29,7 @@ In a kata, the records are the only memory your design has, and you write them a
 
 When a requirement changes, reread your records and write a new one to replace any whose context no longer holds.
 
-{{< download-link "toolkit/adr-template.pdf" "Download the ADR template" >}}
+{{< download-link "toolkit/adr-template.pdf" "ADR template" >}}
 In the [workshop](/workshop/) we use a simplified ADR template that fits on one A4 page. It holds up to three decisions, and each one follows the same pattern. You name the decision, write down two alternatives, and finish with the key trade-off between them.
 {{< /download-link >}}
 
@@ -49,7 +49,7 @@ Start with the earliest date and ask what the system must do by then. Everything
 
 A later phase can still shape the first one, so sketch what comes after the MVP before you settle how to build it. Whenever you move a requirement to a different phase, revisit these decisions.
 
-{{< download-link "toolkit/timeline-template.pdf" "Download the timeline template" >}}
+{{< download-link "toolkit/timeline-template.pdf" "Timeline template" >}}
 In the [workshop](/workshop/) we use a simple timeline template on one landscape A4 page. It gives the MVP and each of three later phases a column of its own. Every column starts with a due date and leaves room below for what that phase covers.
 {{< /download-link >}}
 
@@ -73,6 +73,10 @@ A [code diagram](https://c4model.com/diagrams/code) shows the classes inside one
 {{< /callout >}}
 
 Label every connection on each diagram, and keep the diagrams beside your ADRs. A diagram shows what you decided, and the record explains why.
+
+{{< download-link "events/architecture-kata-workshop-fosscomm-26.pdf#page=4" "C4 cheat sheet" >}}
+We have a C4 cheat sheet in our [FOSSCOMM 2026](/events/fosscomm-2026/) booklet. It covers the four levels, a common notation, and tips for drawing your diagrams. The booklet also walks through an example for a learning management system.
+{{< /download-link >}}
 
 ## Catas to Avoid
 

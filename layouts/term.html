@@ -33,8 +33,7 @@
   {{ with .Params.booklet }}
     <section>
       <h2 id="session-booklet">Session Booklet{{ partial "anchor.html" "session-booklet" }}</h2>
-      <p>Everything used in the session, from the brief to the worksheets, in one printable PDF.</p>
-      <a class="page-link" href="{{ . }}" download>{{ partial "icons/download.html" }}Download the booklet{{ partial "icons/arrow-right.html" }}</a>
+      {{ partial "download-link.html" (dict "page" $ "path" . "label" "Session booklet" "inner" "Everything used in the session, from the brief to the worksheets, in one printable PDF.") }}
     </section>
   {{ end }}
   <section>
