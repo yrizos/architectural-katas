@@ -26,3 +26,40 @@
 .comparison tr > :last-child {
   background: var(--color-surface);
 }
+
+@media (max-width: 767px) {
+  .comparison,
+  .comparison thead,
+  .comparison tbody {
+    display: block;
+  }
+
+  .comparison tr {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .comparison thead td {
+    display: none;
+  }
+
+  .comparison tr > :last-child {
+    background: none;
+  }
+
+  .comparison tr > :nth-child(3) {
+    border-left: 1px solid var(--color-border);
+  }
+
+  .comparison tbody tr:last-child td {
+    border-bottom: 0;
+  }
+
+  .comparison tbody th {
+    grid-column: 1 / -1;
+    border-bottom: 0;
+    background: var(--color-surface);
+    color: var(--color-graphite);
+    text-align: center;
+  }
+}
