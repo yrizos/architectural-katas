@@ -38,7 +38,7 @@
 }
 
 .brief__label {
-  font-size: calc(var(--font-size-base) * 8 / 7);
+  font-size: var(--font-size-base);
   font-weight: bold;
 }
 

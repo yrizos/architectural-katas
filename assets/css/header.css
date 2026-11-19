@@ -29,7 +29,7 @@ header nav a {
   column-gap: calc(var(--gap-base) * 0.5);
   min-height: var(--item-height);
   padding: 0 var(--gap-page);
-  font-size: calc(var(--font-size-base) * 8 / 7);
+  font-size: var(--font-size-base);
 }
 
 header a:hover {

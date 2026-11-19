@@ -13,13 +13,13 @@
 }
 
 .comparison thead th {
-  font-size: calc(var(--font-size-base) * 8 / 7);
+  font-size: var(--font-size-base);
   letter-spacing: -0.02em;
 }
 
 .comparison tbody th {
   color: var(--color-text-muted);
-  font-size: calc(var(--font-size-base) * 8 / 9);
+  font-size: var(--font-size-base);
   font-weight: 400;
 }
 
