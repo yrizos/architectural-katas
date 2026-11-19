@@ -1,5 +1,5 @@
 ---
-title: Contact
+title: How Do You Reach Us?
 description: Who we are, why we introduced architectural katas, and what changes when we take them to tech events.
 ---
 

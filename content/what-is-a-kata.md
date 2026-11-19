@@ -1,5 +1,5 @@
 ---
-title: What Is a Kata
+title: What Is a Kata?
 description: What an architectural kata is, what it asks of you, why the practice matters, where the idea comes from, and what a brief looks like.
 ---
 

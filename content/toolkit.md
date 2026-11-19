@@ -1,5 +1,5 @@
 ---
-title: Toolkit
+title: Which Tools Do You Need?
 description: A guide to architectural decision records, release timelines, and C4 diagrams, and how to use each one in an architectural kata.
 ---
 

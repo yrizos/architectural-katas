@@ -1,5 +1,5 @@
 ---
-title: The Workshop
+title: What Happens in a Workshop?
 description: What happens in our one-hour architectural kata workshop at tech events, who you design with, how the hour runs, and what your team leaves with.
 ---
 

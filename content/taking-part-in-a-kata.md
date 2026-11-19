@@ -1,5 +1,5 @@
 ---
-title: Taking Part in a Kata
+title: How Do You Work Through a Brief?
 description: What you do when you take part in an architectural kata, phase by phase, working through a brief for a conference platform.
 ---
 

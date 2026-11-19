@@ -1,5 +1,5 @@
 ---
-title: Tech Events
+title: Where Do We Run It?
 description: "The tech events where we run our architectural kata workshop, with dates, venues, and session details."
 ---
 
