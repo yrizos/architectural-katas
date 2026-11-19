@@ -2,6 +2,7 @@
 title: FOSSCOMM 2026
 description: "Our system design workshop at FOSSCOMM 2026 in Athens, held on 1 November at the University of West Attica. You can download the session booklet."
 date: 2026-11-01T17:00:00+02:00
+end: 2026-11-01T18:00:00+02:00
 session: "Architectural Katas: Practicing System Design"
 conference_url: https://2026.fosscomm.gr/
 time: 17:00 to 18:00 EET

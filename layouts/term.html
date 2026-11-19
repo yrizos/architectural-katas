@@ -16,6 +16,7 @@
     "organizer" (dict "@type" "Organization" "name" .Title "url" .Params.conference_url)
     "performer" $performers
   }}
+  {{ with .Params.end }}{{ $event = merge $event (dict "endDate" (. | time.AsTime | time.Format "2006-01-02T15:04:05-07:00")) }}{{ end }}
   <script type="application/ld+json">{{ $event | jsonify | safeJS }}</script>
   <h1>{{ .Title }}</h1>
   <p class="event-session">{{ .Params.session }}</p>
